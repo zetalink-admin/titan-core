@@ -1,0 +1,30 @@
+---
+// src/components/BlogPost.astro
+import { categories } from '../../data/categories';
+
+interface Props {
+  title: string;
+  excerpt: string;
+  featuredImage: string;
+  publishDate: Date;
+  categories: string[];
+  content: string;
+  slug?: string;
+}
+
+const { title, excerpt, featuredImage, publishDate, categories: postCategories, slug } = Astro.props;
+
+// Validate categories against the valid categories
+const validCategories = postCategories.filter((category: string) => categories.includes(category));
+---
+
+<article>
+  <a href={`/blog/${slug}`}>
+    <img src={featuredImage} alt={title} />
+    <h2>{title}</h2>
+  </a>
+  <p>{excerpt}</p>
+  <p>Published on: {new Date(publishDate).toLocaleDateString()}</p>
+  <p>Categories: {validCategories.join(', ')}</p>
+  <a href={`/blog/${slug}`}>Read more →</a>
+</article>

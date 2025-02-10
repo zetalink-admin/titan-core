@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Use SEO data from frontmatter if available, fallback to regular post data
+const seoTitle = post.data.seo?.title || post.data.title;
+const seoDescription = post.data.seo?.description || post.data.excerpt;
+const seoImage = post.data.seo?.image || post.data.featuredImage;
+---
+
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+  image={seoImage}
+>
+  <article>
+    <img src={post.data.featuredImage} alt={post.data.title} />
+    <h1>{post.data.title}</h1>
+    <p>Published on: {new Date(post.data.publishDate).toLocaleDateString()}</p>
+    {post.data.categories && (
+      <p>Categories: {post.data.categories.join(', ')}</p>
+    )}
+    <div>
+      <Content />
+    </div>
+  </article>
+</Layout>

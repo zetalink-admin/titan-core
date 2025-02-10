@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogList from '../../components/blog/BlogList.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.DEV || data.publish !== false;
+});
+
+// Sort posts by date
+const sortedPosts = posts.sort((a, b) => 
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+---
+
+<Layout>
+  <main>
+    <h1>Blog</h1>
+    <BlogList posts={sortedPosts} />
+  </main>
+</Layout>

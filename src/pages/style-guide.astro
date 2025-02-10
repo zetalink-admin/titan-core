@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Style Guide';
+const description = 'A style guide for Astro Basics';
+---
+
+<Layout title={title} description={description}>
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8">Style Guide</h1>
+
+        {/* Typography Section */}
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Typography</h2>
+            <div class="space-y-4">
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
+                
+                <div class="my-8">
+                    <p class="mb-4">Body text - Regular paragraph text looks like this. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="text-sm mb-4">Small text - Smaller paragraph text looks like this.</p>
+                    <p class="text-xs">Extra small text - The smallest text size we use.</p>
+                </div>
+            </div>
+        </section>
+
+        {/* Colors Section */}
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Colors</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                    <div class="h-24 bg-primary rounded-lg mb-2"></div>
+                    <p class="text-sm font-medium">Primary</p>
+                </div>
+                <div>
+                    <div class="h-24 bg-secondary rounded-lg mb-2"></div>
+                    <p class="text-sm font-medium">Secondary</p>
+                </div>
+                <div>
+                    <div class="h-24 bg-accent rounded-lg mb-2"></div>
+                    <p class="text-sm font-medium">Accent</p>
+                </div>
+                <div>
+                    <div class="h-24 bg-gray-800 rounded-lg mb-2"></div>
+                    <p class="text-sm font-medium">Dark</p>
+                </div>
+            </div>
+        </section>
+
+        {/* Links Section */}
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Links</h2>
+            <div class="space-y-4">
+                <p><a href="#" class="text-primary hover:underline">Regular Link</a></p>
+                <p><a href="#" class="text-primary hover:underline font-bold">Bold Link</a></p>
+                <p><a href="#" class="text-primary underline hover:no-underline">Underlined Link</a></p>
+            </div>
+        </section>
+
+        {/* Buttons Section */}
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Buttons</h2>
+            <div class="space-y-4">
+                <div class="space-x-4">
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:opacity-90">Primary Button</button>
+                    <button class="bg-secondary text-white px-4 py-2 rounded-lg hover:opacity-90">Secondary Button</button>
+                    <button class="bg-accent text-white px-4 py-2 rounded-lg hover:opacity-90">Accent Button</button>
+                </div>
+                <div class="space-x-4">
+                    <button class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white">Outlined Button</button>
+                    <button class="text-primary hover:underline">Text Button</button>
+                    <button disabled class="bg-gray-300 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed">Disabled Button</button>
+                </div>
+            </div>
+        </section>
+
+        {/* Form Elements */}
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Form Elements</h2>
+            <div class="space-y-4 max-w-md">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Text Input</label>
+                    <input type="text" class="w-full px-3 py-2 border rounded-lg" placeholder="Enter text...">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Select</label>
+                    <select class="w-full px-3 py-2 border rounded-lg">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Textarea</label>
+                    <textarea class="w-full px-3 py-2 border rounded-lg" rows="3" placeholder="Enter text..."></textarea>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="checkbox" class="mr-2">
+                    <label for="checkbox">Checkbox</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="radio" id="radio" name="radio" class="mr-2">
+                    <label for="radio">Radio Button</label>
+                </div>
+            </div>
+        </section>
+
+        {/* Lists Section */}
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Lists</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Unordered List</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>List item one</li>
+                        <li>List item two</li>
+                        <li>List item three</li>
+                        <li>List item four</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Ordered List</h3>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li>First item</li>
+                        <li>Second item</li>
+                        <li>Third item</li>
+                        <li>Fourth item</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>

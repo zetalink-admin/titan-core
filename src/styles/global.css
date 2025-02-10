@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #2563eb;
+    --color-primary-light: #3b82f6;
+    --color-primary-dark: #1d4ed8;
+
+    --color-secondary: #475569;
+    --color-secondary-light: #64748b;
+    --color-secondary-dark: #334155;
+
+    --color-accent: #6366f1;
+    --color-background: #f8fafc;
+    --color-background-alt: #f1f5f9;
+    --color-text: #1e293b;
+    --color-text-light: #475569;
+
+    --text-h1: clamp(2rem, 5vw + 1rem, 5rem);
+    --text-h2: clamp(1.5rem, 4vw + 0.5rem, 2.5rem);
+    --text-h3: clamp(1.25rem, 3vw + 0.25rem, 2rem);
+    --text-h4: clamp(1rem, 2vw + 0.125rem, 1.5rem);
+    --text-h5: clamp(0.875rem, 1.5vw + 0.0625rem, 1.25rem);
+    --text-h6: clamp(0.75rem, 1.2vw + 0.03125rem, 1rem);
+    
+    --text-xsmall: 0.75rem;
+    --text-small: 1rem;
+    --text-base: 1.25rem;
+    --text-large: 1.5rem;
+    --text-xlarge: 2rem;
+
+    --spacing-small: 6rem;
+    --spacing-base: 8rem;
+    --spacing-large: 10rem;
+
+    --border-radius-small: 0.5rem;
+    --border-radius-base: 1rem;
+    --border-radius-large: 2rem;
+}
+
+@layer components {
+    html { font-size: 16px; }
+    body { background-color: var(--color-background); font-size: var(--text-base); }
+    h1 { font-size: var(--text-h1); }
+    h2 { font-size: var(--text-h2); }
+    h3 { font-size: var(--text-h3); }
+    h4 { font-size: var(--text-h4); }
+    h5 { font-size: var(--text-h5); }
+    h6 { font-size: var(--text-h6); }
+    a { color: var(--color-primary); }
+    p { color: var(--color-text); }
+}
+
+

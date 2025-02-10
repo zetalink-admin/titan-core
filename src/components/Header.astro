@@ -1,0 +1,15 @@
+---
+import { headerMenu } from '../data/menu.ts';
+import Logo from './Logo.astro';
+---
+
+<header>
+    <Logo />
+  <nav>
+    <ul>
+      {headerMenu.map(item => (
+        <li><a href={item.link}>{item.name}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>

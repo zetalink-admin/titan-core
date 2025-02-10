@@ -1,0 +1,13 @@
+---
+import { footerMenu } from '../data/menu.ts';
+---
+
+<footer>
+  <nav>
+    <ul>
+      {footerMenu.map(item => (
+        <li><a href={item.link}>{item.name}</a></li>
+      ))}
+    </ul>
+  </nav>
+</footer>
