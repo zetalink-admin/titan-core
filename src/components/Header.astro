@@ -1,15 +1,295 @@
 ---
 import { headerMenu } from '../data/menu.ts';
 import Logo from './Logo.astro';
+import { Menu, X, ChevronDown } from 'lucide-astro';
+
+const ctaButton = {
+    name: 'Login',
+    link: '/login',
+}
+
 ---
 
-<header>
+<style>
+
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+    }
+</style>
+
+<header class="relative flex justify-between items-center p-4">
     <Logo />
-  <nav>
-    <ul>
-      {headerMenu.map(item => (
-        <li><a href={item.link}>{item.name}</a></li>
-      ))}
-    </ul>
-  </nav>
+    <nav class="relative flex items-center gap-4" aria-label="Site Navigation">
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex md:gap-8 items-center">
+            {headerMenu.map((item, index) => (
+                <li class="relative group">
+                    <div class="flex items-center gap-1">
+                        <a 
+                            href={item.link} 
+                            class="text-text font-medium hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-2 py-1"
+                            aria-expanded={item.children ? "false" : undefined}
+                            aria-haspopup={item.children ? "true" : undefined}
+                            
+                        >
+                            {item.name}
+                            {item.children && item.showArrow && (
+                                <ChevronDown 
+                                    size={16} 
+                                    class="transform transition-transform inline-block ml-1" 
+                                    aria-hidden="true"
+                                />
+                            )}
+                        </a>
+                    </div>
+                    {item.children && (
+                        <ul
+                            class:list={[
+                                "submenu absolute mt-2 py-2 bg-white shadow-lg rounded-lg min-w-[200px] transition-all duration-200 opacity-0 invisible",
+                                index === headerMenu.length - 1 ? "right-0" : "left-0"
+                            ]}
+                            role="menu"
+                        >
+                            {item.children.map(child => (
+                                <li role="none">
+                                    <a 
+                                        href={child.link}
+                                        class="block px-4 py-2 text-text hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                                        role="menuitem"
+                                    >
+                                        {child.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </li>
+            ))}
+        </ul>
+
+        <a 
+            href={ctaButton.link} 
+            class="hidden md:inline-flex text-white font-medium hover:text-text bg-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-4 py-2 ml-8"
+        >
+            {ctaButton.name}
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button 
+            class="mobile-menu-button relative z-30 p-2 border-none cursor-pointer bg-transparent md:hidden"
+            aria-label="Toggle Menu"
+            aria-expanded="false"
+        >
+            <span class="menu-icon block">
+                <Menu size={24} class="text-text"/>
+            </span>
+            <span class="close-icon hidden">
+                <X size={24} class="text-white"/>
+            </span>
+        </button>
+
+        <!-- Mobile Menu Panel -->
+        <div 
+            class="mobile-menu fixed inset-0 z-20 px-8 pt-20 bg-primary md:hidden hidden opacity-0 scale-95 transform transition-all duration-200 ease-out overflow-y-auto"
+        >
+            <ul class="flex flex-col gap-4">
+                {headerMenu.map(item => (
+                    <li>
+                        <div class="text-white">
+                            <div class="flex items-center justify-between">
+                                <a 
+                                    href={item.link} 
+                                    class="text-white hover:text-white/80 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md py-1"
+                                >
+                                    {item.name}
+                                </a>
+                                {item.children && (
+                                    <button 
+                                        class="mobile-submenu-button p-2 -mr-2 text-white hover:text-white/80 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md"
+                                        aria-label={`Toggle ${item.name} submenu`}
+                                        aria-expanded="false"
+                                    >
+                                        <ChevronDown 
+                                            size={16} 
+                                            class="transform transition-transform duration-200" 
+                                        />
+                                    </button>
+                                )}
+                            </div>
+                            {item.children && (
+                                <ul
+                                    class="mobile-submenu ml-4 mt-2 space-y-2 hidden"
+                                    role="menu"
+                                >
+                                    {item.children.map(child => (
+                                        <li role="none">
+                                            <a 
+                                                href={child.link}
+                                                class="block text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md py-1"
+                                                role="menuitem"
+                                            >
+                                                {child.name}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    </li>
+                ))}
+            </ul>
+            
+            <!-- Updated mobile CTA button styling -->
+            <div class="mt-8 pb-8">
+                <a 
+                    href={ctaButton.link} 
+                    class="block w-full text-center text-primary font-medium bg-white hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md px-6 py-3 transition-colors"
+                >
+                    {ctaButton.name}
+                </a>
+            </div>
+        </div>
+    </nav>
+    
 </header>
+
+<script>
+    // Desktop Menu
+    const desktopMenuItems = document.querySelectorAll('.group');
+    
+    desktopMenuItems.forEach(item => {
+        const link = item.querySelector('a');
+        const submenu = item.querySelector('.submenu');
+        const submenuLinks = submenu?.querySelectorAll('a');
+        
+        if (submenu && link) {
+            // Handle hover
+            item.addEventListener('mouseenter', () => {
+                showSubmenu(submenu as HTMLElement, link as HTMLElement);
+            });
+
+            item.addEventListener('mouseleave', () => {
+                hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+            });
+
+            // Handle keyboard navigation
+            link.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowDown' && item.children) {
+                    e.preventDefault();
+                    showSubmenu(submenu as HTMLElement, link as HTMLElement);
+                    submenuLinks?.[0]?.focus();
+                }
+            });
+
+            // Don't show submenu on focus, only on hover or arrow key
+            link.addEventListener('focus', () => {
+                hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+            });
+
+            // Keyboard navigation within submenu
+            submenuLinks?.forEach((submenuLink, index) => {
+                submenuLink.addEventListener('keydown', (e) => {
+                    const lastIndex = submenuLinks.length - 1;
+
+                    switch (e.key) {
+                        case 'ArrowDown':
+                            e.preventDefault();
+                            if (index < lastIndex) {
+                                submenuLinks[index + 1].focus();
+                            }
+                            break;
+                        case 'ArrowUp':
+                            e.preventDefault();
+                            if (index > 0) {
+                                submenuLinks[index - 1].focus();
+                            } else {
+                                link.focus();
+                                hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                            }
+                            break;
+                        case 'Escape':
+                            e.preventDefault();
+                            hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                            link.focus();
+                            break;
+                        case 'Tab':
+                            // Allow normal tab behavior but close submenu
+                            hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                            break;
+                    }
+                });
+            });
+
+            // Close submenu when focus leaves
+            document.addEventListener('focusin', (e) => {
+                if (item && !item.contains(e.target as Node)) {
+                    hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                }
+            });
+        }
+    });
+
+    // Helper functions
+    function showSubmenu(submenu: HTMLElement, link: HTMLElement) {
+        submenu.classList.remove('invisible', 'opacity-0');
+        submenu.classList.add('visible', 'opacity-100');
+        link.setAttribute('aria-expanded', 'true');
+    }
+
+    function hideSubmenu(submenu: HTMLElement, link: HTMLElement) {
+        submenu.classList.add('invisible', 'opacity-0');
+        submenu.classList.remove('visible', 'opacity-100');
+        link.setAttribute('aria-expanded', 'false');
+    }
+
+    // Simple mobile submenu toggle
+    document.querySelectorAll('.mobile-submenu-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const submenu = button.parentElement?.nextElementSibling as HTMLElement;
+            const chevron = button.querySelector('svg');
+            
+            // Toggle submenu
+            if (submenu) {
+                submenu.classList.toggle('hidden');
+                chevron?.classList.toggle('rotate-180');
+                const isExpanded = submenu.classList.contains('hidden') ? 'false' : 'true';
+                button.setAttribute('aria-expanded', isExpanded);
+            }
+
+        });
+    });
+
+    // Mobile menu toggle with scroll lock
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+
+    mobileMenuButton?.addEventListener('click', () => {
+        const isHidden = mobileMenu?.classList.contains('hidden');
+        
+        if (isHidden) {
+            document.body.style.overflow = 'hidden';
+            mobileMenu?.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                mobileMenu?.classList.remove('opacity-0', 'scale-95');
+                mobileMenu?.classList.add('opacity-100', 'scale-100');
+            });
+            menuIcon?.classList.add('hidden');
+            closeIcon?.classList.remove('hidden');
+        } else {
+            document.body.style.overflow = '';
+            mobileMenu?.classList.add('opacity-0', 'scale-95');
+            mobileMenu?.classList.remove('opacity-100', 'scale-100');
+            setTimeout(() => {
+                mobileMenu?.classList.add('hidden');
+            }, 200);
+            menuIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+        }
+    });
+</script>

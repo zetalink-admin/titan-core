@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/astro.svg';
 ---
-<div class="logo">
-    <Image src={logo} alt="Logo" />
-</div>
+<a href="/" class="logo text-text uppercase font-logo">
+    <Image src={logo} alt="Logo" class="hidden"/>
+    <span class="font-bold">Titan</span> Core
+</a>
