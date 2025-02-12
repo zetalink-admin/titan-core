@@ -12,9 +12,10 @@ interface Props {
   categories: string[];
   content: string;
   slug?: string;
+  index: number;
 }
 
-const { title, excerpt, featuredImage, publishDate, categories: postCategories, slug } = Astro.props;
+const { title, excerpt, featuredImage, publishDate, categories: postCategories, slug, index } = Astro.props;
 
 // Validate categories against the valid categories
 const validCategories = postCategories.filter((categoryName: string) => 
@@ -25,6 +26,8 @@ const validCategories = postCategories.filter((categoryName: string) =>
 <a 
   href={`/blog/${slug}`} 
   class="group flex flex-col h-full overflow-hidden bg-white rounded-lg border border-black transition-all duration-300"
+  data-aos="fade-up"
+  data-aos-delay={index * 200}
 >
   <div class="relative aspect-[16/9] overflow-hidden border-black border-b">
     <img 

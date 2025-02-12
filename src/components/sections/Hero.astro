@@ -26,8 +26,8 @@ const { heroContent } = Astro.props;
 <div class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"></div>
 
     <div class="site-container mx-auto px-4 py-large relative z-10 flex flex-col md:items-center md:justify-center md:text-center">
-        <h1 class="text-white">{heroContent.title}</h1>
-        <p class="text-white mt-2">{heroContent.description}</p>
-        <Button class="mt-8" variant="ghostLight" href={heroContent.button.link} target={heroContent.button.target}>{heroContent.button.text}</Button>
+        <h1 class="text-white" data-aos="fade-up">{heroContent.title}</h1>
+        <p class="text-white mt-2" data-aos="fade-up" data-aos-delay="100">{heroContent.description}</p>
+        <Button class="mt-8" variant="ghostLight" data-aos="fade-up" data-aos-delay="200" href={heroContent.button.link} target={heroContent.button.target}>{heroContent.button.text}</Button>
     </div>
 </section>

@@ -1,15 +1,19 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import alpine from '@astrojs/alpinejs';
-// https://astro.build/config
+
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    css: {
+      preprocessorOptions: {
+        css: {
+          additionalData: `@import "aos/dist/aos.css";`
+        }
+      }
+    },
+    optimizeDeps: {
+      include: ['aos']
+    }
   },
-  integrations: [
-    alpine({
-      // Initialize Alpine.js on page load
-      entrypoint: '/src/alpine.js'
-    })
-  ]
+  integrations: []
 });

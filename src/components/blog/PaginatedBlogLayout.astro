@@ -38,7 +38,7 @@ const prevPage = currentPage > 1
     <BlogList posts={paginatedPosts} currentCategory={currentCategory} />
 
     {totalPages > 1 && (
-        <nav class="pagination-nav" aria-label="Blog pagination">
+        <nav class="pagination-nav" aria-label="Blog pagination" data-aos="fade-in">
             <div class="container mx-auto px-4 py-12">
                 <div class="flex items-center justify-center gap-6">
                     {prevPage && (

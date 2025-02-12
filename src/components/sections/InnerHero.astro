@@ -11,8 +11,8 @@ const { title, subtitle } = Astro.props;
     <div class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"></div>
     <div class="site-container mx-auto px-4 relative z-10">
         <div>
-        <h1 class="text-white">{title}</h1>
-        {subtitle && <p class="subtitle text-white">{subtitle}</p>}
+        <h1 class="text-white" data-aos="fade-up">{title}</h1>
+        {subtitle && <p class="subtitle text-white" data-aos="fade-up" data-aos-delay="100">{subtitle}</p>}
         </div>
     </div>
 </section>
