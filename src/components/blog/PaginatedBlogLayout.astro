@@ -2,7 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import BlogList from './BlogList.astro';
 import InnerHero from '../sections/InnerHero.astro';
-
+import Button from '../ui/Button.astro';
+import { ChevronLeft, ChevronRight } from 'lucide-astro';
 interface Props {
     posts: any[];
     currentPage: number;
@@ -36,21 +37,39 @@ const prevPage = currentPage > 1
     <InnerHero title={title} subtitle={subtitle} />
     <BlogList posts={paginatedPosts} currentCategory={currentCategory} />
 
-    <nav class="pagination-nav">
-        <div class="container mx-auto px-4 py-8 flex justify-center gap-4">
-        {prevPage && (
-            <a href={prevPage} class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded">
-            Previous
-            </a>
-        )}
-        <span class="px-4 py-2">
-            Page {currentPage} of {totalPages}
-        </span>
-        {nextPage && (
-            <a href={nextPage} class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded">
-            Next
-            </a>
-        )}
+    <nav class="pagination-nav" aria-label="Blog pagination">
+        <div class="container mx-auto px-4 py-12">
+            <div class="flex items-center justify-center gap-6">
+                {prevPage && (
+                    <Button href={prevPage} variant="primary" class="flex items-center gap-2">
+                        <ChevronLeft size={20} />
+                        Previous
+                    </Button>
+                )}
+                
+                <div class="flex items-center gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                        <a
+                            href={pageNum === 1 ? baseUrl : `${baseUrl}/${pageNum}`}
+                            class={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
+                                currentPage === pageNum
+                                    ? 'bg-primary text-white'
+                                    : 'hover:bg-white hover:text-text'
+                            }`}
+                            aria-current={currentPage === pageNum ? 'page' : undefined}
+                        >
+                            {pageNum}
+                        </a>
+                    ))}
+                </div>
+
+                {nextPage && (
+                    <Button href={nextPage} variant="primary">
+                        Next
+                        <ChevronRight size={20} />
+                    </Button>
+                )}
+            </div>
         </div>
     </nav>
     </main>
