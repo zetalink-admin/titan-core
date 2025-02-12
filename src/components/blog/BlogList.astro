@@ -22,37 +22,39 @@ const activeCategories = categories.filter(category =>
 );
 ---
 <section class="site-container mx-auto px-4 py-base">
-  <div class="mb-16 flex justify-between items-end" data-aos="fade-in" data-aos-delay="100">
+  <div class="mb-16 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6" data-aos="fade-in" data-aos-delay="100">
     
-    <div>
-    <h2 class="text-lg font-semibold mb-4">Filter by Categories:</h2>
-    <div class="flex flex-wrap gap-2">
-      <a 
-      href="/blog" 
-      class={`px-6 py-3 leading-none rounded-md text-small flex items-center justify-center transition-colors duration-200 ${
-          !currentCategory 
-            ? 'bg-primary text-white shadow-md' 
-            : 'bg-white text-text hover:bg-secondary hover:text-white'
-        }`}
-      >
-        Show All
-      </a>
-      {activeCategories.map((category) => (
+    <div class="w-full">
+      <h2 class="text-lg font-semibold mb-4">Filter by Categories:</h2>
+      <div class="flex flex-wrap gap-2">
         <a 
-          href={`/category/${category.slug}`}
-          class={`px-6 py-3 leading-none rounded-md text-small flex items-center justify-center transition-colors duration-200 ${
-            currentCategory === category.name 
+          href="/blog" 
+          class={`px-4 sm:px-6 py-2 sm:py-3 leading-none rounded-md text-small flex items-center justify-center transition-colors duration-200 ${
+            !currentCategory 
               ? 'bg-primary text-white shadow-md' 
               : 'bg-white text-text hover:bg-secondary hover:text-white'
           }`}
-          title={category.description}
         >
-          {category.name}
+          Show All
         </a>
-      ))}
+        {activeCategories.map((category) => (
+          <a 
+            href={`/category/${category.slug}`}
+            class={`px-4 sm:px-6 py-2 sm:py-3 leading-none rounded-md text-small flex items-center justify-center transition-colors duration-200 ${
+              currentCategory === category.name 
+                ? 'bg-primary text-white shadow-md' 
+                : 'bg-white text-text hover:bg-secondary hover:text-white'
+            }`}
+            title={category.description}
+          >
+            {category.name}
+          </a>
+        ))}
+      </div>
     </div>
-    </div>
-    <p class="text-small text-text">Showing <span class="font-bold text-primary">{posts.length}</span> of <span class="font-bold text-primary">{allPosts.length}</span> posts</p>
+    <p class="text-small text-text text-left sm:text-right whitespace-nowrap">
+      Showing <span class="font-bold text-primary">{posts.length}</span> of <span class="font-bold text-primary">{allPosts.length}</span> posts
+    </p>
   </div>
   
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
