@@ -34,11 +34,11 @@
     --text-article-h6: clamp(0.75rem, 1.2vw + 0.03125rem, 0.9rem);
     --text-article-h6: clamp(0.75rem, 1.2vw + 0.03125rem, 0.9rem);
     
-    --text-xsmall: 0.75rem;
-    --text-small: 1rem;
-    --text-base: 1.25rem;
-    --text-large: 1.5rem;
-    --text-xlarge: 2rem;
+    --text-xsmall: clamp(0.625rem, 1.5vw + 0.0625rem, 0.75rem);
+    --text-small: clamp(0.875rem, 1.5vw + 0.0625rem, 1rem);
+    --text-base: clamp(1rem, 2vw + 0.125rem, 1.25rem);
+    --text-large: clamp(1.25rem, 3vw + 0.25rem, 1.5rem);
+    --text-xlarge: clamp(2rem, 5vw + 1rem, 4rem);
 
     --spacing-small: 6rem;
     --spacing-base: 8rem;
