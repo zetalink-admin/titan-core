@@ -2,13 +2,28 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/sections/Hero.astro';
 
-const hero = {
-    title: 'Hero Sections',
-    description: 'This is the hero section of the pages',
-    image: '/images/hero.jpg'
+const heroContent = {
+    title: 'Build Faster with Titan Core',
+    description: ' A modern, high-performance Astro theme for developer portfolios and documentation sites.',
+    button: {
+        text: 'Get Started',
+        link: '/contact',
+        target: '_self'
+    }
+}
+
+const FooterCta = {
+    title: 'This is Footer CTA',
+    description: 'This is Footer CTA Description',
+    hideCta: false,
+    button: {
+        text: 'Contact Us',
+        link: '/contact',
+        target: '_self'
+    }
 }
 ---
 
-<Layout>
-    <Hero title={hero.title} description={hero.description} />
+<Layout footerCta={FooterCta}>
+    <Hero heroContent={heroContent} />
 </Layout>

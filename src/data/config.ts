@@ -1,4 +1,5 @@
 export const siteConfig = {
+    companyName: 'Titan Core',
     Socials: {
         Twitter: 'https://twitter.com/astrodotbuild',
         Github: 'https://github.com/withastro',

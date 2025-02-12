@@ -1,16 +1,33 @@
 ---
 import Button from '../ui/Button.astro';
 
-const props = Astro.props;
+interface HeroButton {
+    text: string;
+    link: string;
+    target: string;
+}
+
+interface HeroContent {
+    title: string;
+    description: string;
+    button: HeroButton;
+}
+
+interface Props {
+    heroContent: HeroContent;
+}
+
+const { heroContent } = Astro.props;
 
 ---
 
-<section class="py-large min-h-[60vh] header-offset relative">
+<section class="header-offset relative">
+
 <div class="hero-background-2 absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"></div>
 
-    <div class="site-container mx-auto px-4 py-base relative z-10 flex flex-col items-center justify-center">
-        <h1 class="text-white">{props.title}</h1>
-        <p class="text-white mt-2">{props.description}</p>
-        <Button class="mt-8" variant="secondary">Get Started</Button>
+    <div class="site-container mx-auto px-4 py-large relative z-10 flex flex-col md:items-center md:justify-center md:text-center">
+        <h1 class="text-white">{heroContent.title}</h1>
+        <p class="text-white mt-2">{heroContent.description}</p>
+        <Button class="mt-8" variant="ghostLight" href={heroContent.button.link} target={heroContent.button.target}>{heroContent.button.text}</Button>
     </div>
 </section>

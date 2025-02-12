@@ -15,7 +15,7 @@ const ctaButton = {
     <div class="site-container mx-auto px-4 mt-4">
         <div class="flex justify-between items-center bg-white py-4 rounded-lg px-4 border-black border">
         <Logo />
-        <nav class="relative flex items-center gap-4" aria-label="Site Navigation">
+        <nav class="relative flex items-center gap-2 md:gap-8" aria-label="Site Navigation">
             <!-- Desktop Menu -->
         <ul class="hidden md:flex md:gap-8 items-center">
             {headerMenu.map((item, index) => (
@@ -132,12 +132,8 @@ const ctaButton = {
             
             <!-- Updated mobile CTA button styling -->
             <div class="mt-8 pb-8">
-                <a 
-                    href={ctaButton.link} 
-                    class="block w-full text-center text-primary font-medium bg-white hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md px-6 py-3 transition-colors"
-                >
-                    {ctaButton.name}
-                </a>
+                <Button href={ctaButton.link} variant="ghostLight" >{ctaButton.name}
+                </Button>
             </div>
         </div>
         </nav>

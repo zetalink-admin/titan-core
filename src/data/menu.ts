@@ -20,6 +20,12 @@ export const headerMenu = [
 ];
 
 export const footerMenu = [
-{ name: 'Style Guide', link: '/style-guide' },
+    { name: 'Style Guide', link: '/style-guide' },
+];
+
+export const legalMenu = [
+    { name: 'Privacy Policy', link: '/privacy-policy' },
+    { name: 'Terms of Service', link: '/terms-of-service' },
+    { name: 'Cookie Policy', link: '/cookie-policy' },
 ];
 

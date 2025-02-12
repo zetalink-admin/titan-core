@@ -27,7 +27,7 @@ const activeCategories = categories.filter(category =>
     <div class="flex flex-wrap gap-2">
       <a 
         href="/blog" 
-        class={`px-4 py-2 rounded-full transition-colors duration-200 ${
+        class={`px-6 py-3 leading-none rounded-md text-small flex items-center justify-center transition-colors duration-200 ${
           !currentCategory 
             ? 'bg-primary text-white shadow-md' 
             : 'bg-gray-100 hover:bg-gray-200'
@@ -38,10 +38,10 @@ const activeCategories = categories.filter(category =>
       {activeCategories.map((category) => (
         <a 
           href={`/category/${category.slug}`}
-          class={`px-4 py-2 rounded-full transition-colors duration-200 ${
+          class={`px-6 py-3 leading-none rounded-md text-small flex items-center justify-center transition-colors duration-200 ${
             currentCategory === category.name 
               ? 'bg-primary text-white shadow-md' 
-              : 'bg-gray-100 hover:bg-gray-200'
+              : 'bg-white text-text hover:bg-secondary hover:text-white'
           }`}
           title={category.description}
         >

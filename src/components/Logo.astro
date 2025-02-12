@@ -1,8 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/astro.svg';
+
+interface Props {
+    variant?: 'light' | 'dark';
+}
+
+const { variant = 'dark' } = Astro.props;
 ---
-<a href="/" class="logo text-text uppercase font-logo">
+<a href="/" class:list={[
+    'logo uppercase font-logo transition-colors duration-200 font-light',
+    variant === 'light' ? 'text-white hover:text-primary' : 'text-text hover:text-primary'
+]}>
     <Image src={logo} alt="Logo" class="hidden"/>
     <span class="font-bold">Titan</span> Core
 </a>
