@@ -17,7 +17,6 @@
     --color-text-light: #f1f5f9;
     
     --color-headline: #1e293b;
-    
 
     --text-h1: clamp(2rem, 5vw + 1rem, 4rem);
     --text-h2: clamp(1.5rem, 4vw + 0.5rem, 2.5rem);
@@ -106,7 +105,7 @@ body {
     @apply pt-24;
 }
 
-.hero-background-2 {
+.hero-background {
 
         --s: 34px;
         /* control the size*/
@@ -124,22 +123,4 @@ body {
             radial-gradient(50% 50%, var(--_g)) calc(var(--s)/2) calc(var(--s)/2) var(--c1);
         background-size: var(--s) var(--s);
     
-}
-
-.hero-background {
-    --s: 34px;
-    /* control the size*/
-    --c1: #6366f1;
-    --c2: #595ce3;
-
-    --_g:
-        var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%, var(--c1) 36% 45%,
-        var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%,
-        #0000 96%;
-    background:
-        radial-gradient(50% 50% at 100% 0, var(--_g)),
-        radial-gradient(50% 50% at 0 100%, var(--_g)),
-        radial-gradient(50% 50%, var(--_g)),
-        radial-gradient(50% 50%, var(--_g)) calc(var(--s)/2) calc(var(--s)/2) var(--c1);
-    background-size: var(--s) var(--s);
 }

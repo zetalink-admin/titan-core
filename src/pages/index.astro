@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/sections/Hero.astro';
+import SplitPanel from '../components/sections/SplitPanel.astro';
+import type { Props as SplitPanelProps } from '../components/sections/SplitPanel.astro';
 
 const heroContent = {
     title: 'Build Faster with Titan Core',
@@ -22,8 +24,86 @@ const FooterCta = {
         target: '_self'
     }
 }
+
+const aboutSection = {
+    eyebrow: "About",
+    headline: "About Titan Core",
+    subheadline: "We are a team of developers who are passionate about building amazing websites with ease.",
+    description: "Our platform is designed to help developers and agencies build amazing websites with ease. Packed with features and optimized for performance.",
+    image: {
+        src: "https://picsum.photos/1200/1200",
+        alt: "Featured image"
+    },
+    buttons: [
+        {
+            text: "Get Started",
+            link: "/contact",
+            variant: "primary"
+        },
+        {
+            text: "Learn More",
+            link: "/about",
+            variant: "secondary"
+        }
+    ],
+    imagePosition: "left" as const,
+    background: "white" as const
+} satisfies SplitPanelProps;
+
+const whoWeAreSection = {
+    eyebrow: "Who We Are",
+    headline: "Developers who are passionate about building amazing websites.",
+    subheadline: "High-performance Astro theme for developers.",
+    description: "Focused on providing a modern, high-performance Astro theme for developer portfolios and documentation sites.",
+    image: {
+        src: "https://picsum.photos/1200/1200",
+        alt: "Featured image"
+    },
+    buttons: [
+        {
+            text: "Get Started",
+            link: "/contact",
+            variant: "primary"
+        },
+        {
+            text: "Learn More",
+            link: "/about",
+            variant: "secondary"
+        }
+    ],
+    imagePosition: "right" as const,
+    background: "dark" as const
+} satisfies SplitPanelProps;
+
+const teamSection = {
+    eyebrow: "Our Team",
+    headline: "Meet the Team",
+    subheadline: "Passionate about building amazing websites with ease.",
+    description: "Focused on providing a modern, high-performance Astro theme for developer portfolios and documentation sites.",
+    image: {
+        src: "https://picsum.photos/1200/1200",
+        alt: "Featured image"
+    },
+    buttons: [
+        {
+            text: "Get Started",
+            link: "/contact",
+            variant: "primary"
+        },
+        {
+            text: "Learn More",
+            link: "/about",
+            variant: "secondary"
+        }
+    ],
+    imagePosition: "left" as const,
+    background: "alt" as const
+} satisfies SplitPanelProps;
 ---
 
 <Layout footerCta={FooterCta}>
     <Hero heroContent={heroContent} />
+    <SplitPanel {...aboutSection} />
+    <SplitPanel {...whoWeAreSection} />
+    <SplitPanel {...teamSection} />
 </Layout>

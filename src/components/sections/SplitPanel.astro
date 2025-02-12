@@ -1,0 +1,113 @@
+---
+import Button from '../ui/Button.astro';
+
+export interface Props {
+    eyebrow?: string;
+    headline: string;
+    subheadline?: string;
+    description?: string;
+    image: {
+        src: string;
+        alt: string;
+    };
+    buttons?: {
+        text: string;
+        link: string;
+        variant?: 'primary' | 'secondary' | 'ghostLight' | 'accent' | 'ghostDark';
+        target?: string;
+    }[];
+    imagePosition?: 'left' | 'right';
+    background?: 'white' | 'alt' | 'dark';
+}
+
+const {
+    eyebrow,
+    headline,
+    subheadline,
+    description,
+    image,
+    buttons = [],
+    imagePosition = 'right',
+    background = 'white',
+} = Astro.props;
+
+// Determine background and text colors based on variant
+const bgColors = {
+    white: 'bg-white',
+    alt: 'bg-background-alt',
+    dark: 'bg-background-dark'
+};
+
+const textColors = {
+    white: 'text-text',
+    alt: 'text-text',
+    dark: 'text-text-light'
+};
+
+const eyebrowColors = {
+    white: 'text-accent',
+    alt: 'text-accent',
+    dark: 'text-accent'
+};
+
+const bgColor = bgColors[background];
+const textColor = textColors[background];
+const eyebrowColor = eyebrowColors[background];
+---
+<section class:list={["relative", bgColor]}>
+    <div class="site-container px-4 py-large">
+        <div class:list={[
+            "grid gap-16 items-center",
+            "md:grid-cols-2",
+            imagePosition === 'left' ? 'md:grid-cols-[1fr_1fr]' : ''
+        ]}>
+            <!-- Image Side -->
+            {imagePosition === 'left' && (
+                <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)]">
+                    <img
+                        src={image.src}
+                        alt={image.alt}
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            )}
+
+            <!-- Content Side -->
+            <div class:list={[textColor]}>
+                {eyebrow && (
+                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]}>
+                        {eyebrow}
+                    </div>
+                )}
+                <h2 class={textColor}>{headline}</h2>
+                {subheadline && <h3 class:list={["mt-4 text-h5", textColor]}>{subheadline}</h3>}
+                {description && <p class:list={["mt-6 text-base opacity-90", textColor]}>{description}</p>}
+                
+                {buttons.length > 0 && (
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        {buttons.map((button) => (
+                            <Button
+                                href={button.link}
+                                target={button.target || '_self'}
+                                variant={button.variant || 'primary'}
+                            >
+                                {button.text}
+                            </Button>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            <!-- Image Side (right position) -->
+            {imagePosition === 'right' && (
+                <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)]">
+                    <img
+                        src={image.src}
+                        alt={image.alt}
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            )}
+        </div>
+    </div>
+</section>
