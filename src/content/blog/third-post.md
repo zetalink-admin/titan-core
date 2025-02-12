@@ -1,13 +1,13 @@
 ---
-title: "Another Post"
+title: "Third Post"
 excerpt: "This is a brief excerpt of the first blog post."
 featuredImage: "https://picsum.photos/1200/400"
 publishDate: "2023-10-01"
 publish: true
-categories: ["Tech"]
+categories: ["Design"]
 
 seo:
-  title: "Another Post"
+  title: "Third Post"
   description: "This is a brief excerpt of the first blog post."
   image: "https://picsum.photos/1200/400"
   

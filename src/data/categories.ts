@@ -1,8 +1,35 @@
-export const categories = [
-    'Tech',
-    'Lifestyle',
-    'Travel',
-    'Food',
-    'Health',
-    'Education'
-  ];
+interface Category {
+  name: string;
+  slug: string;
+  description: string;
+}
+
+export const categories: Category[] = [
+  {
+    name: 'Tech',
+    slug: 'tech',
+    description: 'Latest in technology and software development'
+  },
+  {
+    name: 'Web Development',
+    slug: 'web-development',
+    description: 'Tips and insights for better web development'
+  },
+  {
+    name: 'Design',
+    slug: 'design',
+    description: 'Exploring design and user experience'
+  },
+  {
+    name: 'Accessibility',
+    slug: 'accessibility',
+    description: 'Exploring accessibility and user experience'
+  },
+  
+  
+];
+
+// Helper function to get category by slug
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return categories.find(category => category.slug === slug);
+}

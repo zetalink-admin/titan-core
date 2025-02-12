@@ -1,7 +1,7 @@
 // src/data/menu.ts
 
 export const headerMenu = [
-    { name: 'About', link: '/' },
+    { name: 'Blog', link: '/blog' },
     { name: 'Style-Guide', link: '/style-guide', showArrow: false,
         children: [
             { name: 'Typography', link: '/style-guide/typography' },
@@ -17,11 +17,9 @@ export const headerMenu = [
         ] 
     },
 
-  ];
-  
+];
 
+export const footerMenu = [
+{ name: 'Style Guide', link: '/style-guide' },
+];
 
-
-  export const footerMenu = [
-    { name: 'Style Guide', link: '/style-guide' },
-  ];

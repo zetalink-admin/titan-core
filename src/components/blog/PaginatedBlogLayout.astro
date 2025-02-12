@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogList from './BlogList.astro';
+import InnerHero from '../sections/InnerHero.astro';
+
+interface Props {
+    posts: any[];
+    currentPage: number;
+    totalPages: number;
+    baseUrl: string;  // e.g., '/blog' or '/category/some-category'
+    title: string;
+    subtitle: string;
+    currentCategory?: string;
+}
+
+const { 
+    posts: paginatedPosts, 
+    currentPage, 
+    totalPages, 
+    baseUrl,
+    title,
+    subtitle,
+    currentCategory 
+} = Astro.props;
+
+    // Generate pagination URLs
+const nextPage = currentPage < totalPages ? `${baseUrl}/${currentPage + 1}` : null;
+const prevPage = currentPage > 1 
+? currentPage - 1 === 1 
+? baseUrl
+: `${baseUrl}/${currentPage - 1}`
+: null;
+---
+<Layout>
+    <main>
+    <InnerHero title={title} subtitle={subtitle} />
+    <BlogList posts={paginatedPosts} currentCategory={currentCategory} />
+
+    <nav class="pagination-nav">
+        <div class="container mx-auto px-4 py-8 flex justify-center gap-4">
+        {prevPage && (
+            <a href={prevPage} class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded">
+            Previous
+            </a>
+        )}
+        <span class="px-4 py-2">
+            Page {currentPage} of {totalPages}
+        </span>
+        {nextPage && (
+            <a href={nextPage} class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded">
+            Next
+            </a>
+        )}
+        </div>
+    </nav>
+    </main>
+</Layout> 

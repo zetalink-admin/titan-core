@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import CategoryPill from '../../components/ui/CategoryPill.astro';
+import Date from '../../components/ui/Date.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -24,14 +26,43 @@ const seoImage = post.data.seo?.image || post.data.featuredImage;
   description={seoDescription}
   image={seoImage}
 >
-  <article>
-    <img src={post.data.featuredImage} alt={post.data.title} />
-    <h1>{post.data.title}</h1>
-    <p>Published on: {new Date(post.data.publishDate).toLocaleDateString()}</p>
-    {post.data.categories && (
-      <p>Categories: {post.data.categories.join(', ')}</p>
+  <div class="w-full h-120 absolute top-0 left-0 z-0 overflow-hidden border-b border-black">
+    {post.data.featuredImage && (
+      <>
+        <img 
+          src={post.data.featuredImage} 
+          alt={post.data.title} 
+          class="w-full h-full object-cover grayscale opacity-20" 
+        />
+        <div class="absolute inset-0 bg-primary/10 backdrop-blur-md"></div>
+      </>
     )}
-    <div>
+  </div>
+  
+  <article class="site-container--small mx-auto px-4 prose relative z-10">
+    <div class="mt-42 mb-12 text-center">
+      <h1>{post.data.title}</h1>
+      <div class="flex items-center justify-center gap-4 text-gray-600">
+        <Date date={post.data.publishDate} />
+        {post.data.categories && (
+          <div class="flex flex-wrap gap-2">
+            {post.data.categories.map((category) => (
+              <CategoryPill category={category} />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+
+    {post.data.featuredImage && (
+      <img 
+        src={post.data.featuredImage} 
+        alt={post.data.title} 
+        class="w-full h-auto rounded-lg border mb-12 border-black" 
+      />
+    )}
+
+    <div class="mt-8">
       <Content />
     </div>
   </article>

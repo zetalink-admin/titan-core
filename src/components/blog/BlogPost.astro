@@ -1,6 +1,7 @@
 ---
 // src/components/BlogPost.astro
 import { categories } from '../../data/categories';
+import CategoryPill from '../ui/CategoryPill.astro';
 
 interface Props {
   title: string;
@@ -15,16 +16,43 @@ interface Props {
 const { title, excerpt, featuredImage, publishDate, categories: postCategories, slug } = Astro.props;
 
 // Validate categories against the valid categories
-const validCategories = postCategories.filter((category: string) => categories.includes(category));
+const validCategories = postCategories.filter((categoryName: string) => 
+  categories.some(category => category.name === categoryName)
+);
 ---
 
-<article>
-  <a href={`/blog/${slug}`}>
-    <img src={featuredImage} alt={title} />
-    <h2>{title}</h2>
-  </a>
-  <p>{excerpt}</p>
-  <p>Published on: {new Date(publishDate).toLocaleDateString()}</p>
-  <p>Categories: {validCategories.join(', ')}</p>
-  <a href={`/blog/${slug}`}>Read more →</a>
-</article>
+<a 
+  href={`/blog/${slug}`} 
+  class="group block overflow-hidden bg-white rounded-lg border border-black transition-all duration-300"
+>
+  <div class="relative aspect-[16/9] overflow-hidden border-black border-b">
+    <img 
+      src={featuredImage} 
+      alt={title} 
+      class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+    />
+    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+  </div>
+  
+  <div class="p-5">
+    <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+      {title}
+    </h2>
+    
+    <p class="mt-2 text-gray-600 line-clamp-2">
+      {excerpt}
+    </p>
+    
+    <p class="mt-3 text-sm text-gray-500">
+      {new Date(publishDate).toLocaleDateString()}
+    </p>
+    
+    <div class="flex flex-wrap gap-2 mt-3">
+      {validCategories.map(categoryName => (
+        <div onclick="event.stopPropagation()">
+          <CategoryPill category={categoryName} />
+        </div>
+      ))}
+    </div>
+  </div>
+</a>

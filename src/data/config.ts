@@ -10,3 +10,8 @@ export const siteConfig = {
     Separator: '|',
     SiteName: 'Astro Basics',
   };
+  
+  
+export const blogSetting = {
+    postsPerPage: 2   
+}

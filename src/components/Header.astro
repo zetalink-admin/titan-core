@@ -11,8 +11,9 @@ const ctaButton = {
 
 ---
 
-<header class="fixed top-4 z-50 w-full">
-    <div class="site-container mx-auto flex justify-between items-center bg-white py-4 rounded-lg">
+<header class="fixed top-0 z-50 w-full left-0">
+    <div class="site-container mx-auto px-4 mt-4">
+        <div class="flex justify-between items-center bg-white py-4 rounded-lg px-4 border-black border">
         <Logo />
         <nav class="relative flex items-center gap-4" aria-label="Site Navigation">
             <!-- Desktop Menu -->
@@ -40,7 +41,7 @@ const ctaButton = {
                     {item.children && (
                         <ul
                             class:list={[
-                                "submenu absolute mt-2 py-2 bg-white shadow-lg rounded-lg min-w-[200px] transition-all duration-200 opacity-0 invisible",
+                                "submenu absolute mt-2 bg-white border-black border rounded-md min-w-[200px] transition-all duration-200 opacity-0 invisible overflow-hidden z-50",
                                 index === headerMenu.length - 1 ? "right-0" : "left-0"
                             ]}
                             role="menu"
@@ -49,7 +50,7 @@ const ctaButton = {
                                 <li role="none">
                                     <a 
                                         href={child.link}
-                                        class="block px-4 py-2 text-text hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                                        class="block px-4 text-small py-2 text-text hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
                                         role="menuitem"
                                     >
                                         {child.name}
@@ -139,8 +140,8 @@ const ctaButton = {
                 </a>
             </div>
         </div>
-    </nav>
-  </div>
+        </nav>
+    </div>
 </header>
 
 <script>
