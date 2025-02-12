@@ -1,0 +1,14 @@
+---
+import Button from '../ui/Button.astro';
+
+const props = Astro.props;
+
+---
+
+<section class="bg-primary text-white py-large">
+    <div class="container">
+        <h1>{props.title}</h1>
+        <p>{props.description}</p>
+        <Button>Get Started</Button>
+    </div>
+</section>

@@ -1,9 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
 
 const title = 'Style Guide';
 const description = 'A style guide for Astro Basics';
+
 ---
+
 
 <Layout title={title} description={description}>
     <div class="max-w-4xl mx-auto px-4 py-12">
@@ -66,17 +69,14 @@ const description = 'A style guide for Astro Basics';
             <h2 class="text-2xl font-bold mb-6">Buttons</h2>
             <div class="space-y-4">
                 <div class="space-x-4">
-                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:opacity-90">Primary Button</button>
-                    <button class="bg-secondary text-white px-4 py-2 rounded-lg hover:opacity-90">Secondary Button</button>
-                    <button class="bg-accent text-white px-4 py-2 rounded-lg hover:opacity-90">Accent Button</button>
-                </div>
-                <div class="space-x-4">
-                    <button class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white">Outlined Button</button>
-                    <button class="text-primary hover:underline">Text Button</button>
-                    <button disabled class="bg-gray-300 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed">Disabled Button</button>
+                    <Button variant="primary" size="md">Primary Button</Button>
+                    <Button variant="secondary" size="md">Secondary Button</Button>
+                    <Button variant="accent" size="md">Accent Button</Button>
+                    <Button disabled>Disabled Button</Button>
                 </div>
             </div>
         </section>
+
 
         {/* Form Elements */}
         <section class="mb-12">

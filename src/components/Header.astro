@@ -2,6 +2,7 @@
 import { headerMenu } from '../data/menu.ts';
 import Logo from './Logo.astro';
 import { Menu, X, ChevronDown } from 'lucide-astro';
+import Button from './ui/Button.astro';
 
 const ctaButton = {
     name: 'Login',
@@ -10,21 +11,11 @@ const ctaButton = {
 
 ---
 
-<style>
-
-    html,
-    body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-    }
-</style>
-
-<header class="relative flex justify-between items-center p-4">
-    <Logo />
-    <nav class="relative flex items-center gap-4" aria-label="Site Navigation">
-        <!-- Desktop Menu -->
+<header class="fixed top-4 z-50 w-full">
+    <div class="site-container mx-auto flex justify-between items-center bg-white py-4 rounded-lg">
+        <Logo />
+        <nav class="relative flex items-center gap-4" aria-label="Site Navigation">
+            <!-- Desktop Menu -->
         <ul class="hidden md:flex md:gap-8 items-center">
             {headerMenu.map((item, index) => (
                 <li class="relative group">
@@ -71,12 +62,7 @@ const ctaButton = {
             ))}
         </ul>
 
-        <a 
-            href={ctaButton.link} 
-            class="hidden md:inline-flex text-white font-medium hover:text-text bg-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-4 py-2 ml-8"
-        >
-            {ctaButton.name}
-        </a>
+        <Button href={ctaButton.link} variant="primary" >{ctaButton.name}</Button>
 
         <!-- Mobile Menu Button -->
         <button 
@@ -154,7 +140,7 @@ const ctaButton = {
             </div>
         </div>
     </nav>
-    
+  </div>
 </header>
 
 <script>

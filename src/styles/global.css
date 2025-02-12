@@ -32,6 +32,8 @@
     --spacing-small: 6rem;
     --spacing-base: 8rem;
     --spacing-large: 10rem;
+    
+    --container-base: 1400px;
 
     --border-radius-small: 0.5rem;
     --border-radius-base: 1rem;
@@ -42,9 +44,6 @@
     --font-base: 'Noto Sans KR', sans-serif;
     --font-logo: 'Bruno Ace SC', sans-serif;
     --font-headline: 'Noto Sans KR', sans-serif;
-    
-
-
 }
 
 
@@ -62,8 +61,20 @@
     p { color: var(--color-text); }
 }
 
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
 [x-cloak] {
     display: none !important;
 }
 
+
+.site-container {
+    @apply mx-auto max-w-[var(--container-base)] px-4;
+}
 

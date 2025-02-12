@@ -1,7 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+
+const hero = {
+    title: 'Hero Sections',
+    description: 'This is the hero section of the pages',
+    image: '/images/hero.jpg'
+}
 ---
 
 <Layout>
-
+    <Hero title={hero.title} description={hero.description} />
+    <Hero title={hero.title} description={hero.description} />
+    <Hero title={hero.title} description={hero.description} />
+    <Hero title={hero.title} description={hero.description} />
+    <Hero title={hero.title} description={hero.description} />
+    <Hero title={hero.title} description={hero.description} />
 </Layout>
