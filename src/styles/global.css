@@ -39,9 +39,9 @@
     --text-large: clamp(1.25rem, 3vw + 0.25rem, 1.5rem);
     --text-xlarge: clamp(2rem, 5vw + 1rem, 4rem);
 
-    --spacing-small: 6rem;
-    --spacing-base: 8rem;
-    --spacing-large: 10rem;
+    --spacing-small: clamp(2rem, 10vw + 1rem, 6rem);
+    --spacing-base: clamp(8rem, 10vw + 1rem, 10rem);
+    --spacing-large: clamp(10rem, 10vw + 1rem, 12rem);
     
     --container-small: 1000px;
     --container-base: 1400px;
