@@ -40,8 +40,8 @@
     --text-xlarge: clamp(2rem, 5vw + 1rem, 4rem);
 
     --spacing-small: clamp(2rem, 10vw + 1rem, 6rem);
-    --spacing-base: clamp(8rem, 10vw + 1rem, 10rem);
-    --spacing-large: clamp(10rem, 10vw + 1rem, 12rem);
+    --spacing-base: clamp(4rem, 10vw + 1rem, 8rem);
+    --spacing-large: clamp(6rem, 10vw + 1rem, 10rem);
     
     --container-small: 1000px;
     --container-base: 1400px;
