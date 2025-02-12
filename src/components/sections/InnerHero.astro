@@ -7,11 +7,12 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="w-full border-b pt-38 pb-18 bg-white">
-    <div class="site-container mx-auto px-4">
+<section class="w-full border-b pt-38 pb-18 relative">
+    <div class="hero-background-2 absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"></div>
+    <div class="site-container mx-auto px-4 relative z-10">
         <div>
-        <h1>{title}</h1>
-        {subtitle && <p class="subtitle">{subtitle}</p>}
+        <h1 class="text-white">{title}</h1>
+        {subtitle && <p class="subtitle text-white">{subtitle}</p>}
         </div>
     </div>
 </section>

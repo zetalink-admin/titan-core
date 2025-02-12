@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/ui/Button.astro';
+import InnerHero from '../components/sections/InnerHero.astro';
 
 const title = 'Style Guide';
 const description = 'A style guide for Astro Basics';
@@ -9,8 +10,11 @@ const description = 'A style guide for Astro Basics';
 
 
 <Layout title={title} description={description}>
+    
+    <InnerHero title={title} subtitle={description} />
+
     <div class="max-w-4xl mx-auto px-4 py-12">
-        <h1 class="text-4xl font-bold mb-8">Style Guide</h1>
+        
 
         {/* Typography Section */}
         <section class="mb-12">

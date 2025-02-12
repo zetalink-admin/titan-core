@@ -5,10 +5,12 @@ const props = Astro.props;
 
 ---
 
-<section class="bg-primary text-white py-large">
-    <div class="container">
-        <h1>{props.title}</h1>
-        <p>{props.description}</p>
-        <Button>Get Started</Button>
+<section class="py-large min-h-[60vh] header-offset relative">
+<div class="hero-background-2 absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"></div>
+
+    <div class="site-container mx-auto px-4 py-base relative z-10 flex flex-col items-center justify-center">
+        <h1 class="text-white">{props.title}</h1>
+        <p class="text-white mt-2">{props.description}</p>
+        <Button class="mt-8" variant="secondary">Get Started</Button>
     </div>
 </section>
