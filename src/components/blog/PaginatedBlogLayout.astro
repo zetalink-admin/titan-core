@@ -37,40 +37,42 @@ const prevPage = currentPage > 1
     <InnerHero title={title} subtitle={subtitle} />
     <BlogList posts={paginatedPosts} currentCategory={currentCategory} />
 
-    <nav class="pagination-nav" aria-label="Blog pagination">
-        <div class="container mx-auto px-4 py-12">
-            <div class="flex items-center justify-center gap-6">
-                {prevPage && (
-                    <Button href={prevPage} variant="primary" class="flex items-center gap-2">
-                        <ChevronLeft size={20} />
-                        Previous
-                    </Button>
-                )}
-                
-                <div class="flex items-center gap-2">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                        <a
-                            href={pageNum === 1 ? baseUrl : `${baseUrl}/${pageNum}`}
-                            class={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
-                                currentPage === pageNum
-                                    ? 'bg-primary text-white'
-                                    : 'hover:bg-white hover:text-text'
-                            }`}
-                            aria-current={currentPage === pageNum ? 'page' : undefined}
-                        >
-                            {pageNum}
-                        </a>
-                    ))}
-                </div>
+    {totalPages > 1 && (
+        <nav class="pagination-nav" aria-label="Blog pagination">
+            <div class="container mx-auto px-4 py-12">
+                <div class="flex items-center justify-center gap-6">
+                    {prevPage && (
+                        <Button href={prevPage} variant="primary" class="flex items-center gap-2">
+                            <ChevronLeft size={20} />
+                            Previous
+                        </Button>
+                    )}
+                    
+                    <div class="flex items-center gap-2">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                            <a
+                                href={pageNum === 1 ? baseUrl : `${baseUrl}/${pageNum}`}
+                                class={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
+                                    currentPage === pageNum
+                                        ? 'bg-primary text-white'
+                                        : 'hover:bg-white hover:text-text'
+                                }`}
+                                aria-current={currentPage === pageNum ? 'page' : undefined}
+                            >
+                                {pageNum}
+                            </a>
+                        ))}
+                    </div>
 
-                {nextPage && (
-                    <Button href={nextPage} variant="primary">
-                        Next
-                        <ChevronRight size={20} />
-                    </Button>
-                )}
+                    {nextPage && (
+                        <Button href={nextPage} variant="primary">
+                            Next
+                            <ChevronRight size={20} />
+                        </Button>
+                    )}
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    )}
     </main>
 </Layout> 

@@ -2,6 +2,7 @@
 // src/components/BlogPost.astro
 import { categories } from '../../data/categories';
 import CategoryPill from '../ui/CategoryPill.astro';
+import Date from '../ui/Date.astro';
 
 interface Props {
   title: string;
@@ -23,7 +24,7 @@ const validCategories = postCategories.filter((categoryName: string) =>
 
 <a 
   href={`/blog/${slug}`} 
-  class="group block overflow-hidden bg-white rounded-lg border border-black transition-all duration-300"
+  class="group flex flex-col h-full overflow-hidden bg-white rounded-lg border border-black transition-all duration-300"
 >
   <div class="relative aspect-[16/9] overflow-hidden border-black border-b">
     <img 
@@ -34,25 +35,24 @@ const validCategories = postCategories.filter((categoryName: string) =>
     <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
   </div>
   
-  <div class="p-5">
+  <div class="pb-8 py-4 px-4 flex flex-col flex-grow">
+    <div class="flex justify-between items-center mb-3">
+      <div class="flex flex-wrap gap-2">
+        {validCategories.map(categoryName => (
+          <div onclick="event.stopPropagation()">
+            <CategoryPill category={categoryName} />
+          </div>
+        ))}
+      </div>
+      <Date date={publishDate} />
+    </div>
+
     <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
       {title}
     </h2>
     
-    <p class="mt-2 text-gray-600 line-clamp-2">
+    <p class="mt-2 text-text line-clamp-4 flex-grow text-small">
       {excerpt}
     </p>
-    
-    <p class="mt-3 text-sm text-gray-500">
-      {new Date(publishDate).toLocaleDateString()}
-    </p>
-    
-    <div class="flex flex-wrap gap-2 mt-3">
-      {validCategories.map(categoryName => (
-        <div onclick="event.stopPropagation()">
-          <CategoryPill category={categoryName} />
-        </div>
-      ))}
-    </div>
   </div>
 </a>

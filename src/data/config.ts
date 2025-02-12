@@ -14,5 +14,5 @@ export const siteConfig = {
   
   
 export const blogSetting = {
-    postsPerPage: 2   
+    postsPerPage: 6   
 }
