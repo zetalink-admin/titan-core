@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/sections/Hero.astro';
 import SplitPanel from '../components/sections/SplitPanel.astro';
-import type { Props as SplitPanelProps } from '../components/sections/SplitPanel.astro';
+import Features from '../components/sections/Features.astro';
+import Stats from '../components/sections/Stats.astro';
+import { featureLists } from '../data/features';
+import { statsLists } from '../data/stats';
 
 const heroContent = {
     title: 'Build Faster with Titan Core',
@@ -38,17 +41,17 @@ const aboutSection = {
         {
             text: "Get Started",
             link: "/contact",
-            variant: "primary"
+            variant: "primary" as const
         },
         {
             text: "Learn More",
             link: "/about",
-            variant: "secondary"
+            variant: "secondary" as const
         }
     ],
     imagePosition: "left" as const,
     background: "white" as const
-} satisfies SplitPanelProps;
+}
 
 const whoWeAreSection = {
     eyebrow: "Who We Are",
@@ -63,17 +66,17 @@ const whoWeAreSection = {
         {
             text: "Get Started",
             link: "/contact",
-            variant: "primary"
+            variant: "primary" as const
         },
         {
             text: "Learn More",
             link: "/about",
-            variant: "secondary"
+            variant: "secondary" as const
         }
     ],
     imagePosition: "right" as const,
-    background: "dark" as const
-} satisfies SplitPanelProps;
+    background: "alt" as const
+}
 
 const teamSection = {
     eyebrow: "Our Team",
@@ -88,22 +91,44 @@ const teamSection = {
         {
             text: "Get Started",
             link: "/contact",
-            variant: "primary"
+            variant: "primary" as const
         },
         {
             text: "Learn More",
             link: "/about",
-            variant: "secondary"
+            variant: "secondary" as const
         }
     ],
     imagePosition: "left" as const,
-    background: "alt" as const
-} satisfies SplitPanelProps;
+    background: "dark" as const
+} 
+
+const featuresSection = {
+    sectionTitle: "What makes Titan Core special?",
+    sectionDescription: "Focused on providing a modern, high-performance Astro theme for developer portfolios and documentation sites.",
+    features: featureLists.main.features,
+    background: "alt" as const,
+    button: {
+        text: "View All Features",
+        link: "/features",
+        variant: "primary" as const
+    }
+}
+
+const sideBySideStats = {
+    variant: 'side-by-side' as const,
+    background: 'dark' as const,
+    stats: statsLists.withContent.stats,
+    content: statsLists.withContent.content
+}
+
 ---
 
 <Layout footerCta={FooterCta}>
     <Hero heroContent={heroContent} />
+    <Stats statsContent={sideBySideStats} />
     <SplitPanel {...aboutSection} />
     <SplitPanel {...whoWeAreSection} />
     <SplitPanel {...teamSection} />
+    <Features featuresContent={featuresSection} />
 </Layout>

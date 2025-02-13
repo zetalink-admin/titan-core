@@ -41,7 +41,7 @@ const currentYear = new Date().getFullYear();
     {!cta.hideCta && (
       <div class="text-center border-b border-gray-800 mb-12 py-small">
         <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">{cta.title}</h2>
-        <p class="text-text-light mb-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-body-light mb-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
           {cta.description}
         </p>
         <Button 
@@ -57,10 +57,10 @@ const currentYear = new Date().getFullYear();
       </div>
     )}
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-gray-800">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-white">
       <div class="col-span-1">
         <Logo variant="light" />
-        <p class="mt-4 text-text-light">
+        <p class="mt-4 text-body-light">
           Empowering your digital journey with innovative solutions.
         </p>
       </div>
@@ -70,7 +70,7 @@ const currentYear = new Date().getFullYear();
         <nav>
           <ul class="space-y-2">
             {footerMenu.map(item => (
-              <li><a href={item.link} class="text-text-light hover:text-white transition-colors">{item.name}</a></li>
+              <li><a href={item.link} class="text-body-light hover:text-white transition-colors">{item.name}</a></li>
             ))}
           </ul>
         </nav>
@@ -78,7 +78,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="mt-8 flex flex-col md:flex-row justify-between items-center">
-      <div class="text-text-light text-sm">
+      <div class="text-body-light text-sm">
         © {currentYear} {siteConfig.companyName}. All rights reserved.
       </div>
       
@@ -88,7 +88,7 @@ const currentYear = new Date().getFullYear();
             <li>
               <a 
                 href={item.link} 
-                class="text-sm text-text-light hover:text-white transition-colors"
+                class="text-sm text-body-light hover:text-white transition-colors"
               >
                 {item.name}
               </a>

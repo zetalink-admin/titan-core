@@ -1,0 +1,111 @@
+---
+import type { Feature } from '../../data/features';
+import Button from '../ui/Button.astro';
+
+export interface Props {
+    featuresContent: {
+        sectionTitle?: string;
+        sectionDescription?: string;
+        button?: {
+            text: string;
+            link: string;
+            variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
+        };
+        background?: 'white' | 'alt' | 'dark';
+        features: Feature[];
+    };
+}
+
+const {
+    featuresContent: {
+        sectionTitle,
+        sectionDescription,
+        button,
+        background = 'white',
+        features
+    }
+} = Astro.props;
+
+// Background and text colors based on variant
+const bgColors = {
+    white: 'bg-white',
+    alt: 'bg-background-alt',
+    dark: 'bg-background-dark'
+};
+
+const textColors = {
+    white: 'text-body-base',
+    alt: 'text-body-base',
+    dark: 'text-body-light'
+};
+
+const bgColor = bgColors[background];
+const textColor = textColors[background];
+---
+
+<section class:list={["py-large", bgColor]}>
+    <div class="site-container px-4">
+        {(sectionTitle || sectionDescription) && (
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                {sectionTitle && (
+                    <h2 class:list={[textColor]} data-aos="fade-up">
+                        {sectionTitle}
+                    </h2>
+                )}
+                {sectionDescription && (
+                    <p class:list={["mt-4", textColor, "opacity-90"]} data-aos="fade-up" data-aos-delay="100">
+                        {sectionDescription}
+                    </p>
+                )}
+                {button && (
+                    <div class="mt-8" data-aos="fade-up" data-aos-delay="200">
+                        <Button
+                            href={button.link}
+                            variant={button.variant || 'primary'}
+                        >
+                            {button.text}
+                        </Button>
+                    </div>
+                )}
+            </div>
+        )}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-auto-fit gap-8 auto-rows-fr">
+            {features.map((feature, index) => (
+                <div 
+                    class:list={[
+                        "p-6 rounded-lg border border-black",
+                        background === 'dark' ? 'bg-background-dark/50' : 'bg-white',
+                        "flex flex-col"
+                    ]}
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                >
+                    <div class:list={[
+                        "w-12 h-12 flex items-center justify-center rounded-lg mb-4",
+                        background === 'dark' ? 'bg-primary' : 'bg-primary'
+                    ]}>
+                        <feature.icon
+                            size={24}
+                            class:list={[
+                                background === 'dark' ? 'text-white' : 'text-white'
+                            ]}
+                        />
+                    </div>
+                    <h3 class:list={["text-h4 mb-2", textColor]}>
+                        {feature.title}
+                    </h3>
+                    <p class:list={["text-base", textColor, "opacity-90"]}>
+                        {feature.description}
+                    </p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .grid-cols-auto-fit {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+</style>

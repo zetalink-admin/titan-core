@@ -10,7 +10,7 @@ const { variant = 'dark' } = Astro.props;
 ---
 <a href="/" class:list={[
     'logo uppercase font-logo transition-colors duration-200 font-light',
-    variant === 'light' ? 'text-white hover:text-primary' : 'text-text hover:text-primary'
+    variant === 'light' ? 'text-white hover:text-primary' : 'text-body-base hover:text-primary'
 ]}>
     <Image src={logo} alt="Logo" class="hidden"/>
     <span class="font-bold">Titan</span> Core

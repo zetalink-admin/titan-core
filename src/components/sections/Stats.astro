@@ -1,0 +1,152 @@
+---
+import type { Stat } from '../../data/stats';
+import Button from '../ui/Button.astro';
+
+export interface Props {
+    statsContent: {
+        sectionTitle?: string;
+        sectionDescription?: string;
+        background?: 'white' | 'alt' | 'dark';
+        variant?: 'default' | 'side-by-side';
+        stats: Stat[];
+        content?: {
+            title: string;
+            description: string;
+            button?: {
+                text: string;
+                link: string;
+                variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
+            };
+        };
+    };
+}
+
+const {
+    statsContent: {
+        sectionTitle,
+        sectionDescription,
+        background = 'white',
+        variant = 'default',
+        stats,
+        content
+    }
+} = Astro.props;
+
+// Background and text colors based on variant
+const bgColors = {
+    white: 'bg-white',
+    alt: 'bg-background-alt',
+    dark: 'bg-background-dark'
+};
+
+const textColors = {
+    white: 'text-body-base',
+    alt: 'text-body-base',
+    dark: 'text-body-light'
+};
+
+const bgColor = bgColors[background];
+const textColor = textColors[background];
+---
+
+<section class:list={["py-small", bgColor]}>
+    <div class="site-container px-4">
+        {variant === 'default' && (sectionTitle || sectionDescription) && (
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                {sectionTitle && (
+                    <h2 class:list={[textColor]} data-aos="fade-up">
+                        {sectionTitle}
+                    </h2>
+                )}
+                {sectionDescription && (
+                    <p class:list={["mt-4", textColor, "opacity-90"]} data-aos="fade-up" data-aos-delay="100">
+                        {sectionDescription}
+                    </p>
+                )}
+            </div>
+        )}
+
+        <div class:list={[
+            variant === 'side-by-side' ? 'grid md:grid-cols-2 gap-12 items-center' : '',
+        ]}>
+            {variant === 'side-by-side' && content && (
+                <div class="content-section" data-aos="fade-right">
+                    <h2 class:list={[textColor]}>{content.title}</h2>
+                    <p class:list={["mt-4", textColor, "opacity-90"]}>{content.description}</p>
+                    {content.button && (
+                        <div class="mt-8">
+                            <Button
+                                href={content.button.link}
+                                variant={content.button.variant || 'primary'}
+                            >
+                                {content.button.text}
+                            </Button>
+                        </div>
+                    )}
+                </div>
+            )}
+
+            <div class:list={[
+                variant === 'default' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8' : 'grid grid-cols-2 gap-8',
+            ]}>
+                {stats.map((stat, index) => (
+                    <div 
+                        class="text-center"
+                        data-aos={variant === 'side-by-side' ? 'fade-left' : 'fade-up'}
+                        data-aos-delay={index * 100}
+                    >
+                        <div class:list={["text-4xl font-bold mb-2", textColor]}>
+                            <span class="stat-number" data-target={stat.value}>
+                                {stat.prefix || ''}{0}{stat.suffix || ''}
+                            </span>
+                        </div>
+                        <p class:list={["text-lg", textColor, "opacity-90"]}>
+                            {stat.label}
+                        </p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function animateStats() {
+        const stats = document.querySelectorAll('.stat-number');
+        
+        stats.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target') || '0');
+            const prefix = stat.textContent?.match(/^[^0-9]*/)?.[0] || '';
+            const suffix = stat.textContent?.match(/[^0-9]*$/)?.[0] || '';
+            let current = 0;
+            const increment = target / 50; // Adjust for animation speed
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    if (current > target) current = target;
+                    stat.textContent = `${prefix}${Math.floor(current)}${suffix}`;
+                    requestAnimationFrame(updateCounter);
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStats();
+                observer.disconnect(); // Only animate once
+            }
+        });
+    });
+
+    // Observe the stats section
+    const statsSection = document.querySelector('.stat-number');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+</script>

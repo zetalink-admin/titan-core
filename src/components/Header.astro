@@ -23,7 +23,7 @@ const ctaButton = {
                     <div class="flex items-center gap-1">
                         <a 
                             href={item.link} 
-                            class="text-text font-medium hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-2 py-1"
+                            class="text-body-base font-medium hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-2 py-1"
                             aria-expanded={item.children ? "false" : undefined}
                             aria-haspopup={item.children ? "true" : undefined}
                             
@@ -50,7 +50,7 @@ const ctaButton = {
                                 <li role="none">
                                     <a 
                                         href={child.link}
-                                        class="block px-4 text-small py-2 text-text hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                                        class="block px-4 text-small py-2 text-body-base hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
                                         role="menuitem"
                                     >
                                         {child.name}
@@ -72,7 +72,7 @@ const ctaButton = {
             aria-expanded="false"
         >
             <span class="menu-icon block">
-                <Menu size={24} class="text-text"/>
+                <Menu size={24} class="text-body-base"/>
             </span>
             <span class="close-icon hidden">
                 <X size={24} class="text-white"/>

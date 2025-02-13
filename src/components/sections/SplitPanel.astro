@@ -13,7 +13,7 @@ export interface Props {
     buttons?: {
         text: string;
         link: string;
-        variant?: 'primary' | 'secondary' | 'ghostLight' | 'accent' | 'ghostDark';
+        variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
         target?: string;
     }[];
     imagePosition?: 'left' | 'right';
@@ -39,9 +39,9 @@ const bgColors = {
 };
 
 const textColors = {
-    white: 'text-text',
-    alt: 'text-text',
-    dark: 'text-text-light'
+    white: 'text-body-base',
+    alt: 'text-body-base',
+    dark: 'text-body-light'
 };
 
 const eyebrowColors = {
