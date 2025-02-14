@@ -51,6 +51,8 @@ const themes = [
     const themeDropdown = document.getElementById('theme-dropdown');
     const themeOptions = document.querySelectorAll('.theme-option');
     
+    if (!themeButton || !themeDropdown) throw new Error('Theme switcher elements not found');
+    
     // Get theme from localStorage or default to 'thor'
     const currentTheme = localStorage.getItem('theme') || 'thor';
     document.body.setAttribute('data-theme', currentTheme);
@@ -62,7 +64,7 @@ const themes = [
 
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
-        if (!document.getElementById('theme-switcher').contains(e.target)) {
+        if (!document.getElementById('theme-switcher')?.contains(e.target as Node )) {
             themeDropdown.classList.add('hidden');
         }
     });
@@ -70,10 +72,12 @@ const themes = [
     // Handle theme selection
     themeOptions.forEach(option => {
         option.addEventListener('click', () => {
-            const newTheme = option.dataset.theme;
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            themeDropdown.classList.add('hidden');
+            const newTheme = (option as HTMLElement).dataset.theme;
+            if (newTheme) {
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeDropdown.classList.add('hidden');
+            }
         });
     });
 </script>

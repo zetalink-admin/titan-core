@@ -63,7 +63,7 @@ const eyebrowColor = eyebrowColors[background];
         ]}>
             <!-- Image Side -->
             {imagePosition === 'left' && (
-                <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)]">
+                <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)] border border-black">
                     <img
                         src={image.src}
                         alt={image.alt}
@@ -100,7 +100,7 @@ const eyebrowColor = eyebrowColors[background];
 
             <!-- Image Side (right position) -->
             {imagePosition === 'right' && (
-                <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)]" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative aspect-[4/3] overflow-hidden rounded-[var(--border-radius-base)] border border-black" data-aos="fade-up" data-aos-delay="100">
                     <img
                         src={image.src}
                         alt={image.alt}

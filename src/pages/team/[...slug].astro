@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import InnerHero from '../../components/sections/InnerHero.astro';
+
+export async function getStaticPaths() {
+  const teamEntries = await getCollection('team');
+  return teamEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.name} description={`Team member: ${entry.data.name}`}>
+  <InnerHero title={entry.data.name} subtitle={entry.data.jobTitle} />
+  <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <div class="flex flex-col items-center mb-10">
+      <img
+        class="w-64 h-64 rounded-full object-cover mb-8"
+        src={entry.data.headshot}
+        alt={entry.data.name}
+      />
+    </div>
+    <div class="prose dark:prose-invert max-w-none">
+      <Content />
+    </div>
+  </div>
+</Layout> 

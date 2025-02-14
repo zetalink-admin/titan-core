@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+const teamMembers = await getCollection('team', ({ data }) => {
+    return data.publish !== false;
+});
+---
+
+<section class="py-16">
+    <div class="site-container mx-auto px-4">
+    <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:gap-8">
+        {
+        teamMembers.map((member) => (
+            <a href={`/team/${member.slug}`} class="flex flex-col">
+            <img
+                class="w-full rounded-md object-cover mb-4 border border-black"
+                src={member.data.headshot}
+                alt={member.data.name}
+            />
+            <h3 class="text-lg font-medium">{member.data.name}</h3>
+            <p class="text-sm text-gray-600">{member.data.jobTitle}</p>
+            </a>
+        ))
+        }
+    </div>
+    </div>
+</section>

@@ -1,6 +1,7 @@
 // src/data/menu.ts
 
 export const headerMenu = [
+    { name: 'Our Team', link: '/team' },
     { name: 'Blog', link: '/blog' },
     { name: 'Style-Guide', link: '/style-guide', showArrow: false,
         children: [
