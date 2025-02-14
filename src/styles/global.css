@@ -22,7 +22,6 @@
     --color-body-base: #1e293b;
     --color-body-dark: #1e293b;
     --color-body-light: #f1f5f9;
-    
 
     --text-h1: clamp(2rem, 5vw + 1rem, 4rem);
     --text-h2: clamp(1.5rem, 4vw + 0.5rem, 2.5rem);
@@ -63,7 +62,262 @@
     --font-headline: 'Noto Sans KR', sans-serif;
 }
 
+@layer base {
+    [data-theme='thor'] { --color-primary: #2563eb; }
+    [data-theme='thor'] { --color-primary-light: #3b82f6; }
+    [data-theme='thor'] { --color-primary-dark: #1d4ed8; }
+    [data-theme='thor'] { --color-secondary: #475569; }
+    [data-theme='thor'] { --color-secondary-light: #64748b; }
+    [data-theme='thor'] { --color-secondary-dark: #334155; }
+    [data-theme='thor'] { --color-accent: #6366f1; }
+    [data-theme='thor'] { --color-background: #f8fafc; }
+    [data-theme='thor'] { --color-background-alt: #f1f5f9; }
+    [data-theme='thor'] { --color-background-dark: #1e293b; }
+    [data-theme='thor'] { --color-headline: #1e293b; }
+    [data-theme='thor'] { --color-headline-dark: #1e293b; }
+    [data-theme='thor'] { --color-headline-light: #ffffff; }
+    [data-theme='thor'] { --color-body-base: #1e293b; }
+    [data-theme='thor'] { --color-body-dark: #1e293b; }
+    [data-theme='thor'] { --color-body-light: #f1f5f9; }
+    
+    [data-theme='rainforest'] { --color-primary: #3c835c; }
+    [data-theme='rainforest'] { --color-primary-light: #79c79c; }
+    [data-theme='rainforest'] { --color-primary-dark: #185f38; }
+    [data-theme='rainforest'] { --color-secondary: #74a59d; }
+    [data-theme='rainforest'] { --color-secondary-light: #81e0d0; }
+    [data-theme='rainforest'] { --color-secondary-dark: #3b6962; }
+    [data-theme='rainforest'] { --color-accent: #1a9e61; }
+    [data-theme='rainforest'] { --color-background: #ffffff; }
+    [data-theme='rainforest'] { --color-background-alt: #e8fdf2; }
+    [data-theme='rainforest'] { --color-background-dark: #0f1411; }
+    [data-theme='rainforest'] { --color-headline: #0f1411; }
+    [data-theme='rainforest'] { --color-headline-dark: #0f1411; }
+    [data-theme='rainforest'] { --color-headline-light: #ffffff; }
+    [data-theme='rainforest'] { --color-body-base: #010202; }
+    [data-theme='rainforest'] { --color-body-dark: #010202; }
+    [data-theme='rainforest'] { --color-body-light: #e8fdf2; }
+    
+    [data-theme='sunset'] { --color-primary: #ff6b6b; }
+    [data-theme='sunset'] { --color-primary-light: #ff8787; }
+    [data-theme='sunset'] { --color-primary-dark: #fa5252; }
+    [data-theme='sunset'] { --color-secondary: #ffd43b; }
+    [data-theme='sunset'] { --color-secondary-light: #ffe066; }
+    [data-theme='sunset'] { --color-secondary-dark: #fab005; }
+    [data-theme='sunset'] { --color-accent: #ff922b; }
+    [data-theme='sunset'] { --color-background: #fff9db; }
+    [data-theme='sunset'] { --color-background-alt: #fff3bf; }
+    [data-theme='sunset'] { --color-background-dark: #2d2926; }
+    [data-theme='sunset'] { --color-headline: #2d2926; }
+    [data-theme='sunset'] { --color-headline-dark: #2d2926; }
+    [data-theme='sunset'] { --color-headline-light: #ffffff; }
+    [data-theme='sunset'] { --color-body-base: #2d2926; }
+    [data-theme='sunset'] { --color-body-dark: #2d2926; }
+    [data-theme='sunset'] { --color-body-light: #fff3bf; }
 
+    [data-theme='ocean'] { --color-primary: #3b82f6; }
+    [data-theme='ocean'] { --color-primary-light: #60a5fa; }
+    [data-theme='ocean'] { --color-primary-dark: #2563eb; }
+    [data-theme='ocean'] { --color-secondary: #38bdf8; }
+    [data-theme='ocean'] { --color-secondary-light: #7dd3fc; }
+    [data-theme='ocean'] { --color-secondary-dark: #0284c7; }
+    [data-theme='ocean'] { --color-accent: #06b6d4; }
+    [data-theme='ocean'] { --color-background: #f0f9ff; }
+    [data-theme='ocean'] { --color-background-alt: #e0f2fe; }
+    [data-theme='ocean'] { --color-background-dark: #0c4a6e; }
+    [data-theme='ocean'] { --color-headline: #0c4a6e; }
+    [data-theme='ocean'] { --color-headline-dark: #0c4a6e; }
+    [data-theme='ocean'] { --color-headline-light: #ffffff; }
+    [data-theme='ocean'] { --color-body-base: #0c4a6e; }
+    [data-theme='ocean'] { --color-body-dark: #0c4a6e; }
+    [data-theme='ocean'] { --color-body-light: #e0f2fe; }
+
+    [data-theme='forest'] { --color-primary: #059669; }
+    [data-theme='forest'] { --color-primary-light: #34d399; }
+    [data-theme='forest'] { --color-primary-dark: #047857; }
+    [data-theme='forest'] { --color-secondary: #65a30d; }
+    [data-theme='forest'] { --color-secondary-light: #84cc16; }
+    [data-theme='forest'] { --color-secondary-dark: #4d7c0f; }
+    [data-theme='forest'] { --color-accent: #10b981; }
+    [data-theme='forest'] { --color-background: #f0fdf4; }
+    [data-theme='forest'] { --color-background-alt: #dcfce7; }
+    [data-theme='forest'] { --color-background-dark: #14532d; }
+    [data-theme='forest'] { --color-headline: #14532d; }
+    [data-theme='forest'] { --color-headline-dark: #14532d; }
+    [data-theme='forest'] { --color-headline-light: #ffffff; }
+    [data-theme='forest'] { --color-body-base: #14532d; }
+    [data-theme='forest'] { --color-body-dark: #14532d; }
+    [data-theme='forest'] { --color-body-light: #dcfce7; }
+
+    [data-theme='zeus'] { --color-primary: #4169e1; }
+    [data-theme='zeus'] { --color-primary-light: #6495ed; }
+    [data-theme='zeus'] { --color-primary-dark: #1e3c8c; }
+    [data-theme='zeus'] { --color-secondary: #ffd700; }
+    [data-theme='zeus'] { --color-secondary-light: #ffe44d; }
+    [data-theme='zeus'] { --color-secondary-dark: #b39700; }
+    [data-theme='zeus'] { --color-accent: #87ceeb; }
+    [data-theme='zeus'] { --color-background: #f8f9ff; }
+    [data-theme='zeus'] { --color-background-alt: #eef1ff; }
+    [data-theme='zeus'] { --color-background-dark: #1a1f3c; }
+    [data-theme='zeus'] { --color-headline: #1a1f3c; }
+    [data-theme='zeus'] { --color-headline-dark: #1a1f3c; }
+    [data-theme='zeus'] { --color-headline-light: #ffffff; }
+    [data-theme='zeus'] { --color-body-base: #1a1f3c; }
+    [data-theme='zeus'] { --color-body-dark: #1a1f3c; }
+    [data-theme='zeus'] { --color-body-light: #eef1ff; }
+
+    [data-theme='poseidon'] { --color-primary: #006994; }
+    [data-theme='poseidon'] { --color-primary-light: #0099cc; }
+    [data-theme='poseidon'] { --color-primary-dark: #004d6b; }
+    [data-theme='poseidon'] { --color-secondary: #20b2aa; }
+    [data-theme='poseidon'] { --color-secondary-light: #48d1cc; }
+    [data-theme='poseidon'] { --color-secondary-dark: #008b8b; }
+    [data-theme='poseidon'] { --color-accent: #00ffff; }
+    [data-theme='poseidon'] { --color-background: #f0f8ff; }
+    [data-theme='poseidon'] { --color-background-alt: #e0f4ff; }
+    [data-theme='poseidon'] { --color-background-dark: #001e2b; }
+    [data-theme='poseidon'] { --color-headline: #001e2b; }
+    [data-theme='poseidon'] { --color-headline-dark: #001e2b; }
+    [data-theme='poseidon'] { --color-headline-light: #ffffff; }
+    [data-theme='poseidon'] { --color-body-base: #001e2b; }
+    [data-theme='poseidon'] { --color-body-dark: #001e2b; }
+    [data-theme='poseidon'] { --color-body-light: #e0f4ff; }
+
+    [data-theme='hades'] { --color-primary: #663399; }
+    [data-theme='hades'] { --color-primary-light: #9966cc; }
+    [data-theme='hades'] { --color-primary-dark: #4b0082; }
+    [data-theme='hades'] { --color-secondary: #4a4a4a; }
+    [data-theme='hades'] { --color-secondary-light: #666666; }
+    [data-theme='hades'] { --color-secondary-dark: #2d2d2d; }
+    [data-theme='hades'] { --color-accent: #800080; }
+    [data-theme='hades'] { --color-background: #1a1a1a; }
+    [data-theme='hades'] { --color-background-alt: #2d2d2d; }
+    [data-theme='hades'] { --color-background-dark: #000000; }
+    [data-theme='hades'] { --color-headline: #ffffff; }
+    [data-theme='hades'] { --color-headline-dark: #ffffff; }
+    [data-theme='hades'] { --color-headline-light: #ffffff; }
+    [data-theme='hades'] { --color-body-base: #cccccc; }
+    [data-theme='hades'] { --color-body-dark: #cccccc; }
+    [data-theme='hades'] { --color-body-light: #ffffff; }
+
+    [data-theme='apollo'] { --color-primary: #ffa500; }
+    [data-theme='apollo'] { --color-primary-light: #ffc04d; }
+    [data-theme='apollo'] { --color-primary-dark: #cc8400; }
+    [data-theme='apollo'] { --color-secondary: #ff8c00; }
+    [data-theme='apollo'] { --color-secondary-light: #ffa64d; }
+    [data-theme='apollo'] { --color-secondary-dark: #cc7000; }
+    [data-theme='apollo'] { --color-accent: #ff4500; }
+    [data-theme='apollo'] { --color-background: #fff8f0; }
+    [data-theme='apollo'] { --color-background-alt: #fff0e0; }
+    [data-theme='apollo'] { --color-background-dark: #332200; }
+    [data-theme='apollo'] { --color-headline: #332200; }
+    [data-theme='apollo'] { --color-headline-dark: #332200; }
+    [data-theme='apollo'] { --color-headline-light: #ffffff; }
+    [data-theme='apollo'] { --color-body-base: #332200; }
+    [data-theme='apollo'] { --color-body-dark: #332200; }
+    [data-theme='apollo'] { --color-body-light: #fff0e0; }
+
+    [data-theme='artemis'] { --color-primary: #c0c0c0; }
+    [data-theme='artemis'] { --color-primary-light: #d9d9d9; }
+    [data-theme='artemis'] { --color-primary-dark: #a6a6a6; }
+    [data-theme='artemis'] { --color-secondary: #2e8b57; }
+    [data-theme='artemis'] { --color-secondary-light: #3cb371; }
+    [data-theme='artemis'] { --color-secondary-dark: #006400; }
+    [data-theme='artemis'] { --color-accent: #66cdaa; }
+    [data-theme='artemis'] { --color-background: #f5f5f5; }
+    [data-theme='artemis'] { --color-background-alt: #e6e6e6; }
+    [data-theme='artemis'] { --color-background-dark: #1a1a1a; }
+    [data-theme='artemis'] { --color-headline: #1a1a1a; }
+    [data-theme='artemis'] { --color-headline-dark: #1a1a1a; }
+    [data-theme='artemis'] { --color-headline-light: #ffffff; }
+    [data-theme='artemis'] { --color-body-base: #1a1a1a; }
+    [data-theme='artemis'] { --color-body-dark: #1a1a1a; }
+    [data-theme='artemis'] { --color-body-light: #e6e6e6; }
+
+    [data-theme='ares'] { --color-primary: #dc143c; }
+    [data-theme='ares'] { --color-primary-light: #ff4d6a; }
+    [data-theme='ares'] { --color-primary-dark: #b31030; }
+    [data-theme='ares'] { --color-secondary: #1a1a1a; }
+    [data-theme='ares'] { --color-secondary-light: #333333; }
+    [data-theme='ares'] { --color-secondary-dark: #000000; }
+    [data-theme='ares'] { --color-accent: #ff0000; }
+    [data-theme='ares'] { --color-background: #0a0a0a; }
+    [data-theme='ares'] { --color-background-alt: #1a1a1a; }
+    [data-theme='ares'] { --color-background-dark: #000000; }
+    [data-theme='ares'] { --color-headline: #ffffff; }
+    [data-theme='ares'] { --color-headline-dark: #ffffff; }
+    [data-theme='ares'] { --color-headline-light: #ffffff; }
+    [data-theme='ares'] { --color-body-base: #cccccc; }
+    [data-theme='ares'] { --color-body-dark: #cccccc; }
+    [data-theme='ares'] { --color-body-light: #ffffff; }
+
+    [data-theme='athena'] { --color-primary: #808000; }
+    [data-theme='athena'] { --color-primary-light: #b3b300; }
+    [data-theme='athena'] { --color-primary-dark: #666600; }
+    [data-theme='athena'] { --color-secondary: #daa520; }
+    [data-theme='athena'] { --color-secondary-light: #ffc04d; }
+    [data-theme='athena'] { --color-secondary-dark: #b38600; }
+    [data-theme='athena'] { --color-accent: #bdb76b; }
+    [data-theme='athena'] { --color-background: #fdfbf6; }
+    [data-theme='athena'] { --color-background-alt: #f5f0e1; }
+    [data-theme='athena'] { --color-background-dark: #2d2d1a; }
+    [data-theme='athena'] { --color-headline: #2d2d1a; }
+    [data-theme='athena'] { --color-headline-dark: #2d2d1a; }
+    [data-theme='athena'] { --color-headline-light: #ffffff; }
+    [data-theme='athena'] { --color-body-base: #2d2d1a; }
+    [data-theme='athena'] { --color-body-dark: #2d2d1a; }
+    [data-theme='athena'] { --color-body-light: #f5f0e1; }
+
+    [data-theme='hermes'] { --color-primary: #4682b4; }
+    [data-theme='hermes'] { --color-primary-light: #6ca6d9; }
+    [data-theme='hermes'] { --color-primary-dark: #385f8a; }
+    [data-theme='hermes'] { --color-secondary: #c0c0c0; }
+    [data-theme='hermes'] { --color-secondary-light: #d9d9d9; }
+    [data-theme='hermes'] { --color-secondary-dark: #a6a6a6; }
+    [data-theme='hermes'] { --color-accent: #1e90ff; }
+    [data-theme='hermes'] { --color-background: #f8faff; }
+    [data-theme='hermes'] { --color-background-alt: #f0f4fa; }
+    [data-theme='hermes'] { --color-background-dark: #1a2333; }
+    [data-theme='hermes'] { --color-headline: #1a2333; }
+    [data-theme='hermes'] { --color-headline-dark: #1a2333; }
+    [data-theme='hermes'] { --color-headline-light: #ffffff; }
+    [data-theme='hermes'] { --color-body-base: #1a2333; }
+    [data-theme='hermes'] { --color-body-dark: #1a2333; }
+    [data-theme='hermes'] { --color-body-light: #f0f4fa; }
+
+    [data-theme='dionysus'] { --color-primary: #8b008b; }
+    [data-theme='dionysus'] { --color-primary-light: #c000c0; }
+    [data-theme='dionysus'] { --color-primary-dark: #660066; }
+    [data-theme='dionysus'] { --color-secondary: #800020; }
+    [data-theme='dionysus'] { --color-secondary-light: #b30033; }
+    [data-theme='dionysus'] { --color-secondary-dark: #4d0013; }
+    [data-theme='dionysus'] { --color-accent: #da70d6; }
+    [data-theme='dionysus'] { --color-background: #fff0ff; }
+    [data-theme='dionysus'] { --color-background-alt: #ffe6ff; }
+    [data-theme='dionysus'] { --color-background-dark: #330033; }
+    [data-theme='dionysus'] { --color-headline: #330033; }
+    [data-theme='dionysus'] { --color-headline-dark: #330033; }
+    [data-theme='dionysus'] { --color-headline-light: #ffffff; }
+    [data-theme='dionysus'] { --color-body-base: #330033; }
+    [data-theme='dionysus'] { --color-body-dark: #330033; }
+    [data-theme='dionysus'] { --color-body-light: #ffe6ff; }
+
+    [data-theme='demeter'] { --color-primary: #556b2f; }
+    [data-theme='demeter'] { --color-primary-light: #6b8e23; }
+    [data-theme='demeter'] { --color-primary-dark: #3d4d21; }
+    [data-theme='demeter'] { --color-secondary: #8b4513; }
+    [data-theme='demeter'] { --color-secondary-light: #cd853f; }
+    [data-theme='demeter'] { --color-secondary-dark: #5e2f0d; }
+    [data-theme='demeter'] { --color-accent: #9acd32; }
+    [data-theme='demeter'] { --color-background: #f8f7f2; }
+    [data-theme='demeter'] { --color-background-alt: #f0efe5; }
+    [data-theme='demeter'] { --color-background-dark: #2b2b1a; }
+    [data-theme='demeter'] { --color-headline: #2b2b1a; }
+    [data-theme='demeter'] { --color-headline-dark: #2b2b1a; }
+    [data-theme='demeter'] { --color-headline-light: #ffffff; }
+    [data-theme='demeter'] { --color-body-base: #2b2b1a; }
+    [data-theme='demeter'] { --color-body-dark: #2b2b1a; }
+    [data-theme='demeter'] { --color-body-light: #f0efe5; }
+}
 
 @layer components {
     html { font-size: 16px; color: var(--color-text-base); }
@@ -112,21 +366,19 @@ body {
 }
 
 .hero-background {
+    --s: 34px;
+    /* control the size*/
+    --c1: var(--color-primary);
+    --c2: var(--color-primary-dark);
 
-        --s: 34px;
-        /* control the size*/
-        --c1: var(--color-primary);
-        --c2: var(--color-primary-dark);
-
-        --_g:
-        var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%, var(--c1) 36% 45%,
-        var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%,
-        #0000 96%;
-        background:
-            radial-gradient(50% 50% at 100% 0, var(--_g)),
-            radial-gradient(50% 50% at 0 100%, var(--_g)),
-            radial-gradient(50% 50%, var(--_g)),
-            radial-gradient(50% 50%, var(--_g)) calc(var(--s)/2) calc(var(--s)/2) var(--c1);
-        background-size: var(--s) var(--s);
-    
+    --_g:
+    var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%, var(--c1) 36% 45%,
+    var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%,
+    #0000 96%;
+    background:
+        radial-gradient(50% 50% at 100% 0, var(--_g)),
+        radial-gradient(50% 50% at 0 100%, var(--_g)),
+        radial-gradient(50% 50%, var(--_g)),
+        radial-gradient(50% 50%, var(--_g)) calc(var(--s)/2) calc(var(--s)/2) var(--c1);
+    background-size: var(--s) var(--s);
 }
