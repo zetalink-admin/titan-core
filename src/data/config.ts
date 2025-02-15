@@ -1,15 +1,16 @@
 export const siteConfig = {
   companyName: 'Titan Core',
   Socials: {
-      Twitter: 'https://twitter.com/astrodotbuild',
+      xSocial: 'https://x.com/astrodotbuild',
       Github: 'https://github.com/withastro',
       Instagram: 'https://www.instagram.com/astrodotbuild',
+      LinkedIn: 'https://www.linkedin.com/company/astrodotbuild',
   }
 };
 
 export const SEO = {
   Separator: '|',
-  SiteName: 'Astro Basics',
+  SiteName: 'Titan Core',
 };
   
 export const blogSetting = {

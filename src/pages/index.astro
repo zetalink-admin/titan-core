@@ -7,6 +7,9 @@ import Stats from '../components/sections/Stats.astro';
 import { featureLists } from '../data/features';
 import { statsLists } from '../data/stats';
 
+const seoTitle = "Modern, High-Performance Astro Theme";
+const seoDescription = "A modern, high-performance Astro theme for developer portfolios and documentation sites.";
+
 const heroContent = {
     title: 'Build Faster with Titan Core',
     description: ' A modern, high-performance Astro theme for developer portfolios and documentation sites.',
@@ -119,7 +122,7 @@ const sideBySideStats = {
 
 ---
 
-<Layout footerCta={FooterCta}>
+<Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
     <Hero heroContent={heroContent} />
     <Stats statsContent={sideBySideStats} />
     <SplitPanel {...aboutSection} />

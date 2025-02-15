@@ -27,8 +27,14 @@ const teamCollection = defineCollection({
     name: z.string(),
     headshot: z.string(),
     jobTitle: z.string(),
-    order: z.number().default(999), // Default high number for unordered items
+    email: z.string().optional(),
     linkedin: z.string().url().optional(),
+    linkedinUsername: z.string().optional(),
+    xSocial: z.string().url().optional(),
+    xSocialUsername: z.string().optional(),
+    github: z.string().url().optional(),
+    githubUsername: z.string().optional(),
+    order: z.number().default(999),
     publish: z.boolean().default(true),
   }),
 });
