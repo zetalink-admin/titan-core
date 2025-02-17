@@ -6,6 +6,7 @@ import Features from '../components/sections/Features.astro';
 import Stats from '../components/sections/Stats.astro';
 import { featureLists } from '../data/features';
 import { statsLists } from '../data/stats';
+import CtaBanner from '../components/sections/CtaBanner.astro';
 
 const seoTitle = "Modern, High-Performance Astro Theme";
 const seoDescription = "A modern, high-performance Astro theme for developer portfolios and documentation sites.";
@@ -120,13 +121,37 @@ const sideBySideStats = {
     content: statsLists.withContent.content
 }
 
+const mainCta = {
+    title: "Ready to Get Started?",
+    description: "Join thousands of developers building amazing websites with Titan Core.",
+    button: {
+        text: "Start Building",
+        link: "/contact",
+        variant: "primary" as const,
+        target: "_self" as const
+    }
+};
+
+const secondaryCta = {
+    title: "Join Our Community",
+    description: "Connect with other developers and get help with your projects.",
+    button: {
+        text: "Join Discord",
+        link: "https://discord.com",
+        variant: "secondary" as const,
+        target: "_blank" as const
+    }
+};
+
 ---
 
 <Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
     <Hero heroContent={heroContent} />
     <Stats statsContent={sideBySideStats} />
     <SplitPanel {...aboutSection} />
+    <CtaBanner content={mainCta} variant="contained" background="white" />
     <SplitPanel {...whoWeAreSection} />
     <SplitPanel {...teamSection} />
     <Features featuresContent={featuresSection} />
+    <CtaBanner content={secondaryCta} variant="full-width" background="white" />
 </Layout>

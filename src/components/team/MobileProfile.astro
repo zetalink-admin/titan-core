@@ -17,7 +17,7 @@ const { entry } = Astro.props;
         
         {entry.data.email && (
         <a 
-            href={`mailto:${entry.data.email}`} 
+            href={`mailto:${entry.data.email}`}  
             class="flex items-center gap-2 text-body-base hover:text-primary transition-colors text-small truncate"
         >
             <Mail size={18} strokeWidth={1.25} />

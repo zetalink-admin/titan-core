@@ -1,0 +1,96 @@
+---
+export interface Props {
+    content: {
+        title: string;
+        description?: string;
+        button?: {
+            text: string;
+            link: string;
+            variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
+            target?: '_blank' | '_self';
+        };
+    };
+    variant?: 'contained' | 'full-width';
+    background?: 'white' | 'alt' | 'dark';
+}
+
+const {
+    content: { title, description, button },
+    variant = 'contained',
+    background = 'dark'
+} = Astro.props;
+
+// Background and text colors based on variant
+const bgColors = {
+    white: 'bg-white',
+    alt: 'bg-background-alt',
+    dark: 'bg-background-dark'
+};
+
+const containerBgColors = {
+    white: 'bg-background-alt',
+    alt: 'bg-white',
+    dark: 'bg-background-dark/50'
+};
+
+const textColors = {
+    white: 'text-body-base',
+    alt: 'text-body-base',
+    dark: 'text-body-light'
+};
+
+const bgColor = bgColors[background];
+const containerBgColor = containerBgColors[background];
+const textColor = textColors[background];
+---
+
+<section class:list={[bgColor, "py-large"]}>
+    <div class:list={[
+        variant === 'contained' ? 'site-container px-4' : 'px-4',
+        "text-center"
+    ]}>
+        <div class:list={[
+            "mx-auto",
+            variant === 'contained' ? 'max-w-3xl rounded-xl p-12' : 'max-w-4xl',
+            variant === 'contained' && containerBgColor
+        ]}>
+            <h2 
+                class:list={[textColor]}
+                data-aos="fade-up"
+            >
+                {title}
+            </h2>
+            
+            {description && (
+                <p 
+                    class:list={["mt-4", textColor, "opacity-90"]}
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+                    {description}
+                </p>
+            )}
+
+            {button && (
+                <div 
+                    class="mt-8"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                >
+                    <a
+                        href={button.link}
+                        target={button.target || '_self'}
+                        class:list={[
+                            "inline-block px-6 py-3 rounded-lg font-medium transition-colors",
+                            button.variant === 'secondary' 
+                                ? "bg-secondary hover:bg-secondary-dark text-white"
+                                : "bg-primary hover:bg-primary-dark text-white"
+                        ]}
+                    >
+                        {button.text}
+                    </a>
+                </div>
+            )}
+        </div>
+    </div>
+</section>
