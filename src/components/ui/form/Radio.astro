@@ -1,0 +1,39 @@
+---
+interface Props {
+    label: string;
+    id: string;
+    name: string;
+    value: string;
+    checked?: boolean;
+    required?: boolean;
+    class?: string;
+}
+
+const { 
+    label, 
+    id, 
+    name, 
+    value,
+    checked = false, 
+    required = false,
+    class: className = ''
+} = Astro.props;
+---
+<div class="flex items-center space-x-2">
+    <input
+        type="radio"
+        id={id}
+        name={name}
+        value={value}
+        checked={checked}
+        required={required}
+        class={`h-4 w-4 border-gray-300 text-blue-500 focus:ring-blue-500 ${className}`}
+    />
+    <label 
+        for={id}
+        class="text-sm font-medium text-gray-700"
+    >
+        {label}
+        {required && <span class="text-red-500">*</span>}
+    </label>
+</div> 
