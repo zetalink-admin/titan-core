@@ -1,5 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
+import { getPaddingClass } from '../../utils/styleUtils';
+import type { PaddingSize } from '../../utils/styleUtils';
+
+interface Props {
+    padding?: PaddingSize;
+    paddingTop?: PaddingSize;
+    paddingBottom?: PaddingSize;
+}
+
+const { padding, paddingTop, paddingBottom } = Astro.props;
+const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
+
 const teamMembers = await getCollection('team', ({ data }) => {
     return data.publish !== false;
 });
@@ -8,7 +20,7 @@ const teamMembers = await getCollection('team', ({ data }) => {
 const sortedTeamMembers = teamMembers.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="py-base">
+<section class:list={["relative", paddingClass]}>
     <div class="site-container mx-auto px-4">
     
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 xl:gap-x-8 xl:gap-y-14">

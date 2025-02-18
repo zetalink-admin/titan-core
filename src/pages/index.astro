@@ -52,9 +52,7 @@ const aboutSection = {
             link: "/about",
             variant: "secondary" as const
         }
-    ],
-    imagePosition: "left" as const,
-    background: "white" as const
+    ]
 }
 
 const whoWeAreSection = {
@@ -147,11 +145,11 @@ const secondaryCta = {
 
 <Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
     <Hero heroContent={heroContent} />
-    <Stats statsContent={sideBySideStats} />
-    <SplitPanel {...aboutSection} />
-    <CtaBanner content={mainCta} variant="contained" background="white" />
-    <SplitPanel {...whoWeAreSection} />
-    <SplitPanel {...teamSection} />
-    <Features featuresContent={featuresSection} />
-    <CtaBanner content={secondaryCta} variant="full-width" background="white" />
+    <Stats statsContent={sideBySideStats} padding="base" />
+    <SplitPanel content={aboutSection} imagePosition="right" background="alt" padding="base" />
+    <CtaBanner content={mainCta} variant="contained" background="alt" />
+    <SplitPanel content={whoWeAreSection} imagePosition="right" background="alt" padding="base" />
+    <SplitPanel content={teamSection} imagePosition="left" background="dark" padding="base" />
+    <Features featuresContent={featuresSection} padding="base" background="alt"  />
+    <CtaBanner content={secondaryCta} variant="full-width" background="dark" padding="base" />
 </Layout>

@@ -1,7 +1,9 @@
 ---
 import Button from '../ui/Button.astro';
+import { getPaddingClass, getBackgroundColor, getTextColor, getEyebrowColor } from '../../utils/styleUtils';
+import type { PaddingSize, ThemeColor } from '../../utils/styleUtils';
 
-export interface Props {
+interface Content {
     eyebrow?: string;
     headline: string;
     subheadline?: string;
@@ -16,46 +18,37 @@ export interface Props {
         variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
         target?: string;
     }[];
+}
+
+export interface Props {
+    content: Content;
+    // Layout props
     imagePosition?: 'left' | 'right';
-    background?: 'white' | 'alt' | 'dark';
+    background?: ThemeColor;
+    paddingTop?: PaddingSize;
+    paddingBottom?: PaddingSize;
+    padding?: PaddingSize;
 }
 
 const {
-    eyebrow,
-    headline,
-    subheadline,
-    description,
-    image,
-    buttons = [],
+    content,
+    // Layout props
     imagePosition = 'right',
     background = 'white',
+    paddingTop,
+    paddingBottom,
+    padding,
 } = Astro.props;
 
-// Determine background and text colors based on variant
-const bgColors = {
-    white: 'bg-white',
-    alt: 'bg-background-alt',
-    dark: 'bg-background-dark'
-};
+const { eyebrow, headline, subheadline, description, image, buttons = [] } = content;
 
-const textColors = {
-    white: 'text-body-base',
-    alt: 'text-body-base',
-    dark: 'text-body-light'
-};
-
-const eyebrowColors = {
-    white: 'text-accent',
-    alt: 'text-accent',
-    dark: 'text-accent'
-};
-
-const bgColor = bgColors[background];
-const textColor = textColors[background];
-const eyebrowColor = eyebrowColors[background];
+const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
+const bgColor = getBackgroundColor(background);
+const textColor = getTextColor(background);
+const eyebrowColor = getEyebrowColor(background);
 ---
-<section class:list={["relative", bgColor]}>
-    <div class="site-container px-4 py-large">
+<section class:list={["relative", bgColor, paddingClass]}>
+    <div class="site-container px-4">
         <div class:list={[
             "grid gap-16 items-center",
             "md:grid-cols-2",

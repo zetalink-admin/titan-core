@@ -1,6 +1,8 @@
 ---
 import type { Feature } from '../../data/features';
 import Button from '../ui/Button.astro';
+import { getPaddingClass, getBackgroundColor, getTextColor } from '../../utils/styleUtils';
+import type { PaddingSize, ThemeColor } from '../../utils/styleUtils';
 
 export interface Props {
     featuresContent: {
@@ -11,9 +13,12 @@ export interface Props {
             link: string;
             variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
         };
-        background?: 'white' | 'alt' | 'dark';
         features: Feature[];
     };
+    background?: ThemeColor;
+    padding?: PaddingSize;
+    paddingTop?: PaddingSize;
+    paddingBottom?: PaddingSize;
 }
 
 const {
@@ -21,29 +26,21 @@ const {
         sectionTitle,
         sectionDescription,
         button,
-        background = 'white',
         features
-    }
+    },
+    background = 'white'
 } = Astro.props;
 
-// Background and text colors based on variant
-const bgColors = {
-    white: 'bg-white',
-    alt: 'bg-background-alt',
-    dark: 'bg-background-dark'
-};
-
-const textColors = {
-    white: 'text-body-base',
-    alt: 'text-body-base',
-    dark: 'text-body-light'
-};
-
-const bgColor = bgColors[background];
-const textColor = textColors[background];
+const bgColor = getBackgroundColor(background);
+const textColor = getTextColor(background);
+const paddingClass = getPaddingClass({ 
+    padding: Astro.props.padding,
+    paddingTop: Astro.props.paddingTop,
+    paddingBottom: Astro.props.paddingBottom 
+});
 ---
 
-<section class:list={["py-large", bgColor]}>
+<section class:list={["relative", bgColor, paddingClass]}>
     <div class="site-container px-4">
         {(sectionTitle || sectionDescription) && (
             <div class="text-center mb-16 max-w-3xl mx-auto">

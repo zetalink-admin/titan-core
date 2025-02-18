@@ -1,4 +1,7 @@
 ---
+import { getBackgroundColor, getTextColor, getPaddingClass } from '../../utils/styleUtils';
+import type { ThemeColor, PaddingSize } from '../../utils/styleUtils';
+
 export interface Props {
     content: {
         title: string;
@@ -11,40 +14,35 @@ export interface Props {
         };
     };
     variant?: 'contained' | 'full-width';
-    background?: 'white' | 'alt' | 'dark';
+    background?: ThemeColor;
+    padding?: PaddingSize;
+    paddingTop?: PaddingSize;
+    paddingBottom?: PaddingSize;
 }
 
 const {
     content: { title, description, button },
     variant = 'contained',
-    background = 'dark'
+    background = 'dark',
+    padding,
+    paddingTop,
+    paddingBottom
 } = Astro.props;
 
-// Background and text colors based on variant
-const bgColors = {
-    white: 'bg-white',
-    alt: 'bg-background-alt',
-    dark: 'bg-background-dark'
-};
+const bgColor = getBackgroundColor(background);
+const textColor = getTextColor(background);
+const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
 
+// Only this is specific to CtaBanner
 const containerBgColors = {
     white: 'bg-background-alt',
     alt: 'bg-white',
     dark: 'bg-background-dark/50'
 };
-
-const textColors = {
-    white: 'text-body-base',
-    alt: 'text-body-base',
-    dark: 'text-body-light'
-};
-
-const bgColor = bgColors[background];
 const containerBgColor = containerBgColors[background];
-const textColor = textColors[background];
 ---
 
-<section class:list={[bgColor, "py-large"]}>
+<section class:list={[bgColor, paddingClass]}>
     <div class:list={[
         variant === 'contained' ? 'site-container px-4' : 'px-4',
         "text-center"

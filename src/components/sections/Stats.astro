@@ -1,12 +1,13 @@
 ---
 import type { Stat } from '../../data/stats';
 import Button from '../ui/Button.astro';
+import { getBackgroundColor, getTextColor, getPaddingClass } from '../../utils/styleUtils';
+import type { ThemeColor, PaddingSize } from '../../utils/styleUtils';
 
 export interface Props {
     statsContent: {
         sectionTitle?: string;
         sectionDescription?: string;
-        background?: 'white' | 'alt' | 'dark';
         variant?: 'default' | 'side-by-side';
         stats: Stat[];
         content?: {
@@ -19,37 +20,32 @@ export interface Props {
             };
         };
     };
+    background?: ThemeColor;
+    padding?: PaddingSize;
+    paddingTop?: PaddingSize;
+    paddingBottom?: PaddingSize;
 }
 
 const {
     statsContent: {
         sectionTitle,
         sectionDescription,
-        background = 'white',
         variant = 'default',
         stats,
         content
-    }
+    },
+    background = 'white',
+    padding,
+    paddingTop,
+    paddingBottom
 } = Astro.props;
 
-// Background and text colors based on variant
-const bgColors = {
-    white: 'bg-white',
-    alt: 'bg-background-alt',
-    dark: 'bg-background-dark'
-};
-
-const textColors = {
-    white: 'text-body-base',
-    alt: 'text-body-base',
-    dark: 'text-body-light'
-};
-
-const bgColor = bgColors[background];
-const textColor = textColors[background];
+const bgColor = getBackgroundColor(background);
+const textColor = getTextColor(background);
+const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
 ---
 
-<section class:list={["py-small overflow-hidden", bgColor]}>
+<section class:list={["overflow-hidden", bgColor, paddingClass]}>
     <div class="site-container px-4">
         {variant === 'default' && (sectionTitle || sectionDescription) && (
             <div class="text-center mb-16 max-w-3xl mx-auto">
