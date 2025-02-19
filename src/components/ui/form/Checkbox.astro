@@ -1,36 +1,73 @@
 ---
+interface Option {
+    label: string;
+    value: string;
+}
+
 interface Props {
     label: string;
     id: string;
     name: string;
-    checked?: boolean;
+    options?: Option[];  // Make options optional to support single checkbox use case
     required?: boolean;
     class?: string;
 }
 
 const { 
     label, 
-    id, 
+    id,
     name, 
-    checked = false, 
+    options,
     required = false,
     class: className = ''
 } = Astro.props;
 ---
-<div class="flex items-center space-x-2">
-    <input
-        type="checkbox"
-        id={id}
-        name={name}
-        checked={checked}
-        required={required}
-        class={`h-4 w-4 rounded border-gray-300 text-blue-500 focus:ring-blue-500 ${className}`}
-    />
-    <label 
-        for={id}
-        class="text-sm font-medium text-gray-700"
-    >
-        {label}
-        {required && <span class="text-red-500">*</span>}
-    </label>
+<div class="form-group">
+    {options ? (
+        // Multiple checkboxes
+        <>
+            <label class="block text-sm font-medium text-body-base mb-2">
+                {label}
+                {required && <span class="text-red-500">*</span>}
+            </label>
+            <div class="space-y-2">
+                {options.map((option, index) => (
+                    <div class="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            id={`${id}-${index}`}
+                            name={name}
+                            value={option.value}
+                            required={required}
+                            class={`h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary ${className}`}
+                        />
+                        <label 
+                            for={`${id}-${index}`}
+                            class="text-sm font-medium text-body-base"
+                        >
+                            {option.label}
+                        </label>
+                    </div>
+                ))}
+            </div>
+        </>
+    ) : (
+        // Single checkbox
+        <div class="flex items-center space-x-2">
+            <input
+                type="checkbox"
+                id={id}
+                name={name}
+                required={required}
+                class={`h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary ${className}`}
+            />
+            <label 
+                for={id}
+                class="text-sm font-medium text-body-base"
+            >
+                {label}
+                {required && <span class="text-red-500">*</span>}
+            </label>
+        </div>
+    )}
 </div> 

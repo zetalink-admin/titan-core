@@ -1,39 +1,50 @@
 ---
+interface Option {
+    label: string;
+    value: string;
+}
+
 interface Props {
     label: string;
     id: string;
     name: string;
-    value: string;
-    checked?: boolean;
+    options: Option[];
     required?: boolean;
     class?: string;
 }
 
 const { 
     label, 
-    id, 
+    id,
     name, 
-    value,
-    checked = false, 
+    options,
     required = false,
     class: className = ''
 } = Astro.props;
 ---
-<div class="flex items-center space-x-2">
-    <input
-        type="radio"
-        id={id}
-        name={name}
-        value={value}
-        checked={checked}
-        required={required}
-        class={`h-4 w-4 border-gray-300 text-blue-500 focus:ring-blue-500 ${className}`}
-    />
-    <label 
-        for={id}
-        class="text-sm font-medium text-gray-700"
-    >
+<div class="form-group">
+    <label class="block text-sm font-medium text-body-base mb-2">
         {label}
         {required && <span class="text-red-500">*</span>}
     </label>
+    <div class="space-y-2">
+        {options.map((option, index) => (
+            <div class="flex items-center space-x-2">
+                <input
+                    type="radio"
+                    id={`${id}-${index}`}
+                    name={name}
+                    value={option.value}
+                    required={required}
+                    class={`h-4 w-4 border-gray-300 text-primary focus:ring-primary ${className}`}
+                />
+                <label 
+                    for={`${id}-${index}`}
+                    class="text-sm font-medium text-body-base"
+                >
+                    {option.label}
+                </label>
+            </div>
+        ))}
+    </div>
 </div> 
