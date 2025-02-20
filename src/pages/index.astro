@@ -6,6 +6,8 @@ import Features from '../components/sections/Features.astro';
 import Stats from '../components/sections/Stats.astro';
 import { featureLists } from '../data/features';
 import { statsLists } from '../data/stats';
+import Logos from '../components/sections/Logos.astro';
+import { logoLists } from '../data/logos';
 import CtaBanner from '../components/sections/CtaBanner.astro';
 
 const seoTitle = "Modern, High-Performance Astro Theme";
@@ -141,11 +143,18 @@ const secondaryCta = {
     }
 };
 
+const logosSection = {
+    eyebrow: "Our Clients",
+    headline: "Trusted by many",
+    subheadline: "We are trusted by many companies around the world.",
+    logos: logoLists.main.logos
+}
 ---
 
 <Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
     <Hero heroContent={heroContent} />
     <Stats statsContent={sideBySideStats} padding="base" />
+    <Logos logosContent={logosSection} background="white" paddingBottom='small'/>
     <SplitPanel content={aboutSection} imagePosition="right" background="alt" padding="base" />
     <CtaBanner content={mainCta} variant="contained" background="alt" />
     <SplitPanel content={whoWeAreSection} imagePosition="right" background="alt" padding="base" />

@@ -34,6 +34,15 @@ export const getTextColor = (background: ThemeColor = 'white'): string => {
     return textColors[background];
 };
 
+export const getHeadlineColor = (background: ThemeColor = 'white'): string => {
+    const headlineColors = {
+        white: 'text-headline',
+        alt: 'text-headline',
+        dark: 'text-headline-light'
+    };
+    return headlineColors[background];
+};
+
 export const getEyebrowColor = (background: ThemeColor = 'white'): string => {
     const eyebrowColors = {
         white: 'text-accent',
