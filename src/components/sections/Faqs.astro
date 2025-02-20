@@ -36,8 +36,8 @@ const textColor = getTextColor(background);
     <div class="site-container px-4">
         {(title || description) && (
             <div class="max-w-3xl mx-auto text-center mb-12">
-                {title && <h2 class:list={["text-3xl font-bold mb-4", headlineColor]}>{title}</h2>}
-                {description && <p class:list={["text-lg", textColor]}>{description}</p>}
+                {title && <h2 data-aos="fade-up" class:list={["text-3xl font-bold mb-4", headlineColor]}>{title}</h2>}
+                {description && <p data-aos="fade-up" class:list={["text-lg", textColor]}>{description}</p>}
             </div>
         )}
         
