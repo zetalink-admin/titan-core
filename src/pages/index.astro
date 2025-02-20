@@ -79,9 +79,7 @@ const whoWeAreSection = {
             link: "/about",
             variant: "secondary" as const
         }
-    ],
-    imagePosition: "right" as const,
-    background: "alt" as const
+    ]
 }
 
 const teamSection = {
@@ -99,16 +97,13 @@ const teamSection = {
             link: "/team",
             variant: "primary" as const
         }
-    ],
-    imagePosition: "left" as const,
-    background: "dark" as const
+    ]
 } 
 
 const featuresSection = {
     sectionTitle: "What makes Titan Core special?",
     sectionDescription: "Focused on providing a modern, high-performance Astro theme for developer portfolios and documentation sites.",
     features: featureLists.main.features,
-    background: "alt" as const,
     button: {
         text: "View All Features",
         link: "/features",
@@ -163,11 +158,11 @@ const faqsSection = {
     <Hero heroContent={heroContent} />
     <Stats statsContent={sideBySideStats} padding="base" />
     <Logos logosContent={logosSection} background="white" paddingBottom='small'/>
-    <SplitPanel content={aboutSection} imagePosition="right" background="alt" padding="base" />
-    <CtaBanner content={mainCta} variant="contained" background="alt" />
-    <SplitPanel content={whoWeAreSection} imagePosition="right" background="alt" padding="base" />
+    <SplitPanel content={aboutSection} imagePosition="right" background="light" padding="base" />
+    <CtaBanner content={mainCta} variant="contained" background="light" />
+    <SplitPanel content={whoWeAreSection} imagePosition="right" background="light" padding="base" />
     <SplitPanel content={teamSection} imagePosition="left" background="dark" padding="base" />
-    <Features featuresContent={featuresSection} padding="base" background="alt"  />
+    <Features featuresContent={featuresSection} padding="base" background="light"  />
     <CtaBanner content={secondaryCta} variant="full-width" background="dark" padding="base" />
     <Faqs faqsContent={faqsSection} background="white" padding="base" />
 </Layout>
