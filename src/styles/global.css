@@ -311,6 +311,8 @@
     .py-small { padding-top: var(--spacing-small); padding-bottom: var(--spacing-small); }
     .py-base { padding-top: var(--spacing-base); padding-bottom: var(--spacing-base); }
     .py-large { padding-top: var(--spacing-large); padding-bottom: var(--spacing-large); }
+    
+    .cursor-pointer { cursor: pointer; }
 }
 
 html,
@@ -351,4 +353,32 @@ body {
         radial-gradient(50% 50%, var(--_g)),
         radial-gradient(50% 50%, var(--_g)) calc(var(--s)/2) calc(var(--s)/2) var(--c1);
     background-size: var(--s) var(--s);
+}
+
+/* Style the pre element containing the code */
+pre {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+
+/* Style code blocks with a specific language */
+pre[class*="language-"] {
+    position: relative;
+}
+
+/* Style line numbers if enabled */
+.line-number {
+    color: #888;
+    margin-right: 1rem;
+}
+
+:where(p, li, strong, em, b, i, u, s, a, blockquote, h1, h2, h3, h4, h5, h6)>code:not([class*="language-"]) {
+    font-size: var(--text-small);
+    background-color: var(--color-background-light);
+    color: var(--color-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    font-weight: 400;
 }

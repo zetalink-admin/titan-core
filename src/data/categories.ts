@@ -25,7 +25,11 @@ export const categories: Category[] = [
     slug: 'accessibility',
     description: 'Exploring accessibility and user experience'
   },
-  
+  {
+    name: 'Theme Usage',
+    slug: 'theme-usage',
+    description: 'Learn how to use the theme'
+  },
   
 ];
 

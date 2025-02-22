@@ -15,5 +15,15 @@ export default defineConfig({
       include: ['aos']
     }
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+      wrap: true,
+      langs: [],
+      transformers: [],
+      showLineNumbers: false,
+      lineNumbersPrefix: ''
+    }
+  },
   integrations: []
 });
