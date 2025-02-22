@@ -14,7 +14,7 @@ seo:
 
 Categories are a crucial part of organizing your content and helping users navigate your site. This post will guide you through the process of editing categories in your theme, using the `categories.ts` file.
 
-## Understanding the `categories.ts` File
+## Understanding the categories.ts File
 
 The `categories.ts` file is where your theme's categories are defined. It's a TypeScript file that exports an array of category objects. Each object typically includes:
 

@@ -26,14 +26,23 @@ The frontmatter is the metadata section at the top of your markdown file, contai
 **publish**: true  
 **categories**: Array of relevant categories
 
-### Editing Content
-Below the frontmatter, you can edit your post's content using markdown syntax:
-
 ```javascript
 title: "How to edit blog posts in Astro"
 excerpt: "Learn how to edit posts in Astro"
 featuredImage: "/blog/edit-posts.jpg"
 publishDate: "2024-03-10"
 publish: true
-categories: ["Design", "Accessibility"]
+categories: ["Theme Usage"]
 ```
+
+### Editing Content
+
+Below the frontmatter will contain the content of the post. This content is rendered out on your slug page (**/src/pages/blog/[slug].astro**).
+
+## Astro Docs
+
+Astro contains great documentation on editing blog post content. Listed below are links to the relevant sections:
+
+- [Astro Content](https://docs.astro.build/en/components/content/)
+- [Astro Frontmatter](https://docs.astro.build/en/components/frontmatter/)
+- [Astro Markdown](https://docs.astro.build/en/components/markdown/)
