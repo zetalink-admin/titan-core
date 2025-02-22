@@ -15,15 +15,15 @@ const ctaButton = {
     <div class="site-container mx-auto px-4 mt-4">
         <div class="flex justify-between items-center bg-white py-4 rounded-lg px-4 border-black border">
         <Logo />
-        <nav class="relative flex items-center gap-2 md:gap-8" aria-label="Site Navigation">
+        <nav class="relative flex items-center gap-2 lg:gap-8" aria-label="Site Navigation">
             <!-- Desktop Menu -->
-        <ul class="hidden md:flex md:gap-8 items-center">
+        <ul class="hidden lg:flex lg:gap-8 items-center">
             {headerMenu.map((item, index) => (
                 <li class="relative group">
                     <div class="flex items-center gap-1">
                         <a 
                             href={item.link} 
-                            class="text-body-base font-medium hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-2 py-1"
+                            class="text-body-base text-small font-medium hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-2 py-1"
                             aria-expanded={item.children ? "false" : undefined}
                             aria-haspopup={item.children ? "true" : undefined}
                             
@@ -67,7 +67,7 @@ const ctaButton = {
 
         <!-- Mobile Menu Button -->
         <button 
-            class="mobile-menu-button relative z-30 p-2 border-none cursor-pointer bg-transparent md:hidden"
+            class="mobile-menu-button relative z-30 p-2 border-none cursor-pointer bg-transparent lg:hidden"
             aria-label="Toggle Menu"
             aria-expanded="false"
         >
@@ -81,7 +81,7 @@ const ctaButton = {
 
         <!-- Mobile Menu Panel -->
         <div 
-            class="mobile-menu fixed inset-0 z-20 px-8 pt-20 bg-primary md:hidden hidden opacity-0 scale-95 transform transition-all duration-200 ease-out overflow-y-auto"
+            class="mobile-menu fixed inset-0 z-20 px-8 pt-20 bg-primary lg:hidden hidden opacity-0 scale-95 transform transition-all duration-200 ease-out overflow-y-auto"
         >
             <ul class="flex flex-col gap-4">
                 {headerMenu.map(item => (

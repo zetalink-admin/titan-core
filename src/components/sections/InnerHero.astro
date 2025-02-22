@@ -2,17 +2,30 @@
 interface Props {
   title: string;
   subtitle?: string;
+  backgroundImage?: string;
+  overlayOpacity?: number; // Value between 0 and 1
 }
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, backgroundImage, overlayOpacity = 1 } = Astro.props;
 ---
 
 <section class="w-full border-b pt-38 pb-18 relative">
-    <div class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"></div>
+    {backgroundImage && (
+        <div 
+            class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden bg-cover bg-center bg-no-repeat" 
+            style={`background-image: url(${backgroundImage});`}
+        >
+        </div>
+    )}
+    <div 
+        class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden" 
+        style={`opacity: ${overlayOpacity};`}
+    ></div>
+
     <div class="site-container mx-auto px-4 relative z-10">
         <div>
-        <h1 class="text-white" data-aos="fade-up">{title}</h1>
-        {subtitle && <p class="subtitle text-white" data-aos="fade-up" data-aos-delay="100">{subtitle}</p>}
+            <h1 class="text-white" data-aos="fade-up">{title}</h1>
+            {subtitle && <p class="subtitle text-white" data-aos="fade-up" data-aos-delay="100">{subtitle}</p>}
         </div>
     </div>
 </section>

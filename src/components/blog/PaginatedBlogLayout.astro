@@ -38,7 +38,7 @@ const prevPage = currentPage > 1
 ---
 <Layout title={seoTitle} description={seoDescription}>
     <main>
-    <InnerHero title={title} subtitle={subtitle} />
+    <InnerHero title={title} subtitle={subtitle} backgroundImage="/images/blog-hero-2.jpg" overlayOpacity={0.2} />
     <BlogList posts={paginatedPosts} currentCategory={currentCategory} />
 
     {totalPages > 1 && (

@@ -11,6 +11,8 @@ interface HeroContent {
     title: string;
     description: string;
     button: HeroButton;
+    backgroundImage?: string;
+    overlayOpacity?: number; // Value between 0 and 1
 }
 
 interface Props {
@@ -18,16 +20,34 @@ interface Props {
 }
 
 const { heroContent } = Astro.props;
-
+const opacity = heroContent.overlayOpacity ?? 1; // Default opacity if not specified
 ---
 
 <section class="header-offset relative">
-
-<div class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"></div>
+    {heroContent.backgroundImage && (
+        <div 
+            class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden bg-cover bg-center bg-no-repeat" 
+            style={`background-image: url(${heroContent.backgroundImage});`}
+        >
+        </div>
+    )}
+    <div 
+        class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden" 
+        style={`opacity: ${opacity};`}
+    ></div>
 
     <div class="site-container mx-auto px-4 py-large relative z-10 flex flex-col md:items-center md:justify-center md:text-center">
         <h1 class="text-white" data-aos="fade-up">{heroContent.title}</h1>
         <p class="text-white mt-2" data-aos="fade-up" data-aos-delay="100">{heroContent.description}</p>
-        <Button class="mt-8" variant="ghostLight" data-aos="fade-up" data-aos-delay="200" href={heroContent.button.link} target={heroContent.button.target}>{heroContent.button.text}</Button>
+        <Button 
+            class="mt-8" 
+            variant="ghostLight" 
+            data-aos="fade-up" 
+            data-aos-delay="200" 
+            href={heroContent.button.link} 
+            target={heroContent.button.target}
+        >
+            {heroContent.button.text}
+        </Button>
     </div>
 </section>

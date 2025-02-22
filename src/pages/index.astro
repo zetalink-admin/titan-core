@@ -11,6 +11,7 @@ import { logoLists } from '../data/logos';
 import CtaBanner from '../components/sections/CtaBanner.astro';
 import Faqs from '../components/sections/Faqs.astro';
 import { faqLists } from '../data/faqs';
+import RecentPosts from '../components/sections/RecentPosts.astro';
 
 const seoTitle = "Modern, High-Performance Astro Theme";
 const seoDescription = "A modern, high-performance Astro theme for developer portfolios and documentation sites.";
@@ -22,7 +23,9 @@ const heroContent = {
         text: 'Get Started',
         link: '/contact',
         target: '_self'
-    }
+    },
+    backgroundImage: '/home/default-hero-2.jpg',
+    overlayOpacity: 0.2
 }
 
 const FooterCta = {
@@ -152,6 +155,16 @@ const faqsSection = {
     description: faqLists.main.description,
     faqs: faqLists.main.faqs
 }
+
+const recentPostsSection = {
+    sectionTitle: "Latest Blog Posts",
+    sectionDescription: "Check out our most recent articles",
+    button: {
+            text: "View All Posts",
+            link: "/blog",
+        variant: "primary" as const
+    }
+}
 ---
 
 <Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
@@ -165,4 +178,5 @@ const faqsSection = {
     <Features featuresContent={featuresSection} padding="base" background="light"  />
     <CtaBanner content={secondaryCta} variant="full-width" background="dark" padding="base" />
     <Faqs faqsContent={faqsSection} background="white" padding="base" />
+    <RecentPosts sectionContent={recentPostsSection} background="dark" padding="base" postsToShow={3} category="Theme Usage"/>
 </Layout>

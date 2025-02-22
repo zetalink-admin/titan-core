@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPost from '../blog/BlogPost.astro';
+import Button from '../ui/Button.astro';
+import { getPaddingClass, getBackgroundColor, getTextColor } from '../../utils/styleUtils';
+import type { PaddingSize, ThemeColor } from '../../utils/styleUtils';
+
+export interface Props {
+    sectionContent?: {
+        sectionTitle?: string;
+        sectionDescription?: string;
+        button?: {
+            text: string;
+            link: string;
+            variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
+        };
+    };
+    background?: ThemeColor;
+    padding?: PaddingSize;
+    paddingTop?: PaddingSize;
+    paddingBottom?: PaddingSize;
+    postsToShow?: number;
+    category?: string;
+}
+
+const {
+    sectionContent,
+    background = 'white',
+    postsToShow = 3,
+    category,
+} = Astro.props;
+
+// Get background and text colors
+const bgColor = getBackgroundColor(background);
+const textColor = getTextColor(background);
+const paddingClass = getPaddingClass({ 
+    padding: Astro.props.padding,
+    paddingTop: Astro.props.paddingTop,
+    paddingBottom: Astro.props.paddingBottom 
+});
+
+// Fetch posts
+const allPosts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.DEV || data.publish !== false;
+});
+
+// Filter and sort posts
+let filteredPosts = allPosts
+    .filter(post => !category || post.data.categories.includes(category))
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+    .slice(0, postsToShow);
+---
+
+<section class:list={["relative", bgColor, paddingClass]}>
+    <div class="site-container px-4">
+        {(sectionContent?.sectionTitle || sectionContent?.sectionDescription) && (
+            <div class="max-w-2xl mb-12">
+                {sectionContent?.sectionTitle && (
+                    <h2 class:list={[textColor]} data-aos="fade-up">
+                        {sectionContent.sectionTitle}
+                    </h2>
+                )}
+                {sectionContent?.sectionDescription && (
+                    <p class:list={["mt-4", textColor, "opacity-90"]} data-aos="fade-up" data-aos-delay="100">
+                        {sectionContent.sectionDescription}
+                    </p>
+                )}
+                {sectionContent?.button && (
+                    <div class="mt-8" data-aos="fade-up" data-aos-delay="200">
+                        <Button
+                            href={sectionContent.button.link}
+                            variant={sectionContent.button.variant || 'primary'}
+                        >
+                            {sectionContent.button.text}
+                        </Button>
+                    </div>
+                )}
+            </div>
+        )}
+
+        <div class="posts-grid">
+            {filteredPosts.map((post, index) => (
+                <div>
+                    <BlogPost 
+                        title={post.data.title}
+                        excerpt={post.data.excerpt}
+                        featuredImage={post.data.featuredImage || ''}
+                        publishDate={post.data.publishDate}
+                        categories={post.data.categories || []}
+                        content={post.body}
+                        slug={post.slug}
+                        index={index}
+                    />
+                </div>
+            ))}
+        </div>
+
+        {filteredPosts.length === 0 && (
+            <p class="text-center text-gray-500 py-8">
+                No posts found.
+            </p>
+        )}
+    </div>
+</section>
+
+<style>
+    .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .posts-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
