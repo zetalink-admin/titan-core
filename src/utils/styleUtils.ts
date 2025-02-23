@@ -50,4 +50,22 @@ export const getEyebrowColor = (background: ThemeColor = 'white'): string => {
         dark: 'text-eyebrow-dark'
     };
     return eyebrowColors[background];
+};
+
+export const getInputBackgroundColor = (background: ThemeColor = 'white'): string => {
+    const inputBgColors = {
+        white: 'bg-input',
+        light: 'bg-input-light',
+        dark: 'bg-input-dark'
+    };
+    return inputBgColors[background];
+};
+
+export const getInputTextColor = (background: ThemeColor = 'white'): string => {
+    const inputTextColors = {
+        white: 'text-input-text',
+        light: 'text-input-text-light',
+        dark: 'text-input-text-dark'
+    };
+    return inputTextColors[background];
 }; 

@@ -34,14 +34,17 @@ const budgetOptions = [
     { label: "$25,000 - $50,000", value: "25-50k" },
     { label: "$50,000+", value: "50k+" }
 ];
+
+const formBackground = 'light';
 ---
-<form class="space-y-6">
+<form class="space-y-6 bg-white p-6 rounded-lg">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input
         label="Name"
         id="name"
         name="name"
         required
+        background={formBackground}
         />
         <Input
         label="Email"
@@ -49,6 +52,7 @@ const budgetOptions = [
         id="email"
         name="email"
         required
+        background={formBackground}
         />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -57,11 +61,13 @@ const budgetOptions = [
         type="tel"
         id="phone"
         name="phone"
+        background={formBackground}
     />
     <Input
         label="Company"
         id="company"
         name="company"
+        background={formBackground}
     />
     </div>
 
@@ -72,12 +78,14 @@ const budgetOptions = [
             name="hear-about"
             options={hearAboutOptions}
             required
-    />
+            background={formBackground}
+        />
     <Checkbox
         label="Areas of Interest"
         id="interests"
         name="interests"
         options={interestOptions}
+        background={formBackground}
     />
     </div>
     
@@ -86,6 +94,7 @@ const budgetOptions = [
         id="message"
         name="message"
         required
+        background={formBackground}
     />
     
     <Checkbox
@@ -93,6 +102,7 @@ const budgetOptions = [
         id="terms"
         name="terms"
         required
+        background={formBackground}
     />
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -103,6 +113,7 @@ const budgetOptions = [
             options={serviceOptions}
             required
             placeholder="Choose a service"
+            background={formBackground}
         />
         <Select
             label="Budget Range"
@@ -111,6 +122,7 @@ const budgetOptions = [
             options={budgetOptions}
             required
             placeholder="Select your budget"
+            background={formBackground}
         />
     </div>
 

@@ -3,6 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/ui/Button.astro';
 import InnerHero from '../components/sections/InnerHero.astro';
 import { getBackgroundColor, getTextColor, getHeadlineColor, getEyebrowColor } from '../utils/styleUtils';
+import Input from '../components/ui/form/Input.astro';
+import Textarea from '../components/ui/form/Textarea.astro';
+import Select from '../components/ui/form/Select.astro';
+import Checkbox from '../components/ui/form/Checkbox.astro';
+import Radio from '../components/ui/form/Radio.astro';
 
 const title = 'Style Guide';
 const description = 'A style guide for Astro Basics';
@@ -122,8 +127,94 @@ const backgrounds = ['white', 'light', 'dark'] as const;
                 {/* Form Elements */}
                 <section id={`forms-${bg}`} class="mb-12">
                     <h2 class={`text-2xl font-bold mb-6 ${getHeadlineColor(bg)}`}>Form Elements</h2>
-                    <div class="space-y-4 max-w-md">
-                        {/* Form content */}
+                    <div class="space-y-6 max-w-md">
+                        <Input
+                            label="Text Input"
+                            id={`text-input-${bg}`}
+                            name="text-input"
+                            placeholder="Enter some text"
+                            background={bg}
+                        />
+
+                        <Input
+                            label="Email Input"
+                            type="email"
+                            id={`email-input-${bg}`}
+                            name="email-input"
+                            placeholder="Enter your email"
+                            background={bg}
+                        />
+
+                        <Textarea
+                            label="Textarea"
+                            id={`textarea-${bg}`}
+                            name="textarea"
+                            placeholder="Enter your message"
+                            background={bg}
+                        />
+
+                        <Select
+                            label="Select Menu"
+                            id={`select-${bg}`}
+                            name="select"
+                            options={[
+                                { label: 'Option 1', value: 'option1' },
+                                { label: 'Option 2', value: 'option2' },
+                                { label: 'Option 3', value: 'option3' },
+                            ]}
+                            background={bg}
+                        />
+
+                        <Checkbox
+                            label="Single Checkbox"
+                            id={`checkbox-single-${bg}`}
+                            name="checkbox-single"
+                            background={bg}
+                        />
+
+                        <Checkbox
+                            label="Multiple Checkboxes"
+                            id={`checkbox-multiple-${bg}`}
+                            name="checkbox-multiple"
+                            options={[
+                                { label: 'Option 1', value: 'option1' },
+                                { label: 'Option 2', value: 'option2' },
+                                { label: 'Option 3', value: 'option3' },
+                            ]}
+                            background={bg}
+                        />
+
+                        <Radio
+                            label="Radio Buttons"
+                            id={`radio-${bg}`}
+                            name={`radio-${bg}`}
+                            options={[
+                                { label: 'Option 1', value: 'option1' },
+                                { label: 'Option 2', value: 'option2' },
+                                { label: 'Option 3', value: 'option3' },
+                            ]}
+                            background={bg}
+                        />
+
+                        <div class="space-y-2">
+                            <Input
+                                label="Required Input"
+                                id={`required-input-${bg}`}
+                                name="required-input"
+                                required={true}
+                                placeholder="This field is required"
+                                background={bg}
+                            />
+
+                            <Input
+                                label="Disabled Input"
+                                id={`disabled-input-${bg}`}
+                                name="disabled-input"
+                                disabled={true}
+                                placeholder="This field is disabled"
+                                background={bg}
+                            />
+                        </div>
                     </div>
                 </section>
             </div>
