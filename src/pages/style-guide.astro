@@ -22,23 +22,23 @@ const backgrounds = ['white', 'light', 'dark'] as const;
     {/* Colors Section - Show Once */}
     <div class="max-w-4xl mx-auto px-4 py-12">
         <section id="colors" class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">Colors</h2>
+            <h2 class="text-2xl font-bold text-headline mb-6">Colors</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
                     <div class="h-24 bg-primary rounded-lg mb-2"></div>
-                    <p class="text-sm font-medium">Primary</p>
+                    <p class="text-sm font-medium text-body-base">Primary</p>
                 </div>
                 <div>
                     <div class="h-24 bg-secondary rounded-lg mb-2"></div>
-                    <p class="text-sm font-medium">Secondary</p>
+                    <p class="text-sm font-medium text-body-base">Secondary</p>
                 </div>
                 <div>
                     <div class="h-24 bg-accent rounded-lg mb-2"></div>
-                    <p class="text-sm font-medium">Accent</p>
+                    <p class="text-sm font-medium text-body-base">Accent</p>
                 </div>
                 <div>
                     <div class="h-24 rounded-lg mb-2 bg-background-dark"></div>
-                    <p class="text-sm font-medium text-heading-dark">Dark</p>
+                    <p class="text-sm font-medium text-body-base">Dark</p>
                 </div>
             </div>
         </section>
@@ -46,7 +46,7 @@ const backgrounds = ['white', 'light', 'dark'] as const;
 
     {/* Tabs Section */}
     <div class="max-w-4xl mx-auto px-4 mb-8">
-        <h2 class="text-2xl font-bold mb-6">Background Variants</h2>
+        <h2 class="text-2xl font-bold mb-6 text-headline">Background Variants</h2>
         <div class="flex space-x-4 rounded-xl p-4 bg-background-white border border-background-dark">
             {backgrounds.map(bg => (
                 <button 
