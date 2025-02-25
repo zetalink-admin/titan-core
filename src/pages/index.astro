@@ -17,101 +17,63 @@ const seoTitle = "Modern, High-Performance Astro Theme";
 const seoDescription = "A modern, high-performance Astro theme for developer portfolios and documentation sites.";
 
 const heroContent = {
-    title: 'Build Faster with Titan Core',
-    description: ' A modern, high-performance Astro theme for developer portfolios and documentation sites.',
-    button: {
-        text: 'Get Started',
-        link: '/contact',
-        target: '_self'
-    },
+    title: 'The Foundation for Beautiful Astro JS Websites',
+    description: 'Titan Core is a minimal, performance-focused Astro JS theme that serves as the perfect foundation for your next web project. Built with clean code and modern best practices, it\'s designed to be extended and customized to your specific needs.',
+    buttons: [
+        {
+            text: 'Get Started',
+            link: '/contact',
+            target: '_self'
+        },
+        {
+            text: 'View on GitHub',
+            link: 'https://github.com/titan-core/titan-core',
+            target: '_blank'
+        }
+    ],
     backgroundImage: '/home/default-hero-2.jpg',
     overlayOpacity: 0.2
 }
 
-const FooterCta = {
-    title: 'This is Footer CTA',
-    description: 'This is Footer CTA Description',
-    hideCta: false,
+const featuresSection = {
+    eyebrow: "CORE FEATURES",
+    sectionTitle: "Everything You Need, Nothing You Don't",
+    sectionDescription: "Titan Core gives you a solid foundation with essential features while staying lightweight and customizable. Start with a clean slate and build exactly what you need without the bloat.",
+    features: featureLists.main.features,
     button: {
-        text: 'Contact Us',
-        link: '/contact',
-        target: '_self'
+        text: "View Theme Info",
+        link: "/theme-info",
+        variant: "primary" as const
     }
 }
 
-const aboutSection = {
-    eyebrow: "About",
-    headline: "About Titan Core",
-    subheadline: "We are a team of developers who are passionate about building amazing websites with ease.",
-    description: "Our platform is designed to help developers and agencies build amazing websites with ease. Packed with features and optimized for performance.",
-    image: {
-        src: "/home/about.jpg",
-        alt: "Featured image"
-    },
-    buttons: [
-        {
-            text: "Get Started",
-            link: "/contact",
-            variant: "primary" as const
-        },
-        {
-            text: "Learn More",
-            link: "/about",
-            variant: "secondary" as const
-        }
-    ]
+const FooterCta = {
+    eyebrow: "Join The Community",
+    title: ' Start Building With Titan Core Today',
+    description: 'Titan Core is open-source and constantly improving. Join our community of developers to contribute, get support, or showcase what you\'ve built.',
+    hideCta: false,
+    button: {
+        text: 'Download Titan Core',
+        link: 'https://github.com/titan-studio-themes/titan-core',
+        target: '_blank'
+    }
 }
 
-const whoWeAreSection = {
-    eyebrow: "Who We Are",
-    headline: "Developers who are passionate about building amazing websites.",
-    subheadline: "High-performance Astro theme for developers.",
-    description: "Focused on providing a modern, high-performance Astro theme for developer portfolios and documentation sites.",
+const styleGuideSection = {
+    eyebrow: "Design System",
+    headline: "Consistent & Beautiful Components",
+    description: "Titan Core comes with a complete style guide to ensure your projects maintain visual consistency. From typography to interactive elements, we've carefully crafted each component.",
     image: {
         src: "/home/developer.jpg",
         alt: "Featured image"
     },
     buttons: [
         {
-            text: "Get Started",
-            link: "/contact",
-            variant: "primary" as const
-        },
-        {
-            text: "Learn More",
-            link: "/about",
-            variant: "secondary" as const
-        }
-    ]
-}
-
-const teamSection = {
-    eyebrow: "Our Team",
-    headline: "Meet the Team",
-    subheadline: "Passionate about building amazing websites with ease.",
-    description: "Focused on providing a modern, high-performance Astro theme for developer portfolios and documentation sites.",
-    image: {
-        src: "/home/meet-the-team.jpg",
-        alt: "Featured image"
-    },
-    buttons: [
-        {
-            text: "Meet the Team",
-            link: "/team",
+            text: "Explore Style Guide",
+            link: "/style-guide",
             variant: "primary" as const
         }
     ]
-} 
-
-const featuresSection = {
-    sectionTitle: "What makes Titan Core special?",
-    sectionDescription: "Focused on providing a modern, high-performance Astro theme for developer portfolios and documentation sites.",
-    features: featureLists.main.features,
-    button: {
-        text: "View All Features",
-        link: "/features",
-        variant: "primary" as const
-    }
 }
 
 const sideBySideStats = {
@@ -122,11 +84,12 @@ const sideBySideStats = {
 }
 
 const mainCta = {
-    title: "Ready to Get Started?",
-    description: "Join thousands of developers building amazing websites with Titan Core.",
+    eyebrow: "Build Blocks",
+    title: "Ready-to-Use Components",
+    description: "Save development time with our pre-built, accessible components. Each one is designed to integrate seamlessly with your projects while maintaining excellent performance.",
     button: {
-        text: "Start Building",
-        link: "/contact",
+        text: "View All Components",
+        link: "/components",
         variant: "primary" as const,
         target: "_self" as const
     }
@@ -157,8 +120,9 @@ const faqsSection = {
 }
 
 const recentPostsSection = {
-    sectionTitle: "Latest Blog Posts",
-    sectionDescription: "Check out our most recent articles",
+    eyebrow: "LATEST INSIGHTS",
+    sectionTitle: " Learn From Our Experience",
+    sectionDescription: "Explore our latest articles on Astro JS development, theme customization tips, and web performance best practices.",
     button: {
             text: "View All Posts",
             link: "/blog",
@@ -169,14 +133,12 @@ const recentPostsSection = {
 
 <Layout footerCta={FooterCta} title={seoTitle} description={seoDescription}>
     <Hero heroContent={heroContent} />
+    <Features featuresContent={featuresSection} padding="base" background="light"  />
+    <RecentPosts sectionContent={recentPostsSection} background="white" padding="base" postsToShow={3} category="Theme Usage"/>
+    <SplitPanel content={styleGuideSection} imagePosition="right" background="light" padding="base" />
+    <CtaBanner content={mainCta} variant="contained" background="light" />
     <Stats statsContent={sideBySideStats} padding="base" />
     <Logos logosContent={logosSection} background="white" paddingBottom='small'/>
-    <SplitPanel content={aboutSection} imagePosition="right" background="light" padding="base" />
-    <CtaBanner content={mainCta} variant="contained" background="light" />
-    <SplitPanel content={whoWeAreSection} imagePosition="right" background="light" padding="base" />
-    <SplitPanel content={teamSection} imagePosition="left" background="dark" padding="base" />
-    <Features featuresContent={featuresSection} padding="base" background="light"  />
     <CtaBanner content={secondaryCta} variant="full-width" background="dark" padding="base" />
     <Faqs faqsContent={faqsSection} background="white" padding="base" />
-    <RecentPosts sectionContent={recentPostsSection} background="dark" padding="base" postsToShow={3} category="Theme Usage"/>
 </Layout>

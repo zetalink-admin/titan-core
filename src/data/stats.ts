@@ -24,14 +24,12 @@ export const statsLists: Record<string, StatsList> = {
         id: 'main',
         stats: [
             {
-                value: 95,
-                label: 'Customer Satisfaction',
-                suffix: '%'
+                value: 10,
+                label: 'Theme Configurations',
             },
             {
-                value: 2000,
-                label: 'Projects Completed',
-                prefix: '>'
+                value: 11,
+                label: 'Pre-Built Components',
             },
             {
                 value: 48,
@@ -57,23 +55,23 @@ export const statsLists: Record<string, StatsList> = {
         },
         stats: [
             {
-                value: 95,
-                label: 'Customer Satisfaction',
-                suffix: '%'
+                value: 10,
+                label: 'Color Schemes',
             },
             {
-                value: 2000,
-                label: 'Projects Completed',
-                prefix: '>'
+                value: 14.53,
+                label: 'Core Bundle Size',
+                suffix: 'KB'
             },
             {
-                value: 48,
-                label: 'Team Members',
+                value: 11,
+                label: 'Pre-Built Components',
             },
             {
-                value: 500000,
-                label: 'Lines of Code',
-                prefix: '+'
+                value: 10,
+                label: 'Build Time',
+                prefix: '<100',
+                suffix: 's'
             }
         ]
     }
