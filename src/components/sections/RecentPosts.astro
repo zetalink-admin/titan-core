@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogPost from '../blog/BlogPost.astro';
-import Button from '../ui/Button.astro';
-import { getPaddingClass, getBackgroundColor, getTextColor } from '../../utils/styleUtils';
-import type { PaddingSize, ThemeColor } from '../../utils/styleUtils';
+import BlogPost from '@components/blog/BlogPost.astro';
+import Button from '@components/ui/Button.astro';
+import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleUtils';
+import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
 export interface Props {
     sectionContent?: {

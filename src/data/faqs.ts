@@ -17,20 +17,24 @@ export const faqLists: Record<string, FaqList> = {
         description: 'Find answers to common questions about our platform and services.',
         faqs: [
             {
-                question: 'What is Titan Core?',
-                answer: 'Titan Core is a modern, high-performance Astro theme designed for developer portfolios and documentation sites. It provides a robust foundation for building fast, responsive websites with ease.'
+                question: "Is Titan Core completely free to use?",
+                answer: "Yes, Titan Core is 100% free and open-source. You can use it for personal and commercial projects without any licensing fees."
             },
             {
-                question: 'Is Titan Core open source?',
-                answer: 'Yes, Titan Core is open source and available under the MIT license. You can use it for both personal and commercial projects.'
+                question: "How do I customize the color schemes?",
+                answer: "Titan Core comes with 10 pre-built color schemes that can be easily switched through the theme configuration file. For custom colors, you can modify the CSS variables in the `src/styles/global.css` file to match your brand identity."
             },
             {
-                question: 'How do I get started?',
-                answer: 'Getting started is easy! Simply clone the repository, install the dependencies, and follow our comprehensive documentation to begin building your site.'
+                question: "Do I need to know Astro JS to use this theme?",
+                answer: "Basic familiarity with Astro JS is helpful, but not required. The component-based architecture makes it easy to understand and modify even if you're new to Astro."
             },
             {
-                question: 'Do you offer support?',
-                answer: 'Yes, we offer support through our Discord community and GitHub issues. Our team and community members are always happy to help.'
+                question: "Can I use Titan Core as a starting point for client projects?",
+                answer: "Absolutely! Titan Core is designed to be a foundation theme that you can build upon for client projects. Its clean architecture and minimal approach make it perfect as a starting point for customized websites."
+            },
+            {
+                question: "How often is Titan Core updated?",
+                answer: "We aim to update Titan Core regularly to keep it compatible with the latest Astro JS releases and web standards. Major updates are released quarterly, with smaller fixes and improvements added more frequently. You can star our GitHub repository to stay informed about updates."
             }
         ]
     }

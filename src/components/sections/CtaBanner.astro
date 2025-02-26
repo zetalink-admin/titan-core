@@ -1,6 +1,6 @@
 ---
-import { getBackgroundColor, getTextColor, getPaddingClass } from '../../utils/styleUtils';
-import type { ThemeColor, PaddingSize } from '../../utils/styleUtils';
+import { getBackgroundColor, getTextColor, getPaddingClass } from '@utils/styleUtils';
+import type { ThemeColor, PaddingSize } from '@utils/styleUtils';
 
 export interface Props {
     content: {
@@ -39,7 +39,7 @@ const containerBgColors = {
     alt: 'bg-white',
     dark: 'bg-background-dark/50'
 };
-const containerBgColor = containerBgColors[background];
+const containerBgColor = containerBgColors[background as keyof typeof containerBgColors];
 ---
 
 <section class:list={[bgColor, paddingClass]}>

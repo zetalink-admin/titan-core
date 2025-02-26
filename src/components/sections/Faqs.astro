@@ -1,7 +1,7 @@
 ---
-import type { FaqItem } from '../../data/faqs';
-import { getPaddingClass, getBackgroundColor, getHeadlineColor, getTextColor } from '../../utils/styleUtils';
-import type { PaddingSize, ThemeColor } from '../../utils/styleUtils';
+import type { FaqItem } from '@data/faqs';
+import { getPaddingClass, getBackgroundColor, getHeadlineColor, getTextColor } from '@utils/styleUtils';
+import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 import { Plus } from 'lucide-astro';
 
 export interface Props {
@@ -66,7 +66,7 @@ const textColor = getTextColor(background);
                             class="answer-wrapper grid grid-rows-[0fr] transition-all duration-200 ease-out"
                         >
                             <div class="overflow-hidden">
-                                <div class:list={["pt-4 pr-8", textColor]}>
+                                <div class:list={["pt-4 pr-8 text-small", textColor]}>
                                     {faq.answer}
                                 </div>
                             </div>

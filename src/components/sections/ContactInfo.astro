@@ -1,8 +1,8 @@
 ---
-import Contact from "../forms/Contact.astro"
-import { getBackgroundColor, getTextColor, getPaddingClass } from '../../utils/styleUtils';
-import type { ThemeColor, PaddingSize } from '../../utils/styleUtils';
-import { siteConfig } from '../../data/config';
+import Contact from "@components/forms/Contact.astro"
+import { getBackgroundColor, getTextColor, getPaddingClass } from '@utils/styleUtils';
+import type { ThemeColor, PaddingSize } from '@utils/styleUtils';
+import { siteConfig } from '@data/config';
 import { Mail, Phone, MapPin } from 'lucide-astro';
 export interface Props {
     background?: ThemeColor;

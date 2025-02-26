@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import InnerHero from '../../components/sections/InnerHero.astro';
-import MobileProfile from '../../components/team/MobileProfile.astro';
-import DesktopProfile from '../../components/team/DesktopProfile.astro';
+import Layout from '@layouts/Layout.astro';
+import InnerHero from '@components/sections/InnerHero.astro';
+import MobileProfile from '@components/team/MobileProfile.astro';
+import DesktopProfile from '@components/team/DesktopProfile.astro';
 
 export async function getStaticPaths() {
   const teamEntries = await getCollection('team');
