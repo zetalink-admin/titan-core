@@ -1,11 +1,12 @@
 ---
 import type { FaqItem } from '@data/faqs';
-import { getPaddingClass, getBackgroundColor, getHeadlineColor, getTextColor } from '@utils/styleUtils';
+import { getPaddingClass, getBackgroundColor, getHeadlineColor, getTextColor, getEyebrowColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 import { Plus } from 'lucide-astro';
 
 export interface Props {
     faqsContent: {
+        eyebrow?: string;
         title?: string;
         description?: string;
         faqs: FaqItem[];
@@ -17,7 +18,7 @@ export interface Props {
 }
 
 const {
-    faqsContent: { title, description, faqs },
+    faqsContent: { eyebrow, title, description, faqs },
     background = 'white'
 } = Astro.props;
 
@@ -30,12 +31,18 @@ const paddingClass = getPaddingClass({
 
 const headlineColor = getHeadlineColor(background);
 const textColor = getTextColor(background);
+const eyebrowColor = getEyebrowColor(background);
 ---
 
 <section class:list={["relative", bgColor, paddingClass]}>
     <div class="site-container px-4">
         {(title || description) && (
             <div class="max-w-3xl mx-auto text-center mb-12">
+                {eyebrow && (
+                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
+                        {eyebrow}
+                    </div>
+                )}
                 {title && <h2 data-aos="fade-up" class:list={["text-3xl font-bold mb-4", headlineColor]}>{title}</h2>}
                 {description && <p data-aos="fade-up" class:list={["text-lg", textColor]}>{description}</p>}
             </div>

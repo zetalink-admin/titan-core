@@ -1,13 +1,14 @@
 ---
 import type { Feature } from '@data/features';
 import Button from '@components/ui/Button.astro';
-import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleUtils';
+import { getPaddingClass, getBackgroundColor, getTextColor, getEyebrowColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
 export interface Props {
     featuresContent: {
-        sectionTitle?: string;
-        sectionDescription?: string;
+        eyebrow?: string;
+        title?: string;
+        description?: string;
         button?: {
             text: string;
             link: string;
@@ -23,8 +24,9 @@ export interface Props {
 
 const {
     featuresContent: {
-        sectionTitle,
-        sectionDescription,
+        eyebrow,
+        title,
+        description,
         button,
         features
     },
@@ -33,6 +35,7 @@ const {
 
 const bgColor = getBackgroundColor(background);
 const textColor = getTextColor(background);
+const eyebrowColor = getEyebrowColor(background);
 const paddingClass = getPaddingClass({ 
     padding: Astro.props.padding,
     paddingTop: Astro.props.paddingTop,
@@ -42,16 +45,21 @@ const paddingClass = getPaddingClass({
 
 <section class:list={["relative", bgColor, paddingClass]}>
     <div class="site-container px-4">
-        {(sectionTitle || sectionDescription) && (
+        {(title || description) && (
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                {sectionTitle && (
+                {eyebrow && (
+                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
+                        {eyebrow}
+                    </div>
+                )}
+                {title && (
                     <h2 class:list={[textColor]} data-aos="fade-up">
-                        {sectionTitle}
+                        {title}
                     </h2>
                 )}
-                {sectionDescription && (
+                {description && (
                     <p class:list={["mt-4", textColor, "opacity-90"]} data-aos="fade-up" data-aos-delay="100">
-                        {sectionDescription}
+                        {description}
                     </p>
                 )}
                 {button && (

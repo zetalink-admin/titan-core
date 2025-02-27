@@ -44,15 +44,6 @@ export const statsLists: Record<string, StatsList> = {
     },
     withContent: {
         id: 'withContent',
-        content: {
-            title: "Built for Speed and Flexibility",
-            description: "Titan Core is designed with performance and developer experience in mind. Our lightweight theme gives you all the essentials without the bloat, letting you build exactly what you need with impressive speed.",
-            button: {
-                text: "Learn More",
-                link: "/about",
-                variant: "primary"
-            }
-        },
         stats: [
             {
                 value: 10,

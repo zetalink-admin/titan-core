@@ -5,16 +5,12 @@ export interface FaqItem {
 
 export interface FaqList {
     id: string;
-    title?: string;
-    description?: string;
     faqs: FaqItem[];
 }
 
 export const faqLists: Record<string, FaqList> = {
     main: {
         id: 'main',
-        title: 'Frequently Asked Questions',
-        description: 'Find answers to common questions about our platform and services.',
         faqs: [
             {
                 question: "Is Titan Core completely free to use?",

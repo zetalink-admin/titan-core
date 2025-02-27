@@ -2,13 +2,14 @@
 import { getCollection } from 'astro:content';
 import BlogPost from '@components/blog/BlogPost.astro';
 import Button from '@components/ui/Button.astro';
-import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleUtils';
+import { getPaddingClass, getBackgroundColor, getTextColor, getEyebrowColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
 export interface Props {
     sectionContent?: {
-        sectionTitle?: string;
-        sectionDescription?: string;
+        eyebrow?: string;
+        title?: string;
+        description?: string;
         button?: {
             text: string;
             link: string;
@@ -33,11 +34,13 @@ const {
 // Get background and text colors
 const bgColor = getBackgroundColor(background);
 const textColor = getTextColor(background);
+const eyebrowColor = getEyebrowColor(background);
 const paddingClass = getPaddingClass({ 
     padding: Astro.props.padding,
     paddingTop: Astro.props.paddingTop,
     paddingBottom: Astro.props.paddingBottom 
 });
+
 
 // Fetch posts
 const allPosts = await getCollection('blog', ({ data }) => {
@@ -53,16 +56,21 @@ let filteredPosts = allPosts
 
 <section class:list={["relative", bgColor, paddingClass]}>
     <div class="site-container px-4">
-        {(sectionContent?.sectionTitle || sectionContent?.sectionDescription) && (
+        {(sectionContent?.title || sectionContent?.description) && (
             <div class="max-w-2xl mb-12">
-                {sectionContent?.sectionTitle && (
+                {sectionContent?.eyebrow && (
+                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
+                        {sectionContent.eyebrow}
+                    </div>
+                )}
+                {sectionContent?.title && (
                     <h2 class:list={[textColor]} data-aos="fade-up">
-                        {sectionContent.sectionTitle}
+                        {sectionContent.title}
                     </h2>
                 )}
-                {sectionContent?.sectionDescription && (
+                {sectionContent?.description && (
                     <p class:list={["mt-4", textColor, "opacity-90"]} data-aos="fade-up" data-aos-delay="100">
-                        {sectionContent.sectionDescription}
+                        {sectionContent.description}
                     </p>
                 )}
                 {sectionContent?.button && (

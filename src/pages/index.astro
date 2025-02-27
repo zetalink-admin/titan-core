@@ -37,8 +37,8 @@ const heroContent = {
 
 const featuresSection = {
     eyebrow: "CORE FEATURES",
-    sectionTitle: "Everything You Need, Nothing You Don't",
-    sectionDescription: "Titan Core gives you a solid foundation with essential features while staying lightweight and customizable. Start with a clean slate and build exactly what you need without the bloat.",
+    title: "Everything You Need, Nothing You Don't",
+    description: "Titan Core gives you a solid foundation with essential features while staying lightweight and customizable. Start with a clean slate and build exactly what you need without the bloat.",
     features: featureLists.main.features,
     button: {
         text: "View Theme Info",
@@ -77,11 +77,21 @@ const styleGuideSection = {
 }
 
 const sideBySideStats = {
+    eyebrow: "Stats",
+    title: "Built for Speed and Flexibility",
+    description: "Titan Core is designed with performance and developer experience in mind. Our lightweight theme gives you all the essentials without the bloat, letting you build exactly what you need with impressive speed.",
     variant: 'side-by-side' as const,
-    background: 'dark' as const,
     stats: statsLists.withContent.stats,
-    content: statsLists.withContent.content
-}
+    content: {
+        title: "Built for Speed and Flexibility",
+        description: "Titan Core is designed with performance and developer experience in mind. Our lightweight theme gives you all the essentials without the bloat, letting you build exactly what you need with impressive speed.",
+        button: {
+            text: "Learn More",
+            link: "/about",
+            variant: "primary" as const
+        }
+    }
+};
 
 const mainCta = {
     eyebrow: "Build Blocks",
@@ -104,15 +114,16 @@ const logosSection = {
 }
 
 const faqsSection = {
-    title: faqLists.main.title,
-    description: faqLists.main.description,
+    eyebrow: "FAQs",
+    title: 'Frequently Asked Questions',
+    description: 'Find answers to common questions about our platform and services.',
     faqs: faqLists.main.faqs
 }
 
 const recentPostsSection = {
     eyebrow: "LATEST INSIGHTS",
-    sectionTitle: " Learn From Our Experience",
-    sectionDescription: "Explore our latest articles on Astro JS development, theme customization tips, and web performance best practices.",
+    title: " Learn From Our Experience",
+    description: "Explore our latest articles on Astro JS development, theme customization tips, and web performance best practices.",
     button: {
             text: "View All Posts",
             link: "/blog",
