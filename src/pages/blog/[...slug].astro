@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import CategoryPill from '../../components/ui/CategoryPill.astro';
-import Date from '../../components/ui/Date.astro';
+import Layout from '@layouts/Layout.astro';
+import CategoryPill from '@components/ui/CategoryPill.astro';
+import Date from '@components/ui/Date.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -30,10 +31,13 @@ const seoImage = post.data.seo?.image || post.data.featuredImage;
   <div class="w-full h-120 absolute top-0 left-0 z-0 overflow-hidden border-b border-black">
     {post.data.featuredImage && (
       <>
-        <img 
+        <Image 
           src={post.data.featuredImage} 
           alt={post.data.title} 
+          width={1920}
+          height={1080}
           class="w-full h-full object-cover grayscale opacity-20" 
+          quality={60}
         />
         <div class="absolute inset-0 bg-primary/10 backdrop-blur-md"></div>
       </>
@@ -56,10 +60,14 @@ const seoImage = post.data.seo?.image || post.data.featuredImage;
     </div>
 
     {post.data.featuredImage && (
-      <img 
+      <Image 
         src={post.data.featuredImage} 
         alt={post.data.title} 
+        width={1200}
+        height={675}
         class="w-full h-auto rounded-lg border mb-12 border-black" 
+        quality={80}
+        format="webp"
       />
     )}
 

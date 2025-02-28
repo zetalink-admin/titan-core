@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface HeroContent {
     title: string;
     description: string;
@@ -15,17 +17,23 @@ const opacity = heroContent.overlayOpacity ?? 1;
 ---
 
 <section class="w-full border-b pt-38 pb-18 relative">
-    {heroContent.backgroundImage && (
-        <div 
-            class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden bg-cover bg-center bg-no-repeat" 
-            style={`background-image: url(${heroContent.backgroundImage});`}
-        >
+    <div class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden">
+            {heroContent.backgroundImage && (
+                <Image 
+                    src={heroContent.backgroundImage}
+                    alt="Background image"
+                    width={1920}
+                    height={1080}
+                    class="w-full h-full object-cover"
+                    quality={70}
+                    format="webp"
+                />
+            )}
+            <div 
+                class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden" 
+                style={`opacity: ${opacity};`}
+            ></div>
         </div>
-    )}
-    <div 
-        class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden" 
-        style={`opacity: ${opacity};`}
-    ></div>
 
     <div class="site-container mx-auto px-4 relative z-10">
         <div>

@@ -15,10 +15,14 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const heroContent = {
+  title: entry.data.name,
+  description: entry.data.jobTitle,
+}
 ---
 
 <Layout title={entry.data.name} description={`Team member: ${entry.data.name}`}>
-  <InnerHero title={entry.data.name} subtitle={entry.data.jobTitle} />
+  <InnerHero heroContent={heroContent} />
   <div class="site-container mx-auto px-4">
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 pt-8 lg:pt-0">
       <!-- Profile Sidebar -->

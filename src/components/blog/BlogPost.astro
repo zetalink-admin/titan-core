@@ -3,6 +3,7 @@
 import { categories } from '../../data/categories';
 import CategoryPill from '../ui/CategoryPill.astro';
 import Date from '../ui/Date.astro';
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -30,10 +31,14 @@ const validCategories = postCategories.filter((categoryName: string) =>
   data-aos-delay={index * 100}
 >
   <div class="relative aspect-[16/9] overflow-hidden border-black border-b">
-    <img 
+    <Image 
       src={featuredImage} 
-      alt={title} 
+      alt={title}
+      width={600}
+      height={338}
       class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+      quality={80}
+      format="webp"
     />
     <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
   </div>

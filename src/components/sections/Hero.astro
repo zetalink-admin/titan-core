@@ -1,5 +1,7 @@
 ---
 import Button from '@components/ui/Button.astro';
+import { Image } from 'astro:assets';
+
 interface HeroContent {
     title: string;
     description: string;
@@ -23,16 +25,24 @@ const opacity = heroContent.overlayOpacity ?? 1; // Default opacity if not speci
 
 <section class="header-offset relative">
     {heroContent.backgroundImage && (
-        <div 
-            class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden bg-cover bg-center bg-no-repeat" 
-            style={`background-image: url(${heroContent.backgroundImage});`}
-        >
+        <div class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden">
+            <Image 
+                src={heroContent.backgroundImage}
+                alt="Background image"
+                width={1920}
+                height={1080}
+                class="w-full h-full object-cover"
+                quality={70}
+                format="webp"
+                loading="eager"
+                decoding="async"
+            />
+            <div 
+                class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden" 
+                style={`opacity: ${opacity};`}
+            ></div>
         </div>
     )}
-    <div 
-        class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden" 
-        style={`opacity: ${opacity};`}
-    ></div>
 
     <div class="site-container mx-auto px-4 py-large relative z-10 flex flex-col md:items-center md:justify-center md:text-center">
         <h1 class="text-white text-balance" data-aos="fade-up">{heroContent.title}</h1>

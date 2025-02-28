@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { getPaddingClass } from '@utils/styleUtils';
 import type { PaddingSize } from '@utils/styleUtils';
+import { Image } from 'astro:assets';
 
 interface Props {
     padding?: PaddingSize;
@@ -31,20 +32,22 @@ const sortedTeamMembers = teamMembers.sort((a, b) => a.data.order - b.data.order
                 class="flex flex-col group rounded-md">
                     <div class="relative mb-4 overflow-hidden rounded-md">
                         <span class="absolute inset-0 -mt-12 h-400 w-1/2 translate-x-[250%] rotate-12 bg-white opacity-20  group-hover:transition-all  group-hover:duration-300 ease-out group-hover:translate-x-[-250%] z-10"></span>
-                        <img
-                            class="w-full object-cover rounded-md relative
-                            group-hover:scale-[1.02] hover:brightness-125 
-                            transition-all duration-500 ease-in-out"
+                        <Image
                             src={member.data.headshot}
                             alt={member.data.name}
+                            width={400}
+                            height={500}
+                            class="w-full h-auto aspect-[3/4] object-cover rounded-md group-hover:scale-[1.02] hover:brightness-110 transition-all duration-500 ease-in-out"
+                            loading="lazy"
+                            decoding="async"
+                            quality={80}
+                            format="webp"
                         />
                     </div>
-
                     <h3 class="text-h5 font-medium transition-colors duration-500 group-hover:text-primary">{member.data.name}</h3>
                     <p class="text-xsmall text-body-base">{member.data.jobTitle}</p>
-                </div>
-                    
                 </a>
+            </div>
         ))
         }
     </div>
