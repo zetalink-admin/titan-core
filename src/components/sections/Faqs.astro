@@ -1,8 +1,9 @@
 ---
 import type { FaqItem } from '@data/faqs';
-import { getPaddingClass, getBackgroundColor, getHeadlineColor, getTextColor, getEyebrowColor } from '@utils/styleUtils';
+import { getPaddingClass, getBackgroundColor, getHeadlineColor, getTextColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 import { Plus } from 'lucide-astro';
+import Eyebrow from '@components/ui/Eyebrow.astro';
 
 export interface Props {
     faqsContent: {
@@ -31,7 +32,6 @@ const paddingClass = getPaddingClass({
 
 const headlineColor = getHeadlineColor(background);
 const textColor = getTextColor(background);
-const eyebrowColor = getEyebrowColor(background);
 ---
 
 <section class:list={["relative", bgColor, paddingClass]}>
@@ -39,9 +39,10 @@ const eyebrowColor = getEyebrowColor(background);
         {(title || description) && (
             <div class="max-w-3xl mx-auto text-center mb-12">
                 {eyebrow && (
-                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
-                        {eyebrow}
-                    </div>
+                    <Eyebrow 
+                        text={eyebrow} 
+                        background={background} 
+                    />
                 )}
                 {title && <h2 data-aos="fade-up" class:list={["text-3xl font-bold mb-4", headlineColor]}>{title}</h2>}
                 {description && <p data-aos="fade-up" class:list={["text-lg", textColor]}>{description}</p>}

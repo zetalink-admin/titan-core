@@ -1,6 +1,7 @@
 ---
 import Button from '@components/ui/Button.astro';
-import { getPaddingClass, getBackgroundColor, getTextColor, getEyebrowColor } from '@utils/styleUtils';
+import Eyebrow from '@components/ui/Eyebrow.astro';
+import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
 interface Content {
@@ -45,7 +46,6 @@ const { eyebrow, headline, subheadline, description, image, buttons = [] } = con
 const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
 const bgColor = getBackgroundColor(background);
 const textColor = getTextColor(background);
-const eyebrowColor = getEyebrowColor(background);
 ---
 <section class:list={["relative", bgColor, paddingClass]}>
     <div class="site-container px-4">
@@ -68,9 +68,10 @@ const eyebrowColor = getEyebrowColor(background);
             <!-- Content Side -->
             <div class:list={[textColor]}>
                 {eyebrow && (
-                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
-                        {eyebrow}
-                    </div>
+                    <Eyebrow 
+                        text={eyebrow} 
+                        background={background} 
+                    />
                 )}
                 <h2 class={textColor} data-aos="fade-up">{headline}</h2>
                 {subheadline && <h3 class:list={["mt-4 text-h5", textColor]} data-aos="fade-up">{subheadline}</h3>}

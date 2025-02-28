@@ -1,7 +1,8 @@
 ---
 import type { Stat } from '@data/stats';
 import Button from '@components/ui/Button.astro';
-import { getBackgroundColor, getTextColor, getPaddingClass, getEyebrowColor } from '@utils/styleUtils';
+import Eyebrow from '@components/ui/Eyebrow.astro';
+import { getBackgroundColor, getTextColor, getPaddingClass } from '@utils/styleUtils';
 import type { ThemeColor, PaddingSize } from '@utils/styleUtils';
 
 export interface Props {
@@ -44,7 +45,6 @@ const {
 
 const bgColor = getBackgroundColor(background);
 const textColor = getTextColor(background);
-const eyebrowColor = getEyebrowColor(background);
 const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
 ---
 
@@ -53,9 +53,10 @@ const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
         {variant === 'default' && (title || description) && (
             <div class="text-center mb-16">
                 {eyebrow && (
-                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
-                        {eyebrow}
-                    </div>
+                    <Eyebrow 
+                        text={eyebrow} 
+                        background={background} 
+                    />
                 )}
                 {title && (
                     <h2 class:list={[textColor]} data-aos="fade-up">
@@ -76,9 +77,10 @@ const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
             {variant === 'side-by-side' && content && (
                 <div class="content-section" data-aos="fade-right">
                     {eyebrow && (
-                        <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
-                            {eyebrow}
-                        </div>
+                        <Eyebrow 
+                            text={eyebrow} 
+                            background={background} 
+                        />
                     )}
                     <h2 class:list={[textColor]}>{content.title}</h2>
                     <p class:list={["mt-4", textColor, "opacity-90"]}>{content.description}</p>

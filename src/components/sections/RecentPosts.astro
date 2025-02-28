@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import BlogPost from '@components/blog/BlogPost.astro';
 import Button from '@components/ui/Button.astro';
-import { getPaddingClass, getBackgroundColor, getTextColor, getEyebrowColor } from '@utils/styleUtils';
+import Eyebrow from '@components/ui/Eyebrow.astro';
+import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
 export interface Props {
@@ -34,7 +35,6 @@ const {
 // Get background and text colors
 const bgColor = getBackgroundColor(background);
 const textColor = getTextColor(background);
-const eyebrowColor = getEyebrowColor(background);
 const paddingClass = getPaddingClass({ 
     padding: Astro.props.padding,
     paddingTop: Astro.props.paddingTop,
@@ -59,9 +59,10 @@ let filteredPosts = allPosts
         {(sectionContent?.title || sectionContent?.description) && (
             <div class="max-w-2xl mb-12">
                 {sectionContent?.eyebrow && (
-                    <div class:list={[eyebrowColor, "font-medium mb-4 uppercase tracking-wider text-sm"]} data-aos="fade-up">
-                        {sectionContent.eyebrow}
-                    </div>
+                    <Eyebrow 
+                        text={sectionContent.eyebrow} 
+                        background={background} 
+                    />
                 )}
                 {sectionContent?.title && (
                     <h2 class:list={[textColor]} data-aos="fade-up">
