@@ -35,10 +35,17 @@ const prevPage = currentPage > 1
 ? baseUrl
 : `${baseUrl}/${currentPage - 1}`
 : null;
+
+const heroContent = {
+    title: title,
+    description: subtitle,
+    backgroundImage: "/images/blog-hero-2.jpg",
+    overlayOpacity: 0.2
+}
 ---
 <Layout title={seoTitle} description={seoDescription}>
     <main>
-    <InnerHero title={title} subtitle={subtitle} backgroundImage="/images/blog-hero-2.jpg" overlayOpacity={0.2} />
+    <InnerHero heroContent={heroContent}/>
     <BlogList posts={paginatedPosts} currentCategory={currentCategory} />
 
     {totalPages > 1 && (

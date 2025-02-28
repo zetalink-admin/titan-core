@@ -12,12 +12,17 @@ import Radio from '@components/ui/form/Radio.astro';
 const title = 'Style Guide';
 const description = 'A style guide for Astro Basics';
 
+const heroContent = {
+    title: title,
+    description: description,
+}
+
 const backgrounds = ['white', 'light', 'dark'] as const;
 
 ---
 
 <Layout title={title} description={description}>
-    <InnerHero title={title} subtitle={description} />
+    <InnerHero heroContent={heroContent} />
 
     {/* Colors Section - Show Once */}
     <div class="max-w-4xl mx-auto px-4 py-12">
