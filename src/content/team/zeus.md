@@ -1,6 +1,6 @@
 ---
 name: "Zeus"
-headshot: "/team/zeus.jpg"
+headshot: "./images/zeus.jpg"
 jobTitle: "God of Thunder"
 publish: true
 order: 1

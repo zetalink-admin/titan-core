@@ -1,6 +1,6 @@
 ---
 name: "Apollo"
-headshot: "/team/apollo.jpg"
+headshot: "./images/apollo.jpg"
 jobTitle: "God of the Sun"
 publish: true
 order: 2

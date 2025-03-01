@@ -1,6 +1,6 @@
 ---
 name: "Hades"
-headshot: "/team/hades.jpg"
+headshot: "./images/hades.jpg"
 jobTitle: "God of the Underworld"
 publish: true
 order: 8

@@ -6,10 +6,10 @@ const categoryNames = categories.map(category => category.name);
 
 const blogCollection = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     excerpt: z.string(),
-    featuredImage: z.string().optional(),
+    featuredImage: image().optional(),
     publishDate: z.string().transform(str => new Date(str)),
     publish: z.boolean().optional(),
     categories: z.array(z.enum(categoryNames as [string, ...string[]])),
@@ -23,9 +23,9 @@ const blogCollection = defineCollection({
 
 const teamCollection = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     name: z.string(),
-    headshot: z.string(),
+    headshot: image().optional(),
     jobTitle: z.string(),
     email: z.string().optional(),
     linkedin: z.string().url().optional(),

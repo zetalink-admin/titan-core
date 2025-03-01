@@ -1,6 +1,6 @@
 ---
 name: "Artemis"
-headshot: "/team/artemis.jpg"
+headshot: "./images/artemis.jpg"
 jobTitle: "Goddess of the Hunt"
 publish: true
 order: 4

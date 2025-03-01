@@ -1,6 +1,6 @@
 ---
 name: "Dionysus"
-headshot: "/team/dionysus.jpg"
+headshot: "./images/dionysus.jpg"
 jobTitle: "God of Wine"
 publish: true
 order: 7

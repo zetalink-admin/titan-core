@@ -11,7 +11,7 @@ interface HeroContent {
         variant?: 'primary' | 'secondary' | 'ghostLight' | 'ghostDark';
         target?: string;
     }[];
-    backgroundImage?: string;
+    backgroundImage?: string | any; // Using any for now to handle both string paths and imported images
     overlayOpacity?: number; // Value between 0 and 1
 }
 

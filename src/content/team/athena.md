@@ -1,6 +1,6 @@
 ---
 name: "Athena"
-headshot: "/team/athena.jpg"
+headshot: "./images/athena.jpg"
 jobTitle: "Goddess of Wisdom"
 publish: true
 order: 5

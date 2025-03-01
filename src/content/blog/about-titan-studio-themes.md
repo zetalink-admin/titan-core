@@ -1,7 +1,7 @@
 ---
 title: "Introducing Titan Studio Themes"
 excerpt: "Learn about Titan Studio Themes and our mission to create beautiful, functional Astro JS themes"
-featuredImage: "/blog/titan-studio-themes.jpg"
+featuredImage: "./images/titan-studio-themes.jpg"
 publishDate: "2023-11-15"
 publish: true
 categories: ["Web Development", "Theme Usage"]
@@ -9,7 +9,6 @@ categories: ["Web Development", "Theme Usage"]
 seo:
   title: "Introducing Titan Studio Themes - Premium Astro JS Themes"
   description: "Discover Titan Studio Themes, your source for high-quality free and premium Astro JS themes for various website needs"
-  image: "/blog/titan-studio-themes.jpg"
 ---
 
 ## Who We Are

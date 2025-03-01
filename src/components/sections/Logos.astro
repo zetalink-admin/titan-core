@@ -1,6 +1,7 @@
 ---
 import type { Logo } from '@data/logos';
 import Eyebrow from '@components/ui/Eyebrow.astro';
+import { Image } from 'astro:assets';
 import { getPaddingClass, getBackgroundColor, getHeadlineColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
@@ -58,12 +59,13 @@ const headlineColor = getHeadlineColor(background);
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
                 >
-                <img 
-                    src={logo.src} 
-                    alt={logo.alt}
-                    class="h-8 md:h-10 w-auto transition-all duration-300 object-contain object-center filter grayscale hover:grayscale-0 opacity-75 hover:opacity-100"
-                    loading="lazy"
-                />
+                    <Image 
+                        src={logo.src} 
+                        alt={logo.alt}
+                        class="h-8 md:h-10 w-auto transition-all duration-300 object-contain object-center filter grayscale hover:grayscale-0 opacity-75 hover:opacity-100"
+                        width={200}
+                        height={80}
+                    />
                 </div>
             ))}
         </div>

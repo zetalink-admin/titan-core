@@ -25,5 +25,16 @@ export default defineConfig({
       lineNumbersPrefix: ''
     }
   },
-  integrations: []
+  integrations: [],
+  image: {
+    // Allow all remote patterns (https and http)
+    remotePatterns: [
+      {
+        protocol: "https"
+      },
+      {
+        protocol: "http"
+      }
+    ]
+  }
 });

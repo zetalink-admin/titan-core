@@ -1,6 +1,6 @@
 ---
 name: "Poseidon"
-headshot: "/team/poseidon.jpg"
+headshot: "./images/poseidon.jpg"
 jobTitle: "God of the Sea"
 publish: true
 order: 10

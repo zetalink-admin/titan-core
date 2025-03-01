@@ -1,7 +1,7 @@
 ---
 title: "How to add/remove categories"
 excerpt: "Learn how to add/remove categories"
-featuredImage: "/blog/update-categories.jpg"
+featuredImage: "./images/update-categories.jpg"
 publishDate: "2025-02-22"
 publish: true
 categories: ["Theme Usage"]
@@ -9,7 +9,7 @@ categories: ["Theme Usage"]
 seo:
   title: "How to add/remove categories"
   description: "Learn how to add/remove categories"
-  image: "/blog/update-categories.jpg"
+  image: "./images/update-categories.jpg"
 ---
 
 Categories are a crucial part of organizing your content and helping users navigate your site. This post will guide you through the process of editing categories in your theme, using the `categories.ts` file.

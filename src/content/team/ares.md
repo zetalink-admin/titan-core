@@ -1,6 +1,6 @@
 ---
 name: "Ares"
-headshot: "/team/ares.jpg"
+headshot: "./images/ares.jpg"
 jobTitle: "God of War"
 publish: true
 order: 3

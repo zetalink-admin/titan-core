@@ -1,6 +1,6 @@
 ---
 name: "Demeter"
-headshot: "/team/demeter.jpg"
+headshot: "./images/demeter.jpg"
 jobTitle: "Goddess of the Harvest"
 publish: true
 order: 6
