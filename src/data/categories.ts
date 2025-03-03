@@ -30,6 +30,16 @@ export const categories: Category[] = [
     slug: 'theme-usage',
     description: 'Learn how to use the theme'
   },
+  {
+    name: 'Astro JS',
+    slug: 'astro-js',
+    description: 'Everything about Astro JS framework and development'
+  },
+  {
+    name: 'SEO',
+    slug: 'seo',
+    description: 'Search engine optimization strategies and best practices'
+  },
   
 ];
 
