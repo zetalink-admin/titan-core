@@ -1,9 +1,12 @@
 ---
-import { getBackgroundColor, getTextColor, getPaddingClass } from '@utils/styleUtils';
+import { getBackgroundColor, getTextColor, getPaddingClass, getHeadlineColor, getEyebrowColor } from '@utils/styleUtils';
 import type { ThemeColor, PaddingSize } from '@utils/styleUtils';
+import Button from '@components/ui/Button.astro';
+import Eyebrow from '@components/ui/Eyebrow.astro';
 
 export interface Props {
     content: {
+        eyebrow?: string;
         title: string;
         description?: string;
         button?: {
@@ -21,7 +24,7 @@ export interface Props {
 }
 
 const {
-    content: { title, description, button },
+    content: { eyebrow, title, description, button },
     variant = 'contained',
     background = 'dark',
     padding,
@@ -31,6 +34,8 @@ const {
 
 const bgColor = getBackgroundColor(background);
 const textColor = getTextColor(background);
+const headlineColor = getHeadlineColor(background);
+const eyebrowColor = getEyebrowColor(background);
 const paddingClass = getPaddingClass({ padding, paddingTop, paddingBottom });
 
 // Only this is specific to CtaBanner
@@ -39,6 +44,7 @@ const containerBgColors = {
     alt: 'bg-white',
     dark: 'bg-background-dark/50'
 };
+
 const containerBgColor = containerBgColors[background as keyof typeof containerBgColors];
 ---
 
@@ -52,8 +58,15 @@ const containerBgColor = containerBgColors[background as keyof typeof containerB
             variant === 'contained' ? 'max-w-3xl rounded-xl p-12' : 'max-w-4xl',
             variant === 'contained' && containerBgColor
         ]}>
+            {eyebrow && (
+                <Eyebrow 
+                    text={eyebrow} 
+                    background={background} 
+                />
+            )}
+            
             <h2 
-                class:list={[textColor]}
+                class:list={[headlineColor]}
                 data-aos="fade-up"
             >
                 {title}
@@ -75,18 +88,14 @@ const containerBgColor = containerBgColors[background as keyof typeof containerB
                     data-aos="fade-up"
                     data-aos-delay="200"
                 >
-                    <a
+                    <Button
                         href={button.link}
+                        variant={button.variant || 'primary'}
                         target={button.target || '_self'}
-                        class:list={[
-                            "inline-block px-6 py-3 rounded-lg font-medium transition-colors",
-                            button.variant === 'secondary' 
-                                ? "bg-secondary hover:bg-secondary-dark text-white"
-                                : "bg-primary hover:bg-primary-dark text-white"
-                        ]}
+                        size="md"
                     >
                         {button.text}
-                    </a>
+                    </Button>
                 </div>
             )}
         </div>

@@ -21,8 +21,7 @@ export const footerMenu = [
 ];
 
 export const legalMenu = [
-    { name: 'Privacy Policy', link: '/privacy-policy' },
-    { name: 'Terms of Service', link: '/terms-of-service' },
-    { name: 'Cookie Policy', link: '/cookie-policy' },
+    { name: 'Privacy Policy', link: '/legal/privacy-policy' },
+    { name: 'Terms of Service', link: '/legal/terms-of-service' }
 ];
 
