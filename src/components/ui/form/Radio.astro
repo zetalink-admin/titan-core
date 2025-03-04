@@ -23,14 +23,14 @@ const {
     name, 
     options,
     required = false,
-    background = 'white',
+    background = 'base',
     class: className = ''
 } = Astro.props;
 
 const labelClass = getHeadlineColor(background);
 const inputTextClass = getInputTextColor(background);
 const textClass = getTextColor(background);
-const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'white');
+const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'base');
 ---
 <div class="form-group">
     <label class={`block text-sm font-medium mb-2 ${labelClass}`}>

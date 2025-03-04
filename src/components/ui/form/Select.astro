@@ -25,13 +25,13 @@ const {
     options,
     required = false,
     placeholder = 'Select an option',
-    background = 'white',
+    background = 'base',
     class: className = ''
 } = Astro.props;
 
 const labelClass = getHeadlineColor(background);
 const textClass = getTextColor(background);
-const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'white');
+const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'base');
 const inputBgClass = getInputBackgroundColor(background);
 const inputTextClass = getInputTextColor(background);
 ---

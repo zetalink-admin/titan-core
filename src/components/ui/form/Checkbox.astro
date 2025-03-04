@@ -23,13 +23,13 @@ const {
     name, 
     options,
     required = false,
-    background = 'white',
+    background = 'base',
     class: className = ''
 } = Astro.props;
 
 const labelClass = getHeadlineColor(background);
 const textClass = getTextColor(background);
-const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'white');
+const bgClass = getBackgroundColor(background === 'dark' ? 'light' : 'base');
 const inputTextClass = getInputTextColor(background);
 ---
 <div class="form-group">
