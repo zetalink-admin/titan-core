@@ -17,12 +17,12 @@ const heroContent = {
     description: description,
 }
 
-const backgrounds = ['white', 'light', 'dark'] as const;
+const backgrounds = ['base', 'light', 'dark'] as const;
 
 ---
 
 <Layout title={title} description={description}>
-    <InnerHero heroContent={heroContent} />
+    <InnerHero content={heroContent} />
 
     {/* Colors Section - Show Once */}
     <div class="max-w-4xl mx-auto px-4 py-12">
@@ -59,14 +59,14 @@ const backgrounds = ['white', 'light', 'dark'] as const;
                     class={`
                         w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-center transition-colors cursor-pointer
                         border border-primary
-                        ${bg === 'white' ? 'bg-background text-headline' : ''}
+                        ${bg === 'base' ? 'bg-background text-headline' : ''}
                         ${bg === 'light' ? 'bg-background-light text-headline-light' : ''}
                         ${bg === 'dark' ? 'bg-background-dark text-headline-dark' : ''}
                         hover:opacity-90
                     `}
                     data-tab={bg}
                 >
-                    {bg === 'white' ? 'Default' : bg.charAt(0).toUpperCase() + bg.slice(1)}
+                    {bg === 'base' ? 'Default' : bg.charAt(0).toUpperCase() + bg.slice(1)}
                 </button>
             ))}
         </div>
@@ -76,7 +76,7 @@ const backgrounds = ['white', 'light', 'dark'] as const;
     {backgrounds.map(bg => (
         <div 
             data-content={bg}
-            class={`${getBackgroundColor(bg)} ${getTextColor(bg)} py-12 ${bg === 'white' ? '' : 'hidden'}`}
+            class={`${getBackgroundColor(bg)} ${getTextColor(bg)} py-12 ${bg === 'base' ? '' : 'hidden'}`}
         >
             <div class="max-w-4xl mx-auto px-4">
                 <h2 class={`text-3xl font-bold mb-8 ${getHeadlineColor(bg)}`}>

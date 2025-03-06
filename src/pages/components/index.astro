@@ -66,8 +66,8 @@ const innerHeroContent = {
 // Features Component Content
 const featuresSection = {
     eyebrow: "COMPONENT FEATURES",
-    sectionTitle: "Showcase Product Features & Benefits",
-    sectionDescription: "The Features component is ideal for highlighting key features, benefits, or services in a visually appealing grid layout with icons and descriptions.",
+    title: "Showcase Product Features & Benefits",
+    description: "The Features component is ideal for highlighting key features, benefits, or services in a visually appealing grid layout with icons and descriptions.",
     features: featureLists.main.features,
     button: {
         text: "View All Features",
@@ -158,20 +158,13 @@ const faqsSection = {
 // Recent Posts Component Content
 const recentPostsSection = {
     eyebrow: "CONTENT MARKETING",
-    sectionTitle: "Showcase Your Latest Content",
-    sectionDescription: "The RecentPosts component automatically displays your latest blog posts or articles, helping drive traffic to your content and keeping your site fresh and engaging.",
+    title: "Showcase Your Latest Content",
+    description: "The RecentPosts component automatically displays your latest blog posts or articles, helping drive traffic to your content and keeping your site fresh and engaging.",
     button: {
         text: "View All Posts",
         link: "/blog",
         variant: "primary" as const
     }
-}
-
-// Team Grid Component Content
-const teamGridContent = {
-    eyebrow: "MEET THE TEAM",
-    sectionTitle: "Showcase Your Team Members",
-    sectionDescription: "The TeamGrid component displays your team members in an attractive grid layout with photos, names, and positions."
 }
 
 ---
@@ -208,7 +201,7 @@ const teamGridContent = {
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 Hero Component
             </div>
-            <Hero heroContent={heroContent} />
+            <Hero content={heroContent} />
         </div>
     </section>
     
@@ -217,7 +210,7 @@ const teamGridContent = {
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 Inner Hero Component
             </div>
-            <InnerHero heroContent={innerHeroContent} />
+            <InnerHero content={innerHeroContent} />
         </div>
     </section>
     
@@ -226,7 +219,7 @@ const teamGridContent = {
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 Features Component
             </div>
-            <Features featuresContent={featuresSection} padding="base" background="light" />
+            <Features content={featuresSection} padding="base" background="light" />
         </div>
     </section>
     
@@ -235,7 +228,7 @@ const teamGridContent = {
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 Recent Posts Component
             </div>
-            <RecentPosts sectionContent={recentPostsSection} background="white" padding="base" postsToShow={3} category="Theme Usage"/>
+            <RecentPosts content={recentPostsSection} background="base" padding="base" postsToShow={3} category="Theme Usage"/>
         </div>
     </section>
     
@@ -262,7 +255,7 @@ const teamGridContent = {
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 Logos Component
             </div>
-            <Logos logosContent={logosSection} background="white" padding='base'/>
+            <Logos content={logosSection} background="base" padding='base'/>
         </div>
     </section>
     
@@ -271,7 +264,7 @@ const teamGridContent = {
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 Stats Component
             </div>
-            <Stats statsContent={sideBySideStats} background='dark' padding="base"/>
+            <Stats content={sideBySideStats} background='dark' padding="base"/>
         </div>
     </section>
     
@@ -280,7 +273,7 @@ const teamGridContent = {
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 FAQs Component
             </div>
-            <Faqs faqsContent={faqsSection} background="white" padding="base" />
+            <Faqs content={faqsSection} background="base" padding="base" />
         </div>
     </section>
     
@@ -288,15 +281,6 @@ const teamGridContent = {
         <div class="component-wrapper relative transition-all duration-500">
             <div class="component-label hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-primary text-white py-1 px-3 rounded-md text-xs font-medium z-10 shadow-md">
                 Team Grid Component
-            </div>
-            <div class="bg-light py-8 px-4">
-                <div class="site-container mx-auto">
-                    <div class="text-center mb-10">
-                        <p class="text-primary uppercase tracking-wider font-semibold mb-2">{teamGridContent.eyebrow}</p>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">{teamGridContent.sectionTitle}</h2>
-                        <p class="text-body-base max-w-3xl mx-auto">{teamGridContent.sectionDescription}</p>
-                    </div>
-                </div>
             </div>
             <TeamGrid padding="base" />
         </div>

@@ -6,7 +6,7 @@ import { Plus } from 'lucide-astro';
 import Eyebrow from '@components/ui/Eyebrow.astro';
 
 export interface Props {
-    faqsContent: {
+    content: {
         eyebrow?: string;
         title?: string;
         description?: string;
@@ -19,7 +19,7 @@ export interface Props {
 }
 
 const {
-    faqsContent: { eyebrow, title, description, faqs },
+    content: { eyebrow, title, description, faqs },
     background = 'base'
 } = Astro.props;
 

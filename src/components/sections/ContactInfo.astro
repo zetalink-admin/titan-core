@@ -5,12 +5,22 @@ import type { ThemeColor, PaddingSize } from '@utils/styleUtils';
 import { siteConfig } from '@data/config';
 import { Mail, Phone, MapPin } from 'lucide-astro';
 export interface Props {
+    content?: {
+        title?: string;
+        description?: string;
+        contactInfo?: {
+            email?: string;
+            phone?: string;
+            address?: string;
+        };
+    };
     background?: ThemeColor;
     padding?: PaddingSize;
     paddingTop?: PaddingSize;
     paddingBottom?: PaddingSize;
 }
 const {
+    content,
     background = 'base',
     padding,
     paddingTop,

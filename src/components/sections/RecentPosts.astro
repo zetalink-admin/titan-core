@@ -7,7 +7,7 @@ import { getPaddingClass, getBackgroundColor, getTextColor } from '@utils/styleU
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
 export interface Props {
-    sectionContent?: {
+    content?: {
         eyebrow?: string;
         title?: string;
         description?: string;
@@ -26,7 +26,7 @@ export interface Props {
 }
 
 const {
-    sectionContent,
+    content,
     background = 'base',
     postsToShow = 3,
     category,
@@ -56,31 +56,31 @@ let filteredPosts = allPosts
 
 <section class:list={["relative", bgColor, paddingClass]}>
     <div class="site-container px-4">
-        {(sectionContent?.title || sectionContent?.description) && (
+        {(content?.title || content?.description) && (
             <div class="max-w-2xl mb-12">
-                {sectionContent?.eyebrow && (
+                {content?.eyebrow && (
                     <Eyebrow 
-                        text={sectionContent.eyebrow} 
+                        text={content.eyebrow} 
                         background={background} 
                     />
                 )}
-                {sectionContent?.title && (
+                {content?.title && (
                     <h2 class:list={[textColor]} data-aos="fade-up">
-                        {sectionContent.title}
+                        {content.title}
                     </h2>
                 )}
-                {sectionContent?.description && (
+                {content?.description && (
                     <p class:list={["mt-4", textColor, "opacity-90"]} data-aos="fade-up" data-aos-delay="100">
-                        {sectionContent.description}
+                        {content.description}
                     </p>
                 )}
-                {sectionContent?.button && (
+                {content?.button && (
                     <div class="mt-8" data-aos="fade-up" data-aos-delay="200">
                         <Button
-                            href={sectionContent.button.link}
-                            variant={sectionContent.button.variant || 'primary'}
+                            href={content.button.link}
+                            variant={content.button.variant || 'primary'}
                         >
-                            {sectionContent.button.text}
+                            {content.button.text}
                         </Button>
                     </div>
                 )}

@@ -6,8 +6,10 @@ import { getPaddingClass, getBackgroundColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
 
 export interface Props {
-    logosContent: {
+    content: {
         eyebrow?: string;
+        headline?: string;
+        subheadline?: string;
         logos: Logo[];
     };
     background?: ThemeColor;
@@ -17,7 +19,7 @@ export interface Props {
 }
 
 const {
-    logosContent: { eyebrow, logos },
+    content: { eyebrow, headline, subheadline, logos },
     background = 'base'
 } = Astro.props;
 
