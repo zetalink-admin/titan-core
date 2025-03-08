@@ -9,6 +9,17 @@ const ctaButton = {
     link: '/contact',
 }
 
+// Get the current path to determine active menu item
+const currentPath = Astro.url.pathname;
+
+// Function to check if a link is the current page or a parent of the current page
+const isCurrentPage = (link: string) => {
+    if (link === '/') {
+        return currentPath === '/';
+    }
+    return currentPath.startsWith(link);
+};
+
 ---
 
 <header class="fixed top-0 z-50 w-full left-0">
@@ -23,10 +34,15 @@ const ctaButton = {
                     <div class="flex items-center gap-1">
                         <a 
                             href={item.link} 
-                            class="text-body-base text-small font-medium hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-2 py-1"
+                            class:list={[
+                                "text-small font-medium rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-nav-text-active",
+                                isCurrentPage(item.link) 
+                                    ? "text-nav-text-current font-semibold" 
+                                    : "text-nav-text hover:text-nav-text-hover"
+                            ]}
                             aria-expanded={item.children ? "false" : undefined}
                             aria-haspopup={item.children ? "true" : undefined}
-                            
+                            aria-current={isCurrentPage(item.link) ? "page" : undefined}
                         >
                             {item.name}
                             {item.children && item.showArrow && (
@@ -41,7 +57,7 @@ const ctaButton = {
                     {item.children && (
                         <ul
                             class:list={[
-                                "submenu absolute mt-2 bg-white border-black border rounded-md min-w-[200px] transition-all duration-200 opacity-0 invisible overflow-hidden z-50",
+                                "submenu absolute mt-2 bg-nav-submenu-bg border-black border rounded-md min-w-[200px] transition-all duration-200 opacity-0 invisible overflow-hidden z-50",
                                 index === headerMenu.length - 1 ? "right-0" : "left-0"
                             ]}
                             role="menu"
@@ -50,8 +66,14 @@ const ctaButton = {
                                 <li role="none">
                                     <a 
                                         href={child.link}
-                                        class="block px-4 text-small py-2 text-body-base hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                                        class:list={[
+                                            "block px-4 text-small py-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nav-text-active",
+                                            isCurrentPage(child.link) 
+                                                ? "text-nav-text-current font-semibold" 
+                                                : "text-nav-text hover:text-nav-text-hover"
+                                        ]}
                                         role="menuitem"
+                                        aria-current={isCurrentPage(child.link) ? "page" : undefined}
                                     >
                                         {child.name}
                                     </a>
@@ -90,13 +112,24 @@ const ctaButton = {
                             <div class="flex items-center justify-between">
                                 <a 
                                     href={item.link} 
-                                    class="text-white hover:text-white/80 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md py-1"
+                                    class:list={[
+                                        "py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-nav-mobile-text-active",
+                                        isCurrentPage(item.link) 
+                                            ? "text-nav-mobile-text-current font-semibold" 
+                                            : "text-nav-mobile-text hover:text-nav-mobile-text-hover"
+                                    ]}
+                                    aria-current={isCurrentPage(item.link) ? "page" : undefined}
                                 >
                                     {item.name}
                                 </a>
                                 {item.children && (
                                     <button 
-                                        class="mobile-submenu-button p-2 -mr-2 text-white hover:text-white/80 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md"
+                                        class:list={[
+                                            "mobile-submenu-button p-2 -mr-2 rounded-md focus:outline-none focus:ring-2 focus:ring-nav-mobile-text-active",
+                                            isCurrentPage(item.link) 
+                                                ? "text-nav-mobile-text-current" 
+                                                : "text-nav-mobile-text hover:text-nav-mobile-text-hover"
+                                        ]}
                                         aria-label={`Toggle ${item.name} submenu`}
                                         aria-expanded="false"
                                     >
@@ -116,8 +149,14 @@ const ctaButton = {
                                         <li role="none">
                                             <a 
                                                 href={child.link}
-                                                class="block text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/20 rounded-md py-1"
+                                                class:list={[
+                                                    "block py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-nav-mobile-text-active",
+                                                    isCurrentPage(child.link) 
+                                                        ? "text-nav-mobile-text-current font-semibold" 
+                                                        : "text-nav-mobile-text hover:text-nav-mobile-text-hover"
+                                                ]}
                                                 role="menuitem"
+                                                aria-current={isCurrentPage(child.link) ? "page" : undefined}
                                             >
                                                 {child.name}
                                             </a>
