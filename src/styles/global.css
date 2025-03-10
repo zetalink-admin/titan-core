@@ -2,35 +2,35 @@
 
 @theme {
 
-    --color-primary: #2563eb;
-    --color-primary-light: #3b82f6;
-    --color-primary-dark: #1d4ed8;
+    --color-primary: #3557c1;
+    --color-primary-light: #4b6ed4;
+    --color-primary-dark: #1a3c8c;
 
-    --color-secondary: #475569;
-    --color-secondary-light: #64748b;
-    --color-secondary-dark: #334155;
+    --color-secondary: #cc9900;
+    --color-secondary-light: #e6b800;
+    --color-secondary-dark: #997300;
 
-    --color-accent: #6366f1;
-    --color-background: #f8fafc;
-    --color-background-light: #f1f5f9;
-    --color-background-dark: #1e293b;
+    --color-accent: #1e3c8c;
+    --color-background: #f8f9ff;
+    --color-background-light: #eef1ff;
+    --color-background-dark: #1a1f3c;
     
-    --color-headline: #1e293b;
-    --color-headline-dark: #1e293b;
-    --color-headline-light: #ffffff;
+    --color-headline: #1a1f3c;
+    --color-headline-light: #1a1f3c;
+    --color-headline-dark: #ffffff;
     
-    --color-eyebrow: var(--color-accent);
-    --color-eyebrow-dark: var(--color-accent);
-    --color-eyebrow-light: var(--color-accent);
+    --color-eyebrow: #1e3c8c;
+    --color-eyebrow-light: #1e3c8c;
+    --color-eyebrow-dark: #e6b800;
     
-    --color-body-base: #1e293b;
-    --color-body-dark: #1e293b;
-    --color-body-light: #f1f5f9;
+    --color-body-base: #1a1f3c;
+    --color-body-light: #1a1f3c;
+    --color-body-dark: #ffffff;
     
-    --color-input: var(--color-background-dark); 
+    --color-input: var(--color-background-light);
     --color-input-light: var(--color-background-light);
     --color-input-dark: var(--color-background-dark);
-    --color-input-text: var(--color-headline);
+    --color-input-text: var(--color-body-base);
     --color-input-text-light: var(--color-headline-light);
     --color-input-text-dark: var(--color-headline-dark);
     
@@ -40,7 +40,7 @@
     --color-nav-text-current: var(--color-primary);
     --color-nav-submenu-bg: var(--color-background-light);
     --color-nav-mobile-text: #ffffff;
-    --color-nav-mobile-text-hover: #ffffff;
+    --color-nav-mobile-text-hover: #e6b800;
     --color-nav-mobile-text-active: #ffffff;
     --color-nav-mobile-text-current: #ffffff;
     
