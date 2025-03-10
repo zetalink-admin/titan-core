@@ -8,7 +8,6 @@
 ## ✨ Features
 
 - 🎨 **Multiple Theme Options** - Choose from various color themes
-- 🌙 **Dark/Light Mode** - Built-in theme switcher with user preference detection
 - 📱 **Fully Responsive** - Looks great on all devices
 - 🚀 **Performance Focused** - Optimized for speed and SEO
 - 📝 **Blog Ready** - Complete blog functionality with categories and pagination
