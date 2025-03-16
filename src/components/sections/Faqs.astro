@@ -72,6 +72,7 @@ const textColor = getTextColor(background);
                         <div 
                             id={`faq-${index}`}
                             class="answer-wrapper grid grid-rows-[0fr] transition-all duration-200 ease-out"
+                            aria-hidden="true"
                         >
                             <div class="overflow-hidden">
                                 <div class:list={["pt-4 pr-8 text-small", textColor]}>
@@ -103,8 +104,10 @@ const textColor = getTextColor(background);
                 // Toggle content
                 if (!isExpanded) {
                     wrapper.style.gridTemplateRows = '1fr';
+                    wrapper.setAttribute('aria-hidden', 'false');
                 } else {
                     wrapper.style.gridTemplateRows = '0fr';
+                    wrapper.setAttribute('aria-hidden', 'true');
                 }
             });
         });
