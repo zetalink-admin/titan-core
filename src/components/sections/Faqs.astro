@@ -2,7 +2,7 @@
 import type { FaqItem } from '@data/faqs';
 import { getPaddingClass, getBackgroundColor, getHeadlineColor, getTextColor } from '@utils/styleUtils';
 import type { PaddingSize, ThemeColor } from '@utils/styleUtils';
-import { Plus } from 'lucide-astro';
+import { Plus, Minus } from 'lucide-astro';
 import Eyebrow from '@components/ui/Eyebrow.astro';
 
 export interface Props {
@@ -65,10 +65,16 @@ const textColor = getTextColor(background);
                             <h3 class:list={["text-xl font-semibold pr-8", headlineColor]}>
                                 {faq.question}
                             </h3>
-                            <Plus 
-                                class="w-6 h-6 flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110"
-                                aria-hidden="true"
-                            />
+                            <div class="icon-wrapper">
+                                <Plus 
+                                    class="w-6 h-6 flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110 plus-icon"
+                                    aria-hidden="true"
+                                />
+                                <Minus 
+                                    class="w-6 h-6 flex-shrink-0 transition-transform duration-200 ease-out group-hover:scale-110 minus-icon hidden"
+                                    aria-hidden="true"
+                                />
+                            </div>
                         </button>
                         <div 
                             id={`faq-${index}`}
@@ -94,13 +100,15 @@ const textColor = getTextColor(background);
             button.addEventListener('click', () => {
                 const isExpanded = button.getAttribute('aria-expanded') === 'true';
                 const wrapper = button.nextElementSibling as HTMLElement;
-                const icon = button.querySelector('svg');
+                const plusIcon = button.querySelector('.plus-icon');
+                const minusIcon = button.querySelector('.minus-icon');
                 
                 // Toggle current FAQ
                 button.setAttribute('aria-expanded', (!isExpanded).toString());
                 
-                // Animate icon
-                icon?.classList.toggle('rotate-45');
+                // Toggle icons
+                plusIcon?.classList.toggle('hidden');
+                minusIcon?.classList.toggle('hidden');
                 
                 // Toggle content
                 if (!isExpanded) {
