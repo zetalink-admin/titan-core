@@ -3,6 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "format": "prettier -w .",
+    "check": "astro check",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -15,7 +17,10 @@
     "lucide-astro": "^0.473.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@tailwindcss/vite": "^4.0.5",
-    "@types/aos": "^3.0.7"
+    "@types/aos": "^3.0.7",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
