@@ -10,7 +10,7 @@ import logo5 from '../assets/images/logos/logoipsum-352.svg';
 
 export interface Logo {
     src: ImageMetadata;
-    alt: string;
+    alt: string; // The partner company's name
 }
 
 export interface LogoList {
@@ -25,24 +25,24 @@ export const logoLists: Record<string, LogoList> = {
         logos: [
             {
                 src: logo1,
-                alt: 'Logo 1',
+                alt: 'Partner 1',
             },
             {
                 src: logo2,
-                alt: 'Logo 2',
+                alt: 'Partner 2',
             },
             {
                 src: logo3,
-                alt: 'Logo 3',
+                alt: 'Partner 3',
             },
             {
                 src: logo4,
-                alt: 'Logo 4',
+                alt: 'Partner 4',
             },
             {
                 src: logo5,
-                alt: 'Logo 5',
-            }
-        ]
-    }
+                alt: 'Partner 5',
+            },
+        ],
+    },
 };
