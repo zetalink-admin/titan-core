@@ -26,9 +26,9 @@ const opacity = content.overlayOpacity ?? 1; // Default opacity if not specified
 <section class="header-offset relative">
     {content.backgroundImage && (
         <div class="absolute inset-0 left-0 top-0 w-full h-full overflow-hidden">
-            <Image 
+            <Image
                 src={content.backgroundImage}
-                alt="Background image"
+                alt=""
                 width={1920}
                 height={1080}
                 class="w-full h-full object-cover"
@@ -37,8 +37,8 @@ const opacity = content.overlayOpacity ?? 1; // Default opacity if not specified
                 loading="eager"
                 decoding="async"
             />
-            <div 
-                class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden" 
+            <div
+                class="hero-background absolute inset-0 left-0 top-0 w-full h-full overflow-hidden"
                 style={`opacity: ${opacity};`}
             ></div>
         </div>
