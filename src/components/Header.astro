@@ -35,13 +35,12 @@ const isCurrentPage = (link: string) => {
                                     <a
                                         href={item.link}
                                         class:list={[
-                                            'text-small font-medium rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-nav-text-active',
+                                            'text-small font-medium rounded-md pl-2 py-1 focus:outline-none focus:ring-2 focus:ring-nav-text-active',
+                                            item.children ? 'pr-0' : 'pr-2',
                                             isCurrentPage(item.link)
                                                 ? 'text-nav-text-current font-semibold'
                                                 : 'text-nav-text hover:text-nav-text-hover',
                                         ]}
-                                        aria-expanded={item.children ? 'false' : undefined}
-                                        aria-haspopup={item.children ? 'true' : undefined}
                                         aria-current={isCurrentPage(item.link) ? 'page' : undefined}
                                     >
                                         {item.name}
@@ -53,6 +52,14 @@ const isCurrentPage = (link: string) => {
                                             />
                                         )}
                                     </a>
+                                    {item.children && (
+                                        <button
+                                            type="button"
+                                            class="sr-only"
+                                            aria-expanded="false"
+                                            aria-label={item.name}
+                                        />
+                                    )}
                                 </div>
                                 {item.children && (
                                     <ul
@@ -60,10 +67,9 @@ const isCurrentPage = (link: string) => {
                                             'submenu absolute mt-2 bg-nav-submenu-bg border-black border rounded-md min-w-[200px] transition-all duration-200 opacity-0 invisible overflow-hidden z-50',
                                             index === headerMenu.length - 1 ? 'right-0' : 'left-0',
                                         ]}
-                                        role="menu"
                                     >
                                         {item.children.map((child) => (
-                                            <li role="none">
+                                            <li>
                                                 <a
                                                     href={child.link}
                                                     class:list={[
@@ -72,7 +78,6 @@ const isCurrentPage = (link: string) => {
                                                             ? 'text-nav-text-current font-semibold'
                                                             : 'text-nav-text hover:text-nav-text-hover',
                                                     ]}
-                                                    role="menuitem"
                                                     aria-current={isCurrentPage(child.link) ? 'page' : undefined}
                                                 >
                                                     {child.name}
@@ -187,31 +192,53 @@ const isCurrentPage = (link: string) => {
 
     desktopMenuItems.forEach((item) => {
         const link = item.querySelector('a');
+        const button = item.querySelector('button');
         const submenu = item.querySelector('.submenu');
         const submenuLinks = submenu?.querySelectorAll('a');
 
-        if (submenu && link) {
+        if (submenu && link && button) {
             // Handle hover
             item.addEventListener('mouseenter', () => {
-                showSubmenu(submenu as HTMLElement, link as HTMLElement);
+                showSubmenu(submenu as HTMLElement, button as HTMLElement);
             });
 
             item.addEventListener('mouseleave', () => {
-                hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                hideSubmenu(submenu as HTMLElement, button as HTMLElement);
             });
 
             // Handle keyboard navigation
             link.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowDown' && item.children) {
                     e.preventDefault();
-                    showSubmenu(submenu as HTMLElement, link as HTMLElement);
+                    showSubmenu(submenu as HTMLElement, button as HTMLElement);
+                    submenuLinks?.[0]?.focus();
+                }
+            });
+
+            button.addEventListener('click', (e) => {
+                if (item.children) {
+                    e.preventDefault();
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    if (isExpanded) {
+                        hideSubmenu(submenu as HTMLElement, button as HTMLElement);
+                    } else {
+                        showSubmenu(submenu as HTMLElement, button as HTMLElement);
+                        submenuLinks?.[0]?.focus();
+                    }
+                }
+            });
+
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowDown' && item.children) {
+                    e.preventDefault();
+                    showSubmenu(submenu as HTMLElement, button as HTMLElement);
                     submenuLinks?.[0]?.focus();
                 }
             });
 
             // Don't show submenu on focus, only on hover or arrow key
             link.addEventListener('focus', () => {
-                hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                hideSubmenu(submenu as HTMLElement, button as HTMLElement);
             });
 
             // Keyboard navigation within submenu
@@ -232,17 +259,17 @@ const isCurrentPage = (link: string) => {
                                 submenuLinks[index - 1].focus();
                             } else {
                                 link.focus();
-                                hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                                hideSubmenu(submenu as HTMLElement, button as HTMLElement);
                             }
                             break;
                         case 'Escape':
                             e.preventDefault();
-                            hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                            hideSubmenu(submenu as HTMLElement, button as HTMLElement);
                             link.focus();
                             break;
                         case 'Tab':
                             // Allow normal tab behavior but close submenu
-                            hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                            hideSubmenu(submenu as HTMLElement, button as HTMLElement);
                             break;
                     }
                 });
@@ -251,23 +278,23 @@ const isCurrentPage = (link: string) => {
             // Close submenu when focus leaves
             document.addEventListener('focusin', (e) => {
                 if (item && !item.contains(e.target as Node)) {
-                    hideSubmenu(submenu as HTMLElement, link as HTMLElement);
+                    hideSubmenu(submenu as HTMLElement, button as HTMLElement);
                 }
             });
         }
     });
 
     // Helper functions
-    function showSubmenu(submenu: HTMLElement, link: HTMLElement) {
+    function showSubmenu(submenu: HTMLElement, button: HTMLElement) {
         submenu.classList.remove('invisible', 'opacity-0');
         submenu.classList.add('visible', 'opacity-100');
-        link.setAttribute('aria-expanded', 'true');
+        button.setAttribute('aria-expanded', 'true');
     }
 
-    function hideSubmenu(submenu: HTMLElement, link: HTMLElement) {
+    function hideSubmenu(submenu: HTMLElement, button: HTMLElement) {
         submenu.classList.add('invisible', 'opacity-0');
         submenu.classList.remove('visible', 'opacity-100');
-        link.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-expanded', 'false');
     }
 
     // Simple mobile submenu toggle
